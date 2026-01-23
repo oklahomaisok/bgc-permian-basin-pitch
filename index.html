@@ -58,6 +58,71 @@
             opacity: 0.8;
         }
 
+        /* Animated Aura Background - Only for Title Slide */
+        .aura-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            overflow: hidden;
+            opacity: 0.6;
+        }
+
+        .aura-background::before,
+        .aura-background::after {
+            content: '';
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            animation-duration: 20s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+
+        .aura-background::before {
+            background: radial-gradient(circle, var(--brand-orange) 0%, var(--sage) 50%, transparent 70%);
+            top: -200px;
+            left: -200px;
+            animation-name: auraFloat1;
+        }
+
+        .aura-background::after {
+            background: radial-gradient(circle, var(--teal) 0%, var(--brand-orange-light) 50%, transparent 70%);
+            bottom: -200px;
+            right: -200px;
+            animation-name: auraFloat2;
+            animation-delay: -10s;
+        }
+
+        @keyframes auraFloat1 {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(150px, 100px) scale(1.1);
+            }
+            66% {
+                transform: translate(-100px, 150px) scale(0.9);
+            }
+        }
+
+        @keyframes auraFloat2 {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(-150px, -100px) scale(0.9);
+            }
+            66% {
+                transform: translate(100px, -150px) scale(1.1);
+            }
+        }
+
         ::selection {
             background: var(--brand-orange);
             color: white;
@@ -646,6 +711,7 @@
     <div class="slides-container">
         <!-- Slide 1: Title -->
         <div class="slide active" data-slide="0">
+            <div class="aura-background"></div>
             <div class="ambient-glow"></div>
             <div style="position: relative; z-index: 1; text-align: center; max-width: 1000px;">
                 <h1>A Partnership for <span class="impact-text">Impact</span></h1>
