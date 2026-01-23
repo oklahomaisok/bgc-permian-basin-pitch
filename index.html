@@ -350,6 +350,136 @@
             top: 0.3rem;
         }
 
+        /* Deliverable Hover Tooltips */
+        .deliverable-item {
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-radius: 0.5rem;
+            margin: 0.25rem -0.5rem;
+            padding: 0.5rem 0.5rem 0.5rem 2.25rem;
+            position: relative;
+        }
+
+        .deliverable-item:hover {
+            background: rgba(197, 78, 50, 0.05);
+        }
+
+        .deliverable-item strong {
+            border-bottom: 1px dotted var(--brand-orange);
+        }
+
+        .deliverable-tooltip {
+            position: absolute;
+            left: 110%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 400px;
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.75rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(2, 2, 2, 0.08);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+            visibility: hidden;
+        }
+
+        .deliverable-item:hover .deliverable-tooltip,
+        .deliverable-item.active .deliverable-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(-50%) translateX(10px);
+        }
+
+        .deliverable-tooltip h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--brand-orange);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .deliverable-tooltip p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            color: var(--brand-black);
+        }
+
+        .deliverable-tooltip ul {
+            list-style: none;
+            margin: 0.75rem 0 1rem 0;
+            padding: 0;
+        }
+
+        .deliverable-tooltip ul li {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            padding: 0.25rem 0 0.25rem 1.25rem;
+            position: relative;
+        }
+
+        .deliverable-tooltip ul li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--brand-orange);
+            font-weight: bold;
+        }
+
+        .deliverable-tooltip .delivery-format {
+            font-size: 0.8rem;
+            font-style: italic;
+            opacity: 0.7;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(2, 2, 2, 0.1);
+        }
+
+        /* Tooltip positioning on left side when needed */
+        .deliverable-tooltip.tooltip-left {
+            left: auto;
+            right: 110%;
+        }
+
+        .deliverable-item:hover .deliverable-tooltip.tooltip-left,
+        .deliverable-item.active .deliverable-tooltip.tooltip-left {
+            transform: translateY(-50%) translateX(-10px);
+        }
+
+        /* Mobile: tap to reveal */
+        @media (max-width: 1024px) {
+            .deliverable-tooltip {
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%) scale(0.95);
+                width: calc(100% - 3rem);
+                max-width: 500px;
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+
+            .deliverable-item:hover .deliverable-tooltip,
+            .deliverable-item.active .deliverable-tooltip {
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            .deliverable-item.active::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(2, 2, 2, 0.5);
+                z-index: 999;
+            }
+        }
+
         .price-box {
             background: linear-gradient(135deg, var(--brand-orange) 0%, var(--brand-orange-light) 100%);
             color: white;
@@ -837,15 +967,101 @@
                     <div>
                         <h3 style="font-size: 1.3rem;">What's Included:</h3>
                         <ul class="package-list">
-                            <li><strong>External Communications & Social Audit</strong> — Website, social channels, messaging review</li>
-                            <li><strong>Core Storytelling Framework</strong> — What stories matter, who they're for, how to talk about impact</li>
-                            <li><strong>6-Month Social Media Content Calendar</strong> — Monthly themes tied to fundraising and programs</li>
-                            <li><strong>Staff Storytelling Training</strong> — 1-hour live webinar on capturing better content</li>
-                            <li><strong>Delivery Format</strong> — Written audit, editable calendar, recorded training</li>
+                            <li class="deliverable-item">
+                                <strong>External Communications & Social Audit</strong> — Website, social channels, messaging review
+                                <div class="deliverable-tooltip">
+                                    <h4>What It Is</h4>
+                                    <p>A comprehensive review of your current marketing presence—what's working, what's not, and where the biggest opportunities live.</p>
+                                    <h4>What's Included</h4>
+                                    <ul>
+                                        <li>Website messaging and user experience review</li>
+                                        <li>Social media channel audit (Facebook, Instagram, TikTok)</li>
+                                        <li>Content gap analysis (what stories you're missing)</li>
+                                        <li>Engagement and reach benchmarking</li>
+                                        <li>Competitor/peer organization comparison</li>
+                                        <li>Top 5 actionable recommendations prioritized by impact</li>
+                                    </ul>
+                                    <h4>Why It Matters</h4>
+                                    <p>You'll know exactly where to focus your energy instead of guessing. No more throwing content at the wall—you'll have a data-backed roadmap.</p>
+                                    <p class="delivery-format">Delivery: 10-12 page written report (PDF) delivered within 30 days</p>
+                                </div>
+                            </li>
+                            <li class="deliverable-item">
+                                <strong>Core Storytelling Framework</strong> — What stories matter, who they're for, how to talk about impact
+                                <div class="deliverable-tooltip">
+                                    <h4>What It Is</h4>
+                                    <p>Your custom playbook for consistent, compelling messaging across all channels—so everyone on your team is telling the same story.</p>
+                                    <h4>What's Included</h4>
+                                    <ul>
+                                        <li>3-5 core message pillars (the themes you always come back to)</li>
+                                        <li>Audience segmentation guide (donors, volunteers, parents, sponsors—what each group cares about)</li>
+                                        <li>Story types framework (success stories, behind-the-scenes, impact proof, events)</li>
+                                        <li>Talking points and elevator pitch (language you use when describing your work)</li>
+                                        <li>Real examples from your clubs to illustrate each story type</li>
+                                    </ul>
+                                    <h4>Why It Matters</h4>
+                                    <p>Your team will stop second-guessing what to post. When a club director asks "What should I share?", they'll have a clear answer. This creates consistency without killing creativity.</p>
+                                    <p class="delivery-format">Delivery: 12-15 page strategy document (PDF)</p>
+                                </div>
+                            </li>
+                            <li class="deliverable-item">
+                                <strong>6-Month Social Media Content Calendar</strong> — Monthly themes tied to fundraising and programs
+                                <div class="deliverable-tooltip">
+                                    <h4>What It Is</h4>
+                                    <p>A pre-built planning system that maps your content to your actual fundraising and program cycle—no more scrambling for post ideas.</p>
+                                    <h4>What's Included</h4>
+                                    <ul>
+                                        <li>Monthly themes tied to your calendar (Volunteer Appreciation, Youth Sports, Back to School, etc.)</li>
+                                        <li>Suggested post types for each week (Monday = success story, Wednesday = BTS, Friday = event reminder)</li>
+                                        <li>Content buckets with examples</li>
+                                        <li>Space to add your specific events, campaigns, and deadlines</li>
+                                        <li>Platform recommendations (what works best on Facebook vs. Instagram)</li>
+                                    </ul>
+                                    <h4>Why It Matters</h4>
+                                    <p>You'll move from reactive posting to strategic storytelling. CeCe and Andra can plan ahead instead of posting last-minute. Your board sees consistent, intentional content.</p>
+                                    <p class="delivery-format">Delivery: Editable Google Sheet you can duplicate, customize, and reuse</p>
+                                </div>
+                            </li>
+                            <li class="deliverable-item">
+                                <strong>Staff Storytelling Training</strong> — 1-hour live webinar on capturing better content
+                                <div class="deliverable-tooltip">
+                                    <h4>What It Is</h4>
+                                    <p>A live, interactive workshop that teaches your team how to capture better content with just their phones—no fancy gear required.</p>
+                                    <h4>What's Included</h4>
+                                    <ul>
+                                        <li>Framing and composition basics (how to make a kid's face tell the story)</li>
+                                        <li>Lighting tips for indoor club spaces</li>
+                                        <li>Audio capture techniques (so you can actually hear the interview)</li>
+                                        <li>Storytelling structure (beginning, middle, end—even in a 30-second video)</li>
+                                        <li>Hashtag and caption strategy</li>
+                                        <li>Q&A session tailored to your team's specific challenges</li>
+                                    </ul>
+                                    <h4>Why It Matters</h4>
+                                    <p>Your club directors will feel confident shooting content instead of intimidated. You'll get more (and better) content from all 5 clubs without hiring a videographer.</p>
+                                    <p class="delivery-format">Delivery: 1-hour live webinar (recorded for future onboarding) + PDF resource guide</p>
+                                </div>
+                            </li>
                         </ul>
                         <h3 style="font-size: 1.1rem; margin-top: 1rem;">Optional Add-On:</h3>
                         <ul class="package-list bullets">
-                            <li>Ongoing coaching: $500/mo (6-month) or $700/mo (monthly)</li>
+                            <li class="deliverable-item">
+                                <strong>Ongoing coaching:</strong> $500/mo (6-month) or $700/mo (monthly)
+                                <div class="deliverable-tooltip">
+                                    <h4>What It Is</h4>
+                                    <p>Monthly strategy calls where we review performance, troubleshoot what's not working, and plan next month's content—so you're never stuck.</p>
+                                    <h4>What's Included</h4>
+                                    <ul>
+                                        <li>45-minute monthly strategy call</li>
+                                        <li>Real-time feedback on content and campaigns</li>
+                                        <li>Adjustments to your content calendar based on what's working</li>
+                                        <li>Access via Slack/email for quick questions between calls</li>
+                                        <li>Quarterly performance reports (engagement, donations, volunteer sign-ups)</li>
+                                    </ul>
+                                    <h4>Why It Matters</h4>
+                                    <p>This keeps you from falling back into old habits. You'll have an expert in your corner to help you execute the strategy, not just hand you a document and disappear.</p>
+                                    <p class="delivery-format">Delivery: Monthly call + written notes + ongoing access</p>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                     <div>
@@ -866,10 +1082,77 @@
                     <div>
                         <h3 style="color: var(--brand-orange); font-size: 1.3rem;">Everything from Package 1, Plus:</h3>
                         <ul class="package-list">
-                            <li><strong>Digital Asset Management System</strong> — Pinterest-style organization, workflows, training, 1 year hosting included</li>
-                            <li><strong>Impact Story Microsite</strong> — Modern, donor-ready storytelling experience with donation integration</li>
-                            <li><strong>Impact Narrative Toolkit</strong> — 3–5 core stories in short + long versions</li>
-                            <li><strong>Ongoing Support</strong> — Quarterly refresh, monthly strategy check-ins for year 1</li>
+                            <li class="deliverable-item">
+                                <strong>Digital Asset Management System</strong> — Pinterest-style organization, workflows, training, 1 year hosting included
+                                <div class="deliverable-tooltip tooltip-left">
+                                    <h4>What It Is</h4>
+                                    <p>A centralized, Pinterest-style visual library where all your photos, videos, and stories live—organized, searchable, and shareable.</p>
+                                    <h4>What's Included</h4>
+                                    <ul>
+                                        <li>Platform selection and setup (tailored to your workflow)</li>
+                                        <li>Custom board structure for your 5 clubs + event types</li>
+                                        <li>Upload workflows and permissions (who can add, edit, download)</li>
+                                        <li>Staff training on how to use it</li>
+                                        <li>1 year of hosting included</li>
+                                    </ul>
+                                    <h4>Why It Matters</h4>
+                                    <p>No more digging through email attachments, Google Drive folders, or someone's phone. Your team can find and use great content in seconds. Volunteers and board members can access approved assets without bugging CeCe.</p>
+                                    <p class="delivery-format">Delivery: Live platform + 1-hour training session</p>
+                                </div>
+                            </li>
+                            <li class="deliverable-item">
+                                <strong>Impact Story Microsite</strong> — Modern, donor-ready storytelling experience with donation integration
+                                <div class="deliverable-tooltip tooltip-left">
+                                    <h4>What It Is</h4>
+                                    <p>A dedicated, beautifully designed landing page that tells your story for donors, sponsors, and grant funders—separate from your main website.</p>
+                                    <h4>What's Included</h4>
+                                    <ul>
+                                        <li>Custom design and development</li>
+                                        <li>3-5 impact stories (written + visual)</li>
+                                        <li>Donation integration (connected to your existing system)</li>
+                                        <li>Mobile-optimized and fast-loading</li>
+                                        <li>Annual hosting included</li>
+                                    </ul>
+                                    <h4>Why It Matters</h4>
+                                    <p>When someone asks "What do you do?", you send them here. It's your best foot forward—a modern, compelling case for support that doesn't get lost in your main website navigation.</p>
+                                    <p class="delivery-format">Delivery: Live website + quarterly content refresh</p>
+                                </div>
+                            </li>
+                            <li class="deliverable-item">
+                                <strong>Impact Narrative Toolkit</strong> — 3–5 core stories in short + long versions
+                                <div class="deliverable-tooltip tooltip-left">
+                                    <h4>What It Is</h4>
+                                    <p>A collection of your 3-5 strongest impact stories written in multiple formats—so you can drop them into grant applications, social posts, or donor emails.</p>
+                                    <h4>What's Included</h4>
+                                    <ul>
+                                        <li>3-5 core stories (youth success, volunteer impact, program outcomes)</li>
+                                        <li>Each story in 3 versions: 30-second (social), 2-minute (email), 5-minute (grant)</li>
+                                        <li>Supporting data and quotes</li>
+                                        <li>Photo/video asset links for each story</li>
+                                    </ul>
+                                    <h4>Why It Matters</h4>
+                                    <p>You'll never stare at a blank screen when writing a grant or email again. Your stories are ready to use, properly formatted, and consistently told.</p>
+                                    <p class="delivery-format">Delivery: Editable Google Doc + asset links</p>
+                                </div>
+                            </li>
+                            <li class="deliverable-item">
+                                <strong>Ongoing Support</strong> — Quarterly refresh, monthly strategy check-ins for year 1
+                                <div class="deliverable-tooltip tooltip-left">
+                                    <h4>What It Is</h4>
+                                    <p>Monthly strategy calls where we review performance, troubleshoot what's not working, and plan next month's content—so you're never stuck.</p>
+                                    <h4>What's Included</h4>
+                                    <ul>
+                                        <li>45-minute monthly strategy call</li>
+                                        <li>Real-time feedback on content and campaigns</li>
+                                        <li>Adjustments to your content calendar based on what's working</li>
+                                        <li>Access via Slack/email for quick questions between calls</li>
+                                        <li>Quarterly performance reports (engagement, donations, volunteer sign-ups)</li>
+                                    </ul>
+                                    <h4>Why It Matters</h4>
+                                    <p>This keeps you from falling back into old habits. You'll have an expert in your corner to help you execute the strategy, not just hand you a document and disappear.</p>
+                                    <p class="delivery-format">Delivery: Monthly call + written notes + ongoing access</p>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                     <div>
@@ -890,9 +1173,25 @@
                     <div>
                         <h3 style="color: var(--brand-orange); font-size: 1.3rem;">Everything from Package 2, Plus:</h3>
                         <ul class="package-list">
-                            <li><strong>Flagship Impact Film</strong> — Professionally produced, cinematic 3–5 minute film for gala openings, major donor meetings, grant presentations</li>
-                            <li><strong>DAM Integration</strong> — All video assets cataloged (final film, cutdowns, B-roll, stills)</li>
-                            <li><strong>Strategic Usage Mapping</strong> — Clear guidance on where and how to use your story</li>
+                            <li class="deliverable-item">
+                                <strong>Flagship Impact Film</strong> — Professionally produced, cinematic 3–5 minute film for gala openings, major donor meetings, grant presentations
+                                <div class="deliverable-tooltip tooltip-left">
+                                    <h4>What It Is</h4>
+                                    <p>A professionally produced, cinematic 3-5 minute film that captures the heart of your work—your anchor story for major moments.</p>
+                                    <h4>What's Included</h4>
+                                    <ul>
+                                        <li>Pre-production planning and scriptwriting</li>
+                                        <li>2-day on-location shoot in Midland/Odessa</li>
+                                        <li>Interviews, B-roll, and program footage across your clubs</li>
+                                        <li>Professional editing, color grading, sound design</li>
+                                        <li>Final film + 30-sec, 60-sec, and 90-sec cutdowns</li>
+                                        <li>All raw footage and B-roll clips</li>
+                                    </ul>
+                                    <h4>Why It Matters</h4>
+                                    <p>This is what you show at your gala. What you send to major donors. What you use in grant applications when words aren't enough. It's not content—it's your flagship story.</p>
+                                    <p class="delivery-format">Delivery: Final film (3-5 min) + cutdowns + raw assets, all cataloged in your DAM</p>
+                                </div>
+                            </li>
                         </ul>
                         <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; margin-top: 1.5rem; opacity: 0.8; font-size: 1rem;">This is not "content"—it's your anchor story.</p>
                     </div>
@@ -1096,6 +1395,48 @@
 
         // Initialize arrow states
         prevArrow.classList.add('disabled');
+
+        // Deliverable tooltip interactions (mobile tap-to-reveal)
+        const deliverableItems = document.querySelectorAll('.deliverable-item');
+
+        deliverableItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                // Only on mobile/tablet
+                if (window.innerWidth <= 1024) {
+                    e.stopPropagation();
+
+                    // Close any other open tooltips
+                    deliverableItems.forEach(other => {
+                        if (other !== item) {
+                            other.classList.remove('active');
+                        }
+                    });
+
+                    // Toggle this tooltip
+                    item.classList.toggle('active');
+                }
+            });
+        });
+
+        // Close tooltip when clicking outside (mobile)
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 1024) {
+                if (!e.target.closest('.deliverable-item')) {
+                    deliverableItems.forEach(item => {
+                        item.classList.remove('active');
+                    });
+                }
+            }
+        });
+
+        // Close tooltip when pressing ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                deliverableItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+            }
+        });
     </script>
 </body>
 </html>
