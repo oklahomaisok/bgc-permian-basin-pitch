@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boys & Girls Club of the Permian Basin | Marketing Partnership Proposal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #F6F3DF;
+            --brand-orange: #C54E32;
+            --brand-orange-light: #D96548;
+            --brand-black: #020202;
+            --sage: #5a9567;
+            --teal: #077caa;
+        }
+
+        body {
+            font-family: 'Funnel Display', sans-serif;
+            background: var(--cream);
+            color: var(--brand-black);
+            overflow: hidden;
+        }
+
+        /* Film Grain Overlay */
+        .film-grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.12;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            mix-blend-mode: overlay;
+        }
+
+        /* Ambient Glow */
+        .ambient-glow {
+            position: absolute;
+            width: 1200px;
+            height: 1200px;
+            background: radial-gradient(closest-side, #EACBB5 30%, rgba(246,243,223,0) 100%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        ::selection {
+            background: var(--brand-orange);
+            color: white;
+        }
+
+        /* Logo */
+        .logo {
+            position: fixed;
+            top: 1.5rem;
+            left: 1.5rem;
+            width: 160px;
+            z-index: 1000;
+            opacity: 0;
+            animation: fadeInLogo 0.8s ease-out 0.5s forwards;
+        }
+
+        @keyframes fadeInLogo {
+            to { opacity: 1; }
+        }
+
+        /* Navigation Arrows */
+        .nav-arrows {
+            position: fixed;
+            bottom: 50%;
+            transform: translateY(50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2rem;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .nav-arrow {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(2, 2, 2, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            pointer-events: all;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+            color: var(--brand-black);
+            user-select: none;
+        }
+
+        .nav-arrow:hover {
+            background: var(--brand-orange);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .nav-arrow.disabled {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .slides-container {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 120px 60px 120px;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: translateX(0);
+            z-index: 10;
+        }
+
+        .slide.prev {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+
+        /* Split Slide Layout */
+        .split-slide {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1300px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .slide-image {
+            width: 100%;
+            height: 500px;
+            border-radius: 2rem;
+            object-fit: cover;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            line-height: 0.95;
+            margin-bottom: 1.5rem;
+            color: var(--brand-black);
+        }
+
+        h2 {
+            font-size: 3rem;
+            line-height: 0.95;
+            margin-bottom: 1.5rem;
+            color: var(--brand-black);
+        }
+
+        h3 {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--brand-black);
+        }
+
+        .impact-text {
+            font-family: 'Libre Caslon Text', serif;
+            font-style: italic;
+            color: var(--brand-orange);
+            font-weight: 400;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-transform: none;
+            margin-bottom: 0.75rem;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            opacity: 0.6;
+            font-weight: 500;
+            margin-bottom: 3rem;
+            text-transform: none;
+        }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 2rem;
+            padding: 2.5rem;
+            max-width: 1300px;
+            width: 100%;
+            border: 1px solid rgba(2, 2, 2, 0.05);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .package-badge {
+            display: inline-block;
+            background: var(--brand-orange);
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 2rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .package-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .package-list {
+            list-style: none;
+            margin: 0;
+        }
+
+        .package-list li {
+            padding: 0.5rem 0 0.5rem 1.75rem;
+            position: relative;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            text-transform: none;
+        }
+
+        .package-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--brand-orange);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .package-list.bullets li:before {
+            content: "•";
+            font-size: 1.5rem;
+            top: 0.3rem;
+        }
+
+        .price-box {
+            background: linear-gradient(135deg, var(--brand-orange) 0%, var(--brand-orange-light) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 1.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 0.75rem;
+        }
+
+        .price-note {
+            font-size: 0.9rem;
+            opacity: 0.95;
+            text-transform: none;
+            line-height: 1.4;
+        }
+
+        .price-detail {
+            font-size: 0.8rem;
+            opacity: 0.85;
+            margin-top: 0.5rem;
+            text-transform: none;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0 1.5rem;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(2, 2, 2, 0.05);
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            color: var(--brand-orange);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 0.75rem;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            text-transform: none;
+            line-height: 1.4;
+            opacity: 0.8;
+        }
+
+        .challenge-card {
+            background: white;
+            border-left: 4px solid var(--brand-orange);
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .challenge-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--brand-orange);
+        }
+
+        .challenge-card p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        .funnel-visual {
+            width: 100%;
+            max-width: 500px;
+            margin: 2rem auto;
+        }
+
+        .funnel-stage {
+            position: relative;
+            padding: 1.75rem;
+            margin-bottom: 1.25rem;
+            text-align: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.3rem;
+            border-radius: 1rem;
+            clip-path: polygon(10% 0%, 90% 0%, 80% 100%, 20% 100%);
+            transition: all 0.3s ease;
+        }
+
+        .funnel-stage:hover {
+            transform: translateY(-5px);
+        }
+
+        .funnel-stage.top {
+            background: linear-gradient(135deg, #077caa 0%, #0a97d4 100%);
+            clip-path: polygon(5% 0%, 95% 0%, 85% 100%, 15% 100%);
+        }
+
+        .funnel-stage.middle {
+            background: linear-gradient(135deg, #5a9567 0%, #6cb87a 100%);
+            width: 80%;
+            margin-left: 10%;
+        }
+
+        .funnel-stage.bottom {
+            background: linear-gradient(135deg, #C54E32 0%, #D96548 100%);
+            width: 60%;
+            margin-left: 20%;
+        }
+
+        .funnel-label {
+            font-size: 0.85rem;
+            opacity: 0.95;
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
+        .pricing-comparison {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+            max-width: 1200px;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 2rem;
+            padding: 2.5rem;
+            text-align: center;
+            border: 2px solid rgba(2, 2, 2, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: var(--brand-orange);
+        }
+
+        .pricing-card:hover {
+            border-color: var(--brand-orange);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(197, 78, 50, 0.2);
+        }
+
+        .pricing-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .pricing-card .price {
+            font-size: 2.8rem;
+            color: var(--brand-black);
+            margin: 1rem 0;
+        }
+
+        .pricing-card .price-detail {
+            color: var(--brand-black);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.25rem 3.5rem;
+            background: var(--brand-orange);
+            color: white;
+            text-decoration: none;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: 0 10px 30px rgba(197, 78, 50, 0.3);
+        }
+
+        .cta-button:hover {
+            background: var(--brand-orange-light);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(197, 78, 50, 0.4);
+        }
+
+        .nav-dots {
+            position: fixed;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 0.85rem 1.75rem;
+            border-radius: 2rem;
+            border: 1px solid rgba(2, 2, 2, 0.05);
+        }
+
+        .dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--brand-black);
+            opacity: 0.2;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            opacity: 1;
+            background: var(--brand-orange);
+            transform: scale(1.3);
+        }
+
+        .dot:hover {
+            opacity: 0.6;
+            transform: scale(1.1);
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 1400px) {
+            .slide {
+                padding: 120px 40px;
+            }
+
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            h2 {
+                font-size: 2.5rem;
+            }
+
+            .slide-image {
+                height: 450px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .split-slide {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .package-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-arrows {
+                padding: 0 1rem;
+            }
+
+            .logo {
+                width: 140px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Film Grain Effect -->
+    <div class="film-grain"></div>
+
+    <!-- Logo -->
+    <img src="anecdotal-logo-horizontal-black-rgb-900px-w-72ppi.png" alt="Anecdotal" class="logo">
+
+    <!-- Navigation Arrows -->
+    <div class="nav-arrows">
+        <div class="nav-arrow nav-prev" onclick="prevSlide()">‹</div>
+        <div class="nav-arrow nav-next" onclick="nextSlide()">›</div>
+    </div>
+
+    <div class="slides-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active" data-slide="0">
+            <div class="ambient-glow"></div>
+            <div style="position: relative; z-index: 1; text-align: center; max-width: 1000px;">
+                <h1>A Partnership for <span class="impact-text">Impact</span></h1>
+                <p class="subtitle">Marketing Strategy Proposal</p>
+                <h2 style="margin-top: 2rem;">Boys & Girls Club of the Permian Basin</h2>
+                <p style="margin-top: 3rem; opacity: 0.5; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.15em; font-weight: 600;">Presented by Anecdotal</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Your Impact -->
+        <div class="slide" data-slide="1">
+            <div class="split-slide">
+                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80" alt="Children at Boys and Girls Club" class="slide-image">
+                <div>
+                    <h2>Your <span class="impact-text">Impact</span></h2>
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <div class="stat-number">2,100+</div>
+                            <div class="stat-label">Kids served across five clubs</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">1,400</div>
+                            <div class="stat-label">Kids in winter basketball league</div>
+                        </div>
+                    </div>
+                    <p style="font-size: 1.2rem; margin-top: 1.5rem; opacity: 0.8;">Serving Midland and Odessa with programs that change lives.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Current Challenges -->
+        <div class="slide" data-slide="2">
+            <div class="split-slide">
+                <div>
+                    <h2>What We <span class="impact-text">Heard</span></h2>
+                    <div class="challenge-card">
+                        <h4>Awareness Gap</h4>
+                        <p>Many people still don't know your organization exists</p>
+                    </div>
+                    <div class="challenge-card">
+                        <h4>Identity Confusion</h4>
+                        <p>Getting mixed up with Big Brothers Big Sisters despite your unique mission and scale</p>
+                    </div>
+                    <div class="challenge-card">
+                        <h4>Funding Diversification</h4>
+                        <p>Need to expand beyond current sources through individual donors and corporate sponsorships</p>
+                    </div>
+                    <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; opacity: 0.7; font-size: 1.1rem; margin-top: 1.5rem;">These challenges are common—and solvable.</p>
+                </div>
+                <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80" alt="Team discussion" class="slide-image">
+            </div>
+        </div>
+
+        <!-- Slide 4: Package 1 -->
+        <div class="slide" data-slide="3">
+            <div class="content-box">
+                <span class="package-badge">Package 1</span>
+                <h2 style="margin-bottom: 0.5rem;">Story & Awareness Foundation</h2>
+                <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.1rem; margin-bottom: 1.5rem; opacity: 0.8;">Top of Funnel: Clarity, Consistency, Confidence</p>
+
+                <div class="package-grid">
+                    <div>
+                        <h3 style="font-size: 1.3rem;">What's Included:</h3>
+                        <ul class="package-list">
+                            <li><strong>External Communications & Social Audit</strong> — Website, social channels, messaging review</li>
+                            <li><strong>Core Storytelling Framework</strong> — What stories matter, who they're for, how to talk about impact</li>
+                            <li><strong>6-Month Social Media Content Calendar</strong> — Monthly themes tied to fundraising and programs</li>
+                            <li><strong>Staff Storytelling Training</strong> — 1-hour live webinar on capturing better content</li>
+                            <li><strong>Delivery Format</strong> — Written audit, editable calendar, recorded training</li>
+                        </ul>
+                        <h3 style="font-size: 1.1rem; margin-top: 1rem;">Optional Add-On:</h3>
+                        <ul class="package-list bullets">
+                            <li>Ongoing coaching: $500/mo (6-month) or $700/mo (monthly)</li>
+                        </ul>
+                    </div>
+                    <div class="price-box">
+                        <div class="price">$4,500</div>
+                        <div class="price-note">One-time flat fee</div>
+                        <div class="price-detail" style="margin-top: 1rem;">Best for organizations that need clarity and direction first</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Package 2 -->
+        <div class="slide" data-slide="4">
+            <div class="content-box">
+                <span class="package-badge">Package 2</span>
+                <h2 style="margin-bottom: 0.5rem;">Impact Infrastructure</h2>
+                <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.1rem; margin-bottom: 1.5rem; opacity: 0.8;">Middle of Funnel: Belief, Trust, Usability</p>
+
+                <div class="package-grid">
+                    <div>
+                        <h3 style="color: var(--brand-orange); font-size: 1.3rem;">Everything from Package 1, Plus:</h3>
+                        <ul class="package-list">
+                            <li><strong>Digital Asset Management System</strong> — Pinterest-style organization, workflows, training, 1 year hosting included</li>
+                            <li><strong>Impact Story Microsite</strong> — Modern, donor-ready storytelling experience with donation integration</li>
+                            <li><strong>Impact Narrative Toolkit</strong> — 3–5 core stories in short + long versions</li>
+                            <li><strong>Ongoing Support</strong> — Quarterly refresh, monthly strategy check-ins for year 1</li>
+                        </ul>
+                    </div>
+                    <div class="price-box">
+                        <div class="price">$31,500</div>
+                        <div class="price-note">Year 1 flat fee (includes 1 year of DAM)</div>
+                        <div class="price-detail" style="margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 1rem;">Year 2+ renewal: $750/mo</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Package 3 -->
+        <div class="slide" data-slide="5">
+            <div class="content-box">
+                <span class="package-badge">Package 3</span>
+                <h2 style="margin-bottom: 0.5rem;">Flagship Impact Partnership</h2>
+                <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.1rem; margin-bottom: 1.5rem; opacity: 0.8;">Bottom of Funnel: Emotional Authority, Major Donors</p>
+
+                <div class="package-grid">
+                    <div>
+                        <h3 style="color: var(--brand-orange); font-size: 1.3rem;">Everything from Package 2, Plus:</h3>
+                        <ul class="package-list">
+                            <li><strong>Flagship Impact Film</strong> — Professionally produced, cinematic 3–5 minute film for gala openings, major donor meetings, grant presentations</li>
+                            <li><strong>DAM Integration</strong> — All video assets cataloged (final film, cutdowns, B-roll, stills)</li>
+                            <li><strong>Strategic Usage Mapping</strong> — Clear guidance on where and how to use your story</li>
+                        </ul>
+                        <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; margin-top: 1.5rem; opacity: 0.8; font-size: 1rem;">This is not "content"—it's your anchor story.</p>
+                    </div>
+                    <div class="price-box">
+                        <div class="price">$48,500</div>
+                        <div class="price-note">Year 1 flat fee (includes 1 year of DAM)</div>
+                        <div class="price-detail" style="margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 1rem;">Year 2+ renewal: $750/mo</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: The Funnel Connection -->
+        <div class="slide" data-slide="6">
+            <div style="max-width: 900px; text-align: center;">
+                <h2>The <span class="impact-text">Donor Journey</span></h2>
+                <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 0.5rem;">Each package addresses a different stage of the marketing funnel</p>
+
+                <div class="funnel-visual">
+                    <div class="funnel-stage top">
+                        <div>AWARENESS</div>
+                        <div class="funnel-label">Package 1 — Story & Clarity</div>
+                    </div>
+                    <div class="funnel-stage middle">
+                        <div>BELIEF & TRUST</div>
+                        <div class="funnel-label">Package 2 — Infrastructure</div>
+                    </div>
+                    <div class="funnel-stage bottom">
+                        <div>COMMITMENT</div>
+                        <div class="funnel-label">Package 3 — Flagship Film</div>
+                    </div>
+                </div>
+
+                <p style="font-size: 1.15rem; margin-top: 2rem; opacity: 0.8;">Start where you need it most—or build the complete donor experience.</p>
+            </div>
+        </div>
+
+        <!-- Slide 8: Investment Summary -->
+        <div class="slide" data-slide="7">
+            <div style="max-width: 1200px; width: 100%;">
+                <h2 style="text-align: center; margin-bottom: 0.5rem;">Investment <span class="impact-text">Summary</span></h2>
+                <div class="pricing-comparison">
+                    <div class="pricing-card">
+                        <h4>Package 1</h4>
+                        <p style="font-size: 0.95rem; opacity: 0.7; margin: 0.5rem 0;">Story & Awareness</p>
+                        <div class="price">$4,500</div>
+                        <p class="price-detail">One-time flat fee</p>
+                        <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 1rem;">+ optional coaching</p>
+                    </div>
+                    <div class="pricing-card">
+                        <h4>Package 2</h4>
+                        <p style="font-size: 0.95rem; opacity: 0.7; margin: 0.5rem 0;">Impact Infrastructure</p>
+                        <div class="price">$31,500</div>
+                        <p class="price-detail">Year 1 (includes DAM)</p>
+                        <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 1rem;">$750/mo renewal</p>
+                    </div>
+                    <div class="pricing-card">
+                        <h4>Package 3</h4>
+                        <p style="font-size: 0.95rem; opacity: 0.7; margin: 0.5rem 0;">Flagship Partnership</p>
+                        <div class="price">$48,500</div>
+                        <p class="price-detail">Year 1 (includes DAM)</p>
+                        <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 1rem;">$750/mo renewal</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Next Steps -->
+        <div class="slide" data-slide="8">
+            <div class="split-slide">
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80" alt="Partnership handshake" class="slide-image">
+                <div>
+                    <div class="ambient-glow" style="opacity: 0.4;"></div>
+                    <h2 style="position: relative; z-index: 1;">Let's Build Something <span class="impact-text">Meaningful</span></h2>
+                    <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 1.5rem; position: relative; z-index: 1;">
+                        Your work is already changing lives. Let's make sure the right people know about it.
+                    </p>
+
+                    <div style="background: white; padding: 2rem; border-radius: 1.5rem; position: relative; z-index: 1;">
+                        <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Next Steps:</h3>
+                        <ul class="package-list">
+                            <li>Review these packages with your team</li>
+                            <li>Schedule a call to discuss and refine</li>
+                            <li>Choose the package that fits your goals</li>
+                            <li>Start building sustainable impact</li>
+                        </ul>
+                        <a href="https://www.anecdotal.media" class="cta-button">Let's Talk</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Dots -->
+    <div class="nav-dots">
+        <div class="dot active" data-slide="0"></div>
+        <div class="dot" data-slide="1"></div>
+        <div class="dot" data-slide="2"></div>
+        <div class="dot" data-slide="3"></div>
+        <div class="dot" data-slide="4"></div>
+        <div class="dot" data-slide="5"></div>
+        <div class="dot" data-slide="6"></div>
+        <div class="dot" data-slide="7"></div>
+        <div class="dot" data-slide="8"></div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const totalSlides = slides.length;
+        const prevArrow = document.querySelector('.nav-prev');
+        const nextArrow = document.querySelector('.nav-next');
+
+        function goToSlide(n) {
+            // Remove active class from current slide
+            slides[currentSlide].classList.remove('active');
+            slides[currentSlide].classList.add('prev');
+            dots[currentSlide].classList.remove('active');
+
+            // Update current slide
+            currentSlide = (n + totalSlides) % totalSlides;
+
+            // Add active class to new slide
+            slides[currentSlide].classList.add('active');
+            slides[currentSlide].classList.remove('prev');
+            dots[currentSlide].classList.add('active');
+
+            // Update arrow states
+            prevArrow.classList.toggle('disabled', currentSlide === 0);
+            nextArrow.classList.toggle('disabled', currentSlide === totalSlides - 1);
+
+            // Reset prev class after animation
+            setTimeout(() => {
+                slides.forEach((slide, index) => {
+                    if (index !== currentSlide) {
+                        slide.classList.remove('prev');
+                    }
+                });
+            }, 700);
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                goToSlide(currentSlide + 1);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                goToSlide(currentSlide - 1);
+            }
+        }
+
+        // Keyboard navigation - arrow keys only
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
+            }
+        });
+
+        // Dot navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+            });
+        });
+
+        // Initialize arrow states
+        prevArrow.classList.add('disabled');
+    </script>
+</body>
+</html>
