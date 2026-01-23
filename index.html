@@ -378,10 +378,62 @@
             border-radius: 1rem;
             clip-path: polygon(10% 0%, 90% 0%, 80% 100%, 20% 100%);
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .funnel-stage:hover {
             transform: translateY(-5px);
+        }
+
+        .funnel-tooltip {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            color: var(--brand-black);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s ease;
+            z-index: 100;
+            width: 300px;
+            text-align: left;
+            margin-top: 1rem;
+        }
+
+        .funnel-stage:hover .funnel-tooltip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(10px);
+        }
+
+        .funnel-tooltip p {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            color: var(--brand-orange);
+        }
+
+        .funnel-tooltip ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .funnel-tooltip ul li {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            padding: 0.4rem 0;
+            font-weight: 500;
+            text-transform: none;
+        }
+
+        .funnel-tooltip ul li:before {
+            content: "→ ";
+            color: var(--brand-orange);
+            font-weight: 700;
         }
 
         .funnel-stage.top {
@@ -606,16 +658,16 @@
         <!-- Slide 2: Your Impact -->
         <div class="slide" data-slide="1">
             <div class="split-slide">
-                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80" alt="Children at Boys and Girls Club" class="slide-image">
+                <img src="image1.jpeg" alt="Children at Boys and Girls Club" class="slide-image">
                 <div>
                     <h2>Your <span class="impact-text">Impact</span></h2>
                     <div class="stats-grid">
-                        <div class="stat-box">
-                            <div class="stat-number">2,100+</div>
+                        <div class="stat-box" style="background: transparent; border: none; box-shadow: none;">
+                            <div class="stat-number" data-target="2100">0</div>
                             <div class="stat-label">Kids served across five clubs</div>
                         </div>
-                        <div class="stat-box">
-                            <div class="stat-number">1,400</div>
+                        <div class="stat-box" style="background: transparent; border: none; box-shadow: none;">
+                            <div class="stat-number" data-target="1400">0</div>
                             <div class="stat-label">Kids in winter basketball league</div>
                         </div>
                     </div>
@@ -635,7 +687,7 @@
                     </div>
                     <div class="challenge-card">
                         <h4>Identity Confusion</h4>
-                        <p>Getting mixed up with Big Brothers Big Sisters despite your unique mission and scale</p>
+                        <p>Getting mixed up with other organizations despite your unique mission and scale</p>
                     </div>
                     <div class="challenge-card">
                         <h4>Funding Diversification</h4>
@@ -647,8 +699,57 @@
             </div>
         </div>
 
-        <!-- Slide 4: Package 1 -->
+        <!-- Slide 4: The Funnel Connection -->
         <div class="slide" data-slide="3">
+            <div style="max-width: 900px; text-align: center;">
+                <h2>The <span class="impact-text">Donor Journey</span></h2>
+                <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 0.5rem;">Each package addresses a different stage of the marketing funnel</p>
+
+                <div class="funnel-visual">
+                    <div class="funnel-stage top" data-funnel="awareness">
+                        <div>AWARENESS</div>
+                        <div class="funnel-label">Package 1 — Story & Clarity</div>
+                        <div class="funnel-tooltip">
+                            <p><strong>Marketing Deliverables:</strong></p>
+                            <ul>
+                                <li>Social media content calendar</li>
+                                <li>Messaging framework</li>
+                                <li>Staff storytelling training</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="funnel-stage middle" data-funnel="trust">
+                        <div>BELIEF & TRUST</div>
+                        <div class="funnel-label">Package 2 — Infrastructure</div>
+                        <div class="funnel-tooltip">
+                            <p><strong>Marketing Deliverables:</strong></p>
+                            <ul>
+                                <li>Impact story microsite</li>
+                                <li>Digital asset management system</li>
+                                <li>Impact narrative toolkit</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="funnel-stage bottom" data-funnel="commitment">
+                        <div>COMMITMENT</div>
+                        <div class="funnel-label">Package 3 — Flagship Film</div>
+                        <div class="funnel-tooltip">
+                            <p><strong>Marketing Deliverables:</strong></p>
+                            <ul>
+                                <li>Professional cinematic film</li>
+                                <li>B-roll & cutdowns</li>
+                                <li>Strategic usage mapping</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <p style="font-size: 1.15rem; margin-top: 2rem; opacity: 0.8;">Start where you need it most—or build the complete donor experience.</p>
+            </div>
+        </div>
+
+        <!-- Slide 5: Package 1 -->
+        <div class="slide" data-slide="4">
             <div class="content-box">
                 <span class="package-badge">Package 1</span>
                 <h2 style="margin-bottom: 0.5rem;">Story & Awareness Foundation</h2>
@@ -669,17 +770,15 @@
                             <li>Ongoing coaching: $500/mo (6-month) or $700/mo (monthly)</li>
                         </ul>
                     </div>
-                    <div class="price-box">
-                        <div class="price">$4,500</div>
-                        <div class="price-note">One-time flat fee</div>
-                        <div class="price-detail" style="margin-top: 1rem;">Best for organizations that need clarity and direction first</div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80" alt="Team collaboration" style="width: 100%; height: 100%; object-fit: cover; border-radius: 1.5rem; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);">
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 5: Package 2 -->
-        <div class="slide" data-slide="4">
+        <!-- Slide 6: Package 2 -->
+        <div class="slide" data-slide="5">
             <div class="content-box">
                 <span class="package-badge">Package 2</span>
                 <h2 style="margin-bottom: 0.5rem;">Impact Infrastructure</h2>
@@ -695,17 +794,15 @@
                             <li><strong>Ongoing Support</strong> — Quarterly refresh, monthly strategy check-ins for year 1</li>
                         </ul>
                     </div>
-                    <div class="price-box">
-                        <div class="price">$31,500</div>
-                        <div class="price-note">Year 1 flat fee (includes 1 year of DAM)</div>
-                        <div class="price-detail" style="margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 1rem;">Year 2+ renewal: $750/mo</div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="Digital strategy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 1.5rem; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);">
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 6: Package 3 -->
-        <div class="slide" data-slide="5">
+        <!-- Slide 7: Package 3 -->
+        <div class="slide" data-slide="6">
             <div class="content-box">
                 <span class="package-badge">Package 3</span>
                 <h2 style="margin-bottom: 0.5rem;">Flagship Impact Partnership</h2>
@@ -721,37 +818,10 @@
                         </ul>
                         <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; margin-top: 1.5rem; opacity: 0.8; font-size: 1rem;">This is not "content"—it's your anchor story.</p>
                     </div>
-                    <div class="price-box">
-                        <div class="price">$48,500</div>
-                        <div class="price-note">Year 1 flat fee (includes 1 year of DAM)</div>
-                        <div class="price-detail" style="margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 1rem;">Year 2+ renewal: $750/mo</div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=600&q=80" alt="Video production" style="width: 100%; height: 100%; object-fit: cover; border-radius: 1.5rem; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);">
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- Slide 7: The Funnel Connection -->
-        <div class="slide" data-slide="6">
-            <div style="max-width: 900px; text-align: center;">
-                <h2>The <span class="impact-text">Donor Journey</span></h2>
-                <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 0.5rem;">Each package addresses a different stage of the marketing funnel</p>
-
-                <div class="funnel-visual">
-                    <div class="funnel-stage top">
-                        <div>AWARENESS</div>
-                        <div class="funnel-label">Package 1 — Story & Clarity</div>
-                    </div>
-                    <div class="funnel-stage middle">
-                        <div>BELIEF & TRUST</div>
-                        <div class="funnel-label">Package 2 — Infrastructure</div>
-                    </div>
-                    <div class="funnel-stage bottom">
-                        <div>COMMITMENT</div>
-                        <div class="funnel-label">Package 3 — Flagship Film</div>
-                    </div>
-                </div>
-
-                <p style="font-size: 1.15rem; margin-top: 2rem; opacity: 0.8;">Start where you need it most—or build the complete donor experience.</p>
             </div>
         </div>
 
@@ -766,6 +836,12 @@
                         <div class="price">$4,500</div>
                         <p class="price-detail">One-time flat fee</p>
                         <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 1rem;">+ optional coaching</p>
+                        <ul style="text-align: left; font-size: 0.8rem; margin-top: 1rem; opacity: 0.8; list-style: none; padding: 0;">
+                            <li>✓ Communications audit</li>
+                            <li>✓ Storytelling framework</li>
+                            <li>✓ 6-month content calendar</li>
+                            <li>✓ Staff training</li>
+                        </ul>
                     </div>
                     <div class="pricing-card">
                         <h4>Package 2</h4>
@@ -773,6 +849,13 @@
                         <div class="price">$31,500</div>
                         <p class="price-detail">Year 1 (includes DAM)</p>
                         <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 1rem;">$750/mo renewal</p>
+                        <ul style="text-align: left; font-size: 0.8rem; margin-top: 1rem; opacity: 0.8; list-style: none; padding: 0;">
+                            <li>✓ Everything in Package 1</li>
+                            <li>✓ Digital asset management</li>
+                            <li>✓ Impact story microsite</li>
+                            <li>✓ Impact narrative toolkit</li>
+                            <li>✓ Ongoing support</li>
+                        </ul>
                     </div>
                     <div class="pricing-card">
                         <h4>Package 3</h4>
@@ -780,6 +863,12 @@
                         <div class="price">$48,500</div>
                         <p class="price-detail">Year 1 (includes DAM)</p>
                         <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 1rem;">$750/mo renewal</p>
+                        <ul style="text-align: left; font-size: 0.8rem; margin-top: 1rem; opacity: 0.8; list-style: none; padding: 0;">
+                            <li>✓ Everything in Package 2</li>
+                            <li>✓ Flagship impact film (3-5 min)</li>
+                            <li>✓ DAM integration</li>
+                            <li>✓ Strategic usage mapping</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -832,6 +921,32 @@
         const prevArrow = document.querySelector('.nav-prev');
         const nextArrow = document.querySelector('.nav-next');
 
+        function animateNumbers(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000; // 2 seconds
+            const start = 0;
+            const startTime = performance.now();
+
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+
+                // Easing function for smooth animation
+                const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                const current = Math.floor(start + (target - start) * easeOutQuart);
+
+                element.textContent = current.toLocaleString() + (target >= 2000 ? '+' : '');
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    element.textContent = target.toLocaleString() + (target >= 2000 ? '+' : '');
+                }
+            }
+
+            requestAnimationFrame(update);
+        }
+
         function goToSlide(n) {
             // Remove active class from current slide
             slides[currentSlide].classList.remove('active');
@@ -845,6 +960,17 @@
             slides[currentSlide].classList.add('active');
             slides[currentSlide].classList.remove('prev');
             dots[currentSlide].classList.add('active');
+
+            // Trigger number animation on slide 2 (Your Impact)
+            if (currentSlide === 1) {
+                const statNumbers = slides[currentSlide].querySelectorAll('.stat-number');
+                statNumbers.forEach(num => {
+                    if (!num.classList.contains('animated')) {
+                        num.classList.add('animated');
+                        animateNumbers(num);
+                    }
+                });
+            }
 
             // Update arrow states
             prevArrow.classList.toggle('disabled', currentSlide === 0);
