@@ -361,10 +361,7 @@
         }
 
         .deliverable-tooltip {
-            position: absolute;
-            left: 0;
-            top: 100%;
-            margin-top: 0.5rem;
+            position: fixed;
             width: 400px;
             background: white;
             border-radius: 1.5rem;
@@ -373,9 +370,11 @@
             border: 1px solid rgba(2, 2, 2, 0.08);
             opacity: 0;
             pointer-events: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s ease;
             z-index: 1000;
             visibility: hidden;
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         .deliverable-item:hover .deliverable-tooltip,
@@ -1132,13 +1131,13 @@
                                 </div>
                             </li>
                             <li class="deliverable-item">
-                                <strong>Monthly PM Check-ins</strong> — Dedicated project manager support
+                                <strong>Monthly PM Check-ins + 1 Hour Coaching</strong> — Dedicated support each month
                                 <div class="deliverable-tooltip">
                                     <h4>What It Is</h4>
-                                    <p>Regular touchpoints with a dedicated project manager to keep everything on track.</p>
+                                    <p>Regular touchpoints with a dedicated project manager plus 1 hour of strategic coaching each month.</p>
                                     <h4>What's Included</h4>
                                     <ul>
-                                        <li>Monthly strategy calls</li>
+                                        <li>1-hour monthly strategy/coaching call</li>
                                         <li>Progress tracking and accountability</li>
                                         <li>Platform support and troubleshooting</li>
                                         <li>Ongoing optimization recommendations</li>
@@ -1174,7 +1173,7 @@
                         <p style="font-size: 1.5rem; font-weight: 700; margin-top: 0.75rem;">+ $1,750/mo</p>
                         <p style="font-size: 0.85rem; opacity: 0.9;">Starting Month 2</p>
                         <div style="border-top: 1px solid rgba(255,255,255,0.3); margin: 1rem 0; padding-top: 1rem;">
-                            <p style="font-size: 0.8rem; opacity: 0.9;">Year 1 Total: $36,750 (6 mo) – $47,250 (12 mo)</p>
+                            <p style="font-size: 0.8rem; opacity: 0.9;">Year 1 (6 mo): $36,750<br>Year 1 (12 mo): $47,250</p>
                             <p style="font-size: 0.8rem; opacity: 0.9; margin-top: 0.5rem;">Year 2+: $1,750/mo ($21,000/yr)</p>
                         </div>
                     </div>
@@ -1247,6 +1246,23 @@
                                 </div>
                             </li>
                             <li class="deliverable-item">
+                                <strong>2 Hours Monthly Coaching</strong> — Double the strategic support
+                                <div class="deliverable-tooltip">
+                                    <h4>What It Is</h4>
+                                    <p>Two hours of dedicated coaching each month (vs. one hour in Package 2)—more time for strategy, troubleshooting, and planning.</p>
+                                    <h4>What's Included</h4>
+                                    <ul>
+                                        <li>2-hour monthly strategy/coaching session</li>
+                                        <li>Deep-dive campaign planning</li>
+                                        <li>Content review and feedback</li>
+                                        <li>Team training and skill-building</li>
+                                    </ul>
+                                    <h4>Why It Matters</h4>
+                                    <p>More coaching time means more personalized guidance. You can tackle bigger challenges and get more hands-on support.</p>
+                                    <p class="delivery-format">Delivery: 2 hours monthly coaching + ongoing access</p>
+                                </div>
+                            </li>
+                            <li class="deliverable-item">
                                 <strong>2 Campaign Videos Per Year</strong> — Double the done-for-you content
                                 <div class="deliverable-tooltip">
                                     <h4>What It Is</h4>
@@ -1273,7 +1289,7 @@
                         <p style="font-size: 1.5rem; font-weight: 700; margin-top: 0.75rem;">+ $2,500/mo</p>
                         <p style="font-size: 0.85rem; opacity: 0.9;">Starting Month 2</p>
                         <div style="border-top: 1px solid rgba(255,255,255,0.3); margin: 1rem 0; padding-top: 1rem;">
-                            <p style="font-size: 0.8rem; opacity: 0.9;">Year 1 Total: $61,000 (6 mo) – $76,000 (12 mo)</p>
+                            <p style="font-size: 0.8rem; opacity: 0.9;">Year 1 (6 mo): $61,000<br>Year 1 (12 mo): $76,000</p>
                             <p style="font-size: 0.8rem; opacity: 0.9; margin-top: 0.5rem;">Year 2+: $2,500/mo ($30,000/yr)</p>
                         </div>
                     </div>
@@ -1309,10 +1325,10 @@
                             <li>✓ DAM setup + hosting</li>
                             <li>✓ Impact microsite</li>
                             <li>✓ Narrative toolkit</li>
-                            <li>✓ Monthly PM check-ins</li>
+                            <li>✓ 1 hr/mo coaching</li>
                             <li>✓ 1 campaign video/year</li>
                         </ul>
-                        <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 0.75rem;">Year 1: $36,750–$47,250</p>
+                        <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 0.75rem;">Year 1 (6 mo): $36,750<br>Year 1 (12 mo): $47,250</p>
                     </div>
                     <div class="pricing-card">
                         <h4>Package 3: Flagship</h4>
@@ -1323,9 +1339,10 @@
                             <li>✓ Everything in Package 2</li>
                             <li>✓ Flagship cinematic film</li>
                             <li>✓ LMS training platform</li>
+                            <li>✓ 2 hrs/mo coaching</li>
                             <li>✓ 2 campaign videos/year</li>
                         </ul>
-                        <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 0.75rem;">Year 1: $61,000–$76,000</p>
+                        <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 0.75rem;">Year 1 (6 mo): $61,000<br>Year 1 (12 mo): $76,000</p>
                     </div>
                 </div>
                 <div style="display: flex; gap: 2rem; margin-top: 2rem; justify-content: center; flex-wrap: wrap;">
@@ -1335,7 +1352,7 @@
                     </div>
                     <div style="background: rgba(197, 78, 50, 0.08); padding: 1.25rem 1.5rem; border-radius: 1rem; text-align: center;">
                         <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7; margin-bottom: 0.5rem;">Referral Program</p>
-                        <p style="font-weight: 700; font-size: 1.1rem;">10% off renewal per active referral (up to 30%)</p>
+                        <p style="font-weight: 700; font-size: 1.1rem;">10% off monthly retainer per active referral</p>
                     </div>
                 </div>
             </div>
@@ -1486,10 +1503,49 @@
         // Initialize arrow states
         prevArrow.classList.add('disabled');
 
-        // Deliverable tooltip interactions (mobile tap-to-reveal)
+        // Deliverable tooltip interactions
         const deliverableItems = document.querySelectorAll('.deliverable-item');
 
+        function positionTooltip(item) {
+            const tooltip = item.querySelector('.deliverable-tooltip');
+            if (!tooltip) return;
+
+            const strong = item.querySelector('strong');
+            const rect = strong ? strong.getBoundingClientRect() : item.getBoundingClientRect();
+            const tooltipWidth = 400;
+            const padding = 15;
+
+            // Position to the right of the text
+            let left = rect.right + padding;
+            let top = rect.top;
+
+            // If tooltip would go off right edge, position to the left instead
+            if (left + tooltipWidth > window.innerWidth - padding) {
+                left = rect.left - tooltipWidth - padding;
+            }
+
+            // Make sure it doesn't go off the top
+            if (top < padding) {
+                top = padding;
+            }
+
+            // Make sure it doesn't go off the bottom
+            const tooltipHeight = tooltip.offsetHeight || 300;
+            if (top + tooltipHeight > window.innerHeight - padding) {
+                top = window.innerHeight - tooltipHeight - padding;
+            }
+
+            tooltip.style.left = left + 'px';
+            tooltip.style.top = top + 'px';
+        }
+
         deliverableItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                if (window.innerWidth > 1024) {
+                    positionTooltip(item);
+                }
+            });
+
             item.addEventListener('click', function(e) {
                 // Only on mobile/tablet
                 if (window.innerWidth <= 1024) {
