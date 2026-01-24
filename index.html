@@ -362,9 +362,9 @@
 
         .deliverable-tooltip {
             position: absolute;
-            left: 110%;
-            top: 50%;
-            transform: translateY(-50%);
+            left: 0;
+            top: 100%;
+            margin-top: 0.5rem;
             width: 400px;
             background: white;
             border-radius: 1.5rem;
@@ -382,7 +382,6 @@
         .deliverable-item.active .deliverable-tooltip {
             opacity: 1;
             visibility: visible;
-            transform: translateY(-50%) translateX(10px);
         }
 
         .deliverable-tooltip h4 {
@@ -429,17 +428,6 @@
             margin-top: 1rem;
             padding-top: 1rem;
             border-top: 1px solid rgba(2, 2, 2, 0.1);
-        }
-
-        /* Tooltip positioning on left side when needed */
-        .deliverable-tooltip.tooltip-left {
-            left: auto;
-            right: 110%;
-        }
-
-        .deliverable-item:hover .deliverable-tooltip.tooltip-left,
-        .deliverable-item.active .deliverable-tooltip.tooltip-left {
-            transform: translateY(-50%) translateX(-10px);
         }
 
         /* Mobile: tap to reveal */
@@ -950,7 +938,7 @@
         <div class="slide" data-slide="4">
             <div class="content-box">
                 <span class="package-badge">Package 1</span>
-                <h2 style="margin-bottom: 0.5rem;">Story & Awareness Foundation</h2>
+                <h2 style="margin-bottom: 0.5rem;">Foundation</h2>
                 <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.1rem; margin-bottom: 1.5rem; opacity: 0.8;">Top of Funnel: Clarity, Consistency, Confidence</p>
 
                 <div class="package-grid">
@@ -1035,27 +1023,30 @@
                         <h3 style="font-size: 1.1rem; margin-top: 1rem;">Optional Add-On:</h3>
                         <ul class="package-list bullets">
                             <li class="deliverable-item">
-                                <strong>Ongoing coaching:</strong> $500/mo (6-month) or $700/mo (monthly)
+                                <strong>Monthly Coaching:</strong> $500/month (cancel anytime)
                                 <div class="deliverable-tooltip">
                                     <h4>What It Is</h4>
-                                    <p>Monthly strategy calls where we review performance, troubleshoot what's not working, and plan next month's content—so you're never stuck.</p>
+                                    <p>Ongoing support to keep your momentum going—strategy, feedback, and accountability on your schedule.</p>
                                     <h4>What's Included</h4>
                                     <ul>
-                                        <li>45-minute monthly strategy call</li>
-                                        <li>Real-time feedback on content and campaigns</li>
-                                        <li>Adjustments to your content calendar based on what's working</li>
-                                        <li>Access via Slack/email for quick questions between calls</li>
-                                        <li>Quarterly performance reports (engagement, donations, volunteer sign-ups)</li>
+                                        <li>1-hour monthly strategy call</li>
+                                        <li>Slack/email access for quick questions</li>
+                                        <li>Calendar refresh every 6 months</li>
                                     </ul>
                                     <h4>Why It Matters</h4>
                                     <p>This keeps you from falling back into old habits. You'll have an expert in your corner to help you execute the strategy, not just hand you a document and disappear.</p>
-                                    <p class="delivery-format">Delivery: Monthly call + written notes + ongoing access</p>
+                                    <p class="delivery-format">Year 1 Total: $12,500 without coaching | $18,500 with 12 months coaching</p>
                                 </div>
                             </li>
                         </ul>
                     </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80" alt="Team collaboration" style="width: 100%; height: 100%; object-fit: cover; border-radius: 1.5rem; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);">
+                    <div class="price-box" style="align-self: start;">
+                        <p style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.9; margin-bottom: 0.5rem;">Year 1 Investment</p>
+                        <p style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.25rem;">$12,500</p>
+                        <p style="font-size: 0.95rem; opacity: 0.9;">One-time</p>
+                        <div style="border-top: 1px solid rgba(255,255,255,0.3); margin: 1rem 0; padding-top: 1rem;">
+                            <p style="font-size: 0.85rem; opacity: 0.9;">+ Optional coaching: $500/mo</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1065,7 +1056,7 @@
         <div class="slide" data-slide="5">
             <div class="content-box">
                 <span class="package-badge">Package 2</span>
-                <h2 style="margin-bottom: 0.5rem;">Impact Infrastructure</h2>
+                <h2 style="margin-bottom: 0.5rem;">Infrastructure Build</h2>
                 <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.1rem; margin-bottom: 1.5rem; opacity: 0.8;">Middle of Funnel: Belief, Trust, Usability</p>
 
                 <div class="package-grid">
@@ -1073,8 +1064,8 @@
                         <h3 style="color: var(--brand-orange); font-size: 1.3rem;">Everything from Package 1, Plus:</h3>
                         <ul class="package-list">
                             <li class="deliverable-item">
-                                <strong>Digital Asset Management System</strong> — Pinterest-style organization, workflows, training, 1 year hosting included
-                                <div class="deliverable-tooltip tooltip-left">
+                                <strong>Digital Asset Management</strong> — Setup + hosting included
+                                <div class="deliverable-tooltip">
                                     <h4>What It Is</h4>
                                     <p>A centralized, Pinterest-style visual library where all your photos, videos, and stories live—organized, searchable, and shareable.</p>
                                     <h4>What's Included</h4>
@@ -1083,34 +1074,32 @@
                                         <li>Custom board structure for your 5 clubs + event types</li>
                                         <li>Upload workflows and permissions (who can add, edit, download)</li>
                                         <li>Staff training on how to use it</li>
-                                        <li>1 year of hosting included</li>
                                     </ul>
                                     <h4>Why It Matters</h4>
-                                    <p>No more digging through email attachments, Google Drive folders, or someone's phone. Your team can find and use great content in seconds. Volunteers and board members can access approved assets without bugging CeCe.</p>
-                                    <p class="delivery-format">Delivery: Live platform + 1-hour training session</p>
+                                    <p>No more digging through email attachments, Google Drive folders, or someone's phone. Your team can find and use great content in seconds.</p>
+                                    <p class="delivery-format">Delivery: Live platform + training session</p>
                                 </div>
                             </li>
                             <li class="deliverable-item">
-                                <strong>Impact Story Microsite</strong> — Modern, donor-ready storytelling experience with donation integration
-                                <div class="deliverable-tooltip tooltip-left">
+                                <strong>Impact Story Microsite</strong> — Modern, donor-ready storytelling experience
+                                <div class="deliverable-tooltip">
                                     <h4>What It Is</h4>
-                                    <p>A dedicated, beautifully designed landing page that tells your story for donors, sponsors, and grant funders—separate from your main website.</p>
+                                    <p>A dedicated, beautifully designed landing page that tells your story for donors, sponsors, and grant funders.</p>
                                     <h4>What's Included</h4>
                                     <ul>
                                         <li>Custom design and development</li>
                                         <li>3-5 impact stories (written + visual)</li>
                                         <li>Donation integration (connected to your existing system)</li>
                                         <li>Mobile-optimized and fast-loading</li>
-                                        <li>Annual hosting included</li>
                                     </ul>
                                     <h4>Why It Matters</h4>
-                                    <p>When someone asks "What do you do?", you send them here. It's your best foot forward—a modern, compelling case for support that doesn't get lost in your main website navigation.</p>
-                                    <p class="delivery-format">Delivery: Live website + quarterly content refresh</p>
+                                    <p>When someone asks "What do you do?", you send them here. It's your best foot forward—a modern, compelling case for support.</p>
+                                    <p class="delivery-format">Delivery: Live website</p>
                                 </div>
                             </li>
                             <li class="deliverable-item">
                                 <strong>Impact Narrative Toolkit</strong> — 3–5 core stories in short + long versions
-                                <div class="deliverable-tooltip tooltip-left">
+                                <div class="deliverable-tooltip">
                                     <h4>What It Is</h4>
                                     <p>A collection of your 3-5 strongest impact stories written in multiple formats—so you can drop them into grant applications, social posts, or donor emails.</p>
                                     <h4>What's Included</h4>
@@ -1126,27 +1115,68 @@
                                 </div>
                             </li>
                             <li class="deliverable-item">
-                                <strong>Ongoing Support</strong> — Quarterly refresh, monthly strategy check-ins for year 1
-                                <div class="deliverable-tooltip tooltip-left">
+                                <strong>Best Practices Guide</strong> — Templates and playbooks
+                                <div class="deliverable-tooltip">
                                     <h4>What It Is</h4>
-                                    <p>Monthly strategy calls where we review performance, troubleshoot what's not working, and plan next month's content—so you're never stuck.</p>
+                                    <p>A comprehensive guide with ready-to-use templates for common marketing tasks.</p>
                                     <h4>What's Included</h4>
                                     <ul>
-                                        <li>45-minute monthly strategy call</li>
-                                        <li>Real-time feedback on content and campaigns</li>
-                                        <li>Adjustments to your content calendar based on what's working</li>
-                                        <li>Access via Slack/email for quick questions between calls</li>
-                                        <li>Quarterly performance reports (engagement, donations, volunteer sign-ups)</li>
+                                        <li>Social media post templates</li>
+                                        <li>Email newsletter templates</li>
+                                        <li>Event promotion checklists</li>
+                                        <li>Brand voice guidelines</li>
                                     </ul>
                                     <h4>Why It Matters</h4>
-                                    <p>This keeps you from falling back into old habits. You'll have an expert in your corner to help you execute the strategy, not just hand you a document and disappear.</p>
-                                    <p class="delivery-format">Delivery: Monthly call + written notes + ongoing access</p>
+                                    <p>Your team won't have to start from scratch every time. Templates save hours and ensure consistency.</p>
+                                    <p class="delivery-format">Delivery: PDF guide + editable templates</p>
+                                </div>
+                            </li>
+                            <li class="deliverable-item">
+                                <strong>Monthly PM Check-ins</strong> — Dedicated project manager support
+                                <div class="deliverable-tooltip">
+                                    <h4>What It Is</h4>
+                                    <p>Regular touchpoints with a dedicated project manager to keep everything on track.</p>
+                                    <h4>What's Included</h4>
+                                    <ul>
+                                        <li>Monthly strategy calls</li>
+                                        <li>Progress tracking and accountability</li>
+                                        <li>Platform support and troubleshooting</li>
+                                        <li>Ongoing optimization recommendations</li>
+                                    </ul>
+                                    <h4>Why It Matters</h4>
+                                    <p>You'll have a dedicated partner keeping everything moving forward, not just a one-time deliverable.</p>
+                                    <p class="delivery-format">Delivery: Monthly calls + ongoing access</p>
+                                </div>
+                            </li>
+                            <li class="deliverable-item">
+                                <strong>1 Campaign Video Per Year</strong> — Done-for-you social content
+                                <div class="deliverable-tooltip">
+                                    <h4>What It Is</h4>
+                                    <p>A professionally produced campaign video for your biggest annual push—back to school, end of year giving, or your signature event.</p>
+                                    <h4>What's Included</h4>
+                                    <ul>
+                                        <li>Concept development and scripting</li>
+                                        <li>On-location shoot</li>
+                                        <li>Professional editing</li>
+                                        <li>Multiple cutdowns for social platforms</li>
+                                    </ul>
+                                    <h4>Why It Matters</h4>
+                                    <p>You get high-quality video content without the hassle of finding and managing a videographer.</p>
+                                    <p class="delivery-format">Delivery: Final video + social cutdowns, catalogued in your DAM</p>
                                 </div>
                             </li>
                         </ul>
                     </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="Digital strategy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 1.5rem; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);">
+                    <div class="price-box" style="align-self: start;">
+                        <p style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.9; margin-bottom: 0.5rem;">Year 1 Investment</p>
+                        <p style="font-size: 2.2rem; font-weight: 700; margin-bottom: 0.25rem;">$28,000</p>
+                        <p style="font-size: 0.95rem; opacity: 0.9;">Upfront</p>
+                        <p style="font-size: 1.5rem; font-weight: 700; margin-top: 0.75rem;">+ $1,750/mo</p>
+                        <p style="font-size: 0.85rem; opacity: 0.9;">Starting Month 2</p>
+                        <div style="border-top: 1px solid rgba(255,255,255,0.3); margin: 1rem 0; padding-top: 1rem;">
+                            <p style="font-size: 0.8rem; opacity: 0.9;">Year 1 Total: $36,750 (6 mo) – $47,250 (12 mo)</p>
+                            <p style="font-size: 0.8rem; opacity: 0.9; margin-top: 0.5rem;">Year 2+: $1,750/mo ($21,000/yr)</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1156,7 +1186,7 @@
         <div class="slide" data-slide="6">
             <div class="content-box">
                 <span class="package-badge">Package 3</span>
-                <h2 style="margin-bottom: 0.5rem;">Flagship Impact Partnership</h2>
+                <h2 style="margin-bottom: 0.5rem;">Flagship Partnership</h2>
                 <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.1rem; margin-bottom: 1.5rem; opacity: 0.8;">Bottom of Funnel: Emotional Authority, Major Donors</p>
 
                 <div class="package-grid">
@@ -1164,8 +1194,8 @@
                         <h3 style="color: var(--brand-orange); font-size: 1.3rem;">Everything from Package 2, Plus:</h3>
                         <ul class="package-list">
                             <li class="deliverable-item">
-                                <strong>Flagship Impact Film</strong> — Professionally produced, cinematic 3–5 minute film for gala openings, major donor meetings, grant presentations
-                                <div class="deliverable-tooltip tooltip-left">
+                                <strong>Flagship Cinematic Film</strong> — Professionally produced 3–5 minute film
+                                <div class="deliverable-tooltip">
                                     <h4>What It Is</h4>
                                     <p>A professionally produced, cinematic 3-5 minute film that captures the heart of your work—your anchor story for major moments.</p>
                                     <h4>What's Included</h4>
@@ -1178,15 +1208,74 @@
                                         <li>All raw footage and B-roll clips</li>
                                     </ul>
                                     <h4>Why It Matters</h4>
-                                    <p>This is what you show at your gala. What you send to major donors. What you use in grant applications when words aren't enough. It's not content—it's your flagship story.</p>
+                                    <p>This is what you show at your gala. What you send to major donors. What you use in grant applications when words aren't enough.</p>
                                     <p class="delivery-format">Delivery: Final film (3-5 min) + cutdowns + raw assets, all cataloged in your DAM</p>
+                                </div>
+                            </li>
+                            <li class="deliverable-item">
+                                <strong>LMS Platform</strong> — Staff training video library
+                                <div class="deliverable-tooltip">
+                                    <h4>What It Is</h4>
+                                    <p>A learning management system with on-demand training videos your team can access anytime.</p>
+                                    <h4>What's Included</h4>
+                                    <ul>
+                                        <li>Video library covering storytelling, content capture, and social media</li>
+                                        <li>Self-paced modules for new staff onboarding</li>
+                                        <li>Platform hosting and maintenance</li>
+                                        <li>Progress tracking for team members</li>
+                                    </ul>
+                                    <h4>Why It Matters</h4>
+                                    <p>New hires get up to speed fast. Your whole team has 24/7 access to training resources without scheduling live sessions.</p>
+                                    <p class="delivery-format">Delivery: Live LMS platform with ongoing access</p>
+                                </div>
+                            </li>
+                            <li class="deliverable-item">
+                                <strong>All Video Assets in DAM</strong> — Organized and catalogued
+                                <div class="deliverable-tooltip">
+                                    <h4>What It Is</h4>
+                                    <p>Every video asset from your flagship film—fully organized and ready to use.</p>
+                                    <h4>What's Included</h4>
+                                    <ul>
+                                        <li>Final film and all cutdowns</li>
+                                        <li>Raw interview footage</li>
+                                        <li>B-roll clips organized by theme</li>
+                                        <li>Still frames from video</li>
+                                    </ul>
+                                    <h4>Why It Matters</h4>
+                                    <p>You can repurpose footage for years. Need a clip for a social post? It's already organized and ready.</p>
+                                    <p class="delivery-format">Delivery: All assets catalogued in your DAM</p>
+                                </div>
+                            </li>
+                            <li class="deliverable-item">
+                                <strong>2 Campaign Videos Per Year</strong> — Double the done-for-you content
+                                <div class="deliverable-tooltip">
+                                    <h4>What It Is</h4>
+                                    <p>Two professionally produced campaign videos per year (vs. one in Package 2)—for your biggest annual moments.</p>
+                                    <h4>What's Included</h4>
+                                    <ul>
+                                        <li>2 campaign videos annually</li>
+                                        <li>Concept development and scripting for each</li>
+                                        <li>On-location shoots</li>
+                                        <li>Professional editing and social cutdowns</li>
+                                    </ul>
+                                    <h4>Why It Matters</h4>
+                                    <p>Cover both your spring fundraiser AND end-of-year giving with high-quality video content.</p>
+                                    <p class="delivery-format">Delivery: 2 final videos + social cutdowns per year, all in your DAM</p>
                                 </div>
                             </li>
                         </ul>
                         <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; margin-top: 1.5rem; opacity: 0.8; font-size: 1rem;">This is not "content"—it's your anchor story.</p>
                     </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=600&q=80" alt="Video production" style="width: 100%; height: 100%; object-fit: cover; border-radius: 1.5rem; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);">
+                    <div class="price-box" style="align-self: start;">
+                        <p style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.9; margin-bottom: 0.5rem;">Year 1 Investment</p>
+                        <p style="font-size: 2.2rem; font-weight: 700; margin-bottom: 0.25rem;">$48,500</p>
+                        <p style="font-size: 0.95rem; opacity: 0.9;">Upfront</p>
+                        <p style="font-size: 1.5rem; font-weight: 700; margin-top: 0.75rem;">+ $2,500/mo</p>
+                        <p style="font-size: 0.85rem; opacity: 0.9;">Starting Month 2</p>
+                        <div style="border-top: 1px solid rgba(255,255,255,0.3); margin: 1rem 0; padding-top: 1rem;">
+                            <p style="font-size: 0.8rem; opacity: 0.9;">Year 1 Total: $61,000 (6 mo) – $76,000 (12 mo)</p>
+                            <p style="font-size: 0.8rem; opacity: 0.9; margin-top: 0.5rem;">Year 2+: $2,500/mo ($30,000/yr)</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1198,44 +1287,55 @@
                 <h2 style="text-align: center; margin-bottom: 0.5rem;">Investment <span class="impact-text">Summary</span></h2>
                 <div class="pricing-comparison">
                     <div class="pricing-card">
-                        <h4>Package 1</h4>
-                        <p style="font-size: 0.95rem; opacity: 0.7; margin: 0.5rem 0;">Story & Awareness</p>
-                        <div class="price">$4,500</div>
-                        <p class="price-detail">One-time flat fee</p>
-                        <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 1rem;">+ optional coaching</p>
+                        <h4>Package 1: Foundation</h4>
+                        <div class="price">$12,500</div>
+                        <p class="price-detail">One-time (Year 1)</p>
+                        <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 0.75rem;">+ Optional: $500/mo coaching</p>
                         <ul style="text-align: left; font-size: 0.8rem; margin-top: 1rem; opacity: 0.8; list-style: none; padding: 0;">
                             <li>✓ Communications audit</li>
                             <li>✓ Storytelling framework</li>
                             <li>✓ 6-month content calendar</li>
-                            <li>✓ Staff training</li>
+                            <li>✓ Staff training webinar</li>
                         </ul>
+                        <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 0.75rem;">With coaching: $18,500/yr</p>
                     </div>
                     <div class="pricing-card">
-                        <h4>Package 2</h4>
-                        <p style="font-size: 0.95rem; opacity: 0.7; margin: 0.5rem 0;">Impact Infrastructure</p>
-                        <div class="price">$31,500</div>
-                        <p class="price-detail">Year 1 (includes DAM)</p>
-                        <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 1rem;">$750/mo renewal</p>
+                        <h4>Package 2: Infrastructure</h4>
+                        <div class="price">$28,000</div>
+                        <p class="price-detail">Upfront + $1,750/mo</p>
+                        <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 0.75rem;">Year 2+: $1,750/mo</p>
                         <ul style="text-align: left; font-size: 0.8rem; margin-top: 1rem; opacity: 0.8; list-style: none; padding: 0;">
                             <li>✓ Everything in Package 1</li>
-                            <li>✓ Digital asset management</li>
-                            <li>✓ Impact story microsite</li>
-                            <li>✓ Impact narrative toolkit</li>
-                            <li>✓ Ongoing support</li>
+                            <li>✓ DAM setup + hosting</li>
+                            <li>✓ Impact microsite</li>
+                            <li>✓ Narrative toolkit</li>
+                            <li>✓ Monthly PM check-ins</li>
+                            <li>✓ 1 campaign video/year</li>
                         </ul>
+                        <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 0.75rem;">Year 1: $36,750–$47,250</p>
                     </div>
                     <div class="pricing-card">
-                        <h4>Package 3</h4>
-                        <p style="font-size: 0.95rem; opacity: 0.7; margin: 0.5rem 0;">Flagship Partnership</p>
+                        <h4>Package 3: Flagship</h4>
                         <div class="price">$48,500</div>
-                        <p class="price-detail">Year 1 (includes DAM)</p>
-                        <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 1rem;">$750/mo renewal</p>
+                        <p class="price-detail">Upfront + $2,500/mo</p>
+                        <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 0.75rem;">Year 2+: $2,500/mo</p>
                         <ul style="text-align: left; font-size: 0.8rem; margin-top: 1rem; opacity: 0.8; list-style: none; padding: 0;">
                             <li>✓ Everything in Package 2</li>
-                            <li>✓ Flagship impact film (3-5 min)</li>
-                            <li>✓ DAM integration</li>
-                            <li>✓ Strategic usage mapping</li>
+                            <li>✓ Flagship cinematic film</li>
+                            <li>✓ LMS training platform</li>
+                            <li>✓ 2 campaign videos/year</li>
                         </ul>
+                        <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 0.75rem;">Year 1: $61,000–$76,000</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 2rem; margin-top: 2rem; justify-content: center; flex-wrap: wrap;">
+                    <div style="background: rgba(197, 78, 50, 0.08); padding: 1.25rem 1.5rem; border-radius: 1rem; text-align: center;">
+                        <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7; margin-bottom: 0.5rem;">Add-On (Year 2+)</p>
+                        <p style="font-weight: 700; font-size: 1.1rem;">Additional Flagship Film: $20,000</p>
+                    </div>
+                    <div style="background: rgba(197, 78, 50, 0.08); padding: 1.25rem 1.5rem; border-radius: 1rem; text-align: center;">
+                        <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7; margin-bottom: 0.5rem;">Referral Program</p>
+                        <p style="font-weight: 700; font-size: 1.1rem;">10% off renewal per active referral (up to 30%)</p>
                     </div>
                 </div>
             </div>
