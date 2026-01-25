@@ -494,7 +494,7 @@
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
             margin: 2rem 0 1.5rem;
         }
@@ -547,6 +547,17 @@
             width: 100%;
             max-width: 500px;
             margin: 2rem auto;
+            position: relative;
+        }
+
+        .funnel-wrapper {
+            display: flex;
+            align-items: stretch;
+            gap: 2rem;
+        }
+
+        .funnel-stages {
+            flex: 1;
         }
 
         .funnel-stage {
@@ -560,62 +571,6 @@
             border-radius: 1rem;
             clip-path: polygon(10% 0%, 90% 0%, 80% 100%, 20% 100%);
             transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .funnel-stage:hover {
-            transform: translateY(-5px);
-        }
-
-        .funnel-tooltip {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            background: white;
-            color: var(--brand-black);
-            padding: 1.5rem;
-            border-radius: 1rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.4s ease;
-            z-index: 100;
-            width: 300px;
-            text-align: left;
-            margin-top: 1rem;
-        }
-
-        .funnel-stage:hover .funnel-tooltip {
-            opacity: 1;
-            transform: translateX(-50%) translateY(10px);
-        }
-
-        .funnel-tooltip p {
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            text-transform: uppercase;
-            color: var(--brand-orange);
-        }
-
-        .funnel-tooltip ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .funnel-tooltip ul li {
-            font-size: 0.85rem;
-            line-height: 1.6;
-            padding: 0.4rem 0;
-            font-weight: 500;
-            text-transform: none;
-        }
-
-        .funnel-tooltip ul li:before {
-            content: "→ ";
-            color: var(--brand-orange);
-            font-weight: 700;
         }
 
         .funnel-stage.top {
@@ -636,12 +591,70 @@
         }
 
         .funnel-label {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             opacity: 0.95;
             margin-top: 0.5rem;
             font-weight: 500;
             line-height: 1.3;
             padding: 0 0.5rem;
+        }
+
+        /* Package Brackets */
+        .package-brackets {
+            position: absolute;
+            right: -180px;
+            top: 0;
+            bottom: 0;
+            width: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .package-bracket {
+            position: absolute;
+            right: 0;
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .package-bracket.visible {
+            opacity: 1;
+        }
+
+        .bracket-line {
+            width: 30px;
+            border: 2px solid var(--brand-orange);
+            border-left: none;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .bracket-label {
+            background: var(--brand-orange);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            margin-left: 10px;
+        }
+
+        .bracket-1 {
+            top: 0;
+            height: 85px;
+        }
+
+        .bracket-2 {
+            top: 0;
+            height: 195px;
+        }
+
+        .bracket-3 {
+            top: 0;
+            height: 305px;
         }
 
         .pricing-comparison {
@@ -758,6 +771,189 @@
             margin: 1rem 0;
         }
 
+        /* Expected Outcomes Box */
+        .outcomes-box {
+            background: rgba(197, 78, 50, 0.08);
+            border-radius: 1rem;
+            padding: 1.25rem 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .outcomes-box h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--brand-orange);
+            margin-bottom: 0.75rem;
+        }
+
+        .outcomes-box ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .outcomes-box ul li {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            padding: 0.35rem 0 0.35rem 1.5rem;
+            position: relative;
+        }
+
+        .outcomes-box ul li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--brand-orange);
+            font-weight: bold;
+        }
+
+        /* Client Results */
+        .client-results {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .client-card {
+            background: white;
+            border-radius: 2rem;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(2, 2, 2, 0.05);
+        }
+
+        .client-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--brand-orange);
+        }
+
+        .client-card .stat-highlight {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--brand-orange);
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+        }
+
+        .client-card .stat-description {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        .client-quote {
+            background: rgba(197, 78, 50, 0.05);
+            border-left: 4px solid var(--brand-orange);
+            padding: 1.5rem;
+            border-radius: 0 1rem 1rem 0;
+            margin-top: 1.5rem;
+        }
+
+        .client-quote p {
+            font-family: 'Libre Caslon Text', serif;
+            font-style: italic;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+
+        .client-quote .attribution {
+            font-family: 'Funnel Display', sans-serif;
+            font-style: normal;
+            font-size: 0.85rem;
+            font-weight: 600;
+            opacity: 0.7;
+        }
+
+        /* Roadmap */
+        .roadmap {
+            display: flex;
+            gap: 1.5rem;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .roadmap-phase {
+            flex: 1;
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(2, 2, 2, 0.05);
+            position: relative;
+        }
+
+        .roadmap-phase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            border-radius: 1.5rem 1.5rem 0 0;
+        }
+
+        .roadmap-phase.phase-1::before {
+            background: var(--teal);
+        }
+
+        .roadmap-phase.phase-2::before {
+            background: var(--sage);
+        }
+
+        .roadmap-phase.phase-3::before {
+            background: var(--brand-orange);
+        }
+
+        .phase-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .roadmap-phase h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .roadmap-phase ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .roadmap-phase ul li {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            padding: 0.4rem 0 0.4rem 1.5rem;
+            position: relative;
+        }
+
+        .roadmap-phase ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .roadmap-phase.phase-1 ul li:before {
+            color: var(--teal);
+        }
+
+        .roadmap-phase.phase-2 ul li:before {
+            color: var(--sage);
+        }
+
+        .roadmap-phase.phase-3 ul li:before {
+            color: var(--brand-orange);
+        }
+
         @media (max-width: 1400px) {
             .slide {
                 padding: 120px 40px;
@@ -773,6 +969,11 @@
 
             .slide-image {
                 height: 450px;
+            }
+
+            .package-brackets {
+                right: -160px;
+                width: 140px;
             }
         }
 
@@ -790,12 +991,28 @@
                 grid-template-columns: 1fr;
             }
 
+            .client-results {
+                grid-template-columns: 1fr;
+            }
+
+            .roadmap {
+                flex-direction: column;
+            }
+
             .nav-arrows {
                 padding: 0 1rem;
             }
 
             .logo {
                 width: 140px;
+            }
+
+            .package-brackets {
+                display: none;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -833,9 +1050,9 @@
             <div class="aura-background"></div>
             <div class="ambient-glow"></div>
             <div style="position: relative; z-index: 1; text-align: center; max-width: 1000px;">
+                <img src="bgca-permian-basin-logo.png" alt="Boys & Girls Club of the Permian Basin" style="max-width: 280px; margin-bottom: 2rem;">
                 <h1>A Partnership for <span class="impact-text">Impact</span></h1>
                 <p class="subtitle">Marketing Strategy Proposal</p>
-                <h2 style="margin-top: 2rem;">Boys & Girls Club of the Permian Basin</h2>
                 <p style="margin-top: 3rem; opacity: 0.5; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.15em; font-weight: 600;">Presented by Anecdotal</p>
             </div>
         </div>
@@ -855,6 +1072,10 @@
                             <div class="stat-number" data-target="1400">0</div>
                             <div class="stat-label">Kids in winter basketball league</div>
                         </div>
+                        <div class="stat-box" style="background: transparent; border: none; box-shadow: none;">
+                            <div class="stat-number" style="font-size: 2.5rem; color: var(--sage);">Expanding</div>
+                            <div class="stat-label">Underway to deliver services to an additional community</div>
+                        </div>
                     </div>
                     <p style="font-size: 1.2rem; margin-top: 1.5rem; opacity: 0.8;">Serving Midland and Odessa with programs that change lives.</p>
                 </div>
@@ -866,6 +1087,7 @@
             <div class="split-slide">
                 <div>
                     <h2>What We <span class="impact-text">Heard</span></h2>
+                    <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.25rem; margin-bottom: 1.5rem; color: var(--brand-orange);">"Even though we're serving a lot of kids, we still run into people who don't know we exist."</p>
                     <div class="challenge-card">
                         <h4>Awareness Gap</h4>
                         <p>Many people still don't know your organization exists</p>
@@ -880,61 +1102,80 @@
                     </div>
                     <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; opacity: 0.7; font-size: 1.1rem; margin-top: 1.5rem;">These challenges are common—and solvable.</p>
                 </div>
-                <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80" alt="Team discussion" class="slide-image">
+                <img src="bcga-photo-1.jpg" alt="Boys and Girls Club" class="slide-image">
             </div>
         </div>
 
         <!-- Slide 4: The Funnel Connection -->
-        <div class="slide" data-slide="3">
+        <div class="slide" data-slide="3" id="funnel-slide">
             <div style="max-width: 900px; text-align: center;">
                 <h2>The <span class="impact-text">Donor Journey</span></h2>
                 <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 0.5rem;">Each package addresses a different stage of the marketing funnel</p>
 
                 <div class="funnel-visual">
-                    <div class="funnel-stage top" data-funnel="awareness">
-                        <div>AWARENESS</div>
-                        <div class="funnel-label">Package 1 — Building recognition in your community</div>
-                        <div class="funnel-tooltip">
-                            <p><strong>Marketing Deliverables:</strong></p>
-                            <ul>
-                                <li>Social media content calendar</li>
-                                <li>Messaging framework</li>
-                                <li>Staff storytelling training</li>
-                            </ul>
+                    <div class="funnel-wrapper">
+                        <div class="funnel-stages">
+                            <div class="funnel-stage top" data-funnel="awareness">
+                                <div>AWARENESS</div>
+                                <div class="funnel-label">Building recognition in your community</div>
+                            </div>
+                            <div class="funnel-stage middle" data-funnel="trust">
+                                <div>BELIEF & TRUST</div>
+                                <div class="funnel-label">Engaging in deeper storytelling</div>
+                            </div>
+                            <div class="funnel-stage bottom" data-funnel="commitment">
+                                <div>COMMITMENT</div>
+                                <div class="funnel-label">Connecting with emotional resonance</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="funnel-stage middle" data-funnel="trust">
-                        <div>BELIEF & TRUST</div>
-                        <div class="funnel-label">Package 2 —<br>Engaging in deeper storytelling</div>
-                        <div class="funnel-tooltip">
-                            <p><strong>Marketing Deliverables:</strong></p>
-                            <ul>
-                                <li>Impact story microsite</li>
-                                <li>Digital asset management system</li>
-                                <li>Impact narrative toolkit</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="funnel-stage bottom" data-funnel="commitment">
-                        <div>COMMITMENT</div>
-                        <div class="funnel-label">Package 3 — Connecting with emotional resonance</div>
-                        <div class="funnel-tooltip">
-                            <p><strong>Marketing Deliverables:</strong></p>
-                            <ul>
-                                <li>Professional cinematic film</li>
-                                <li>B-roll & cutdowns</li>
-                                <li>Strategic usage mapping</li>
-                            </ul>
+                        <div class="package-brackets">
+                            <div class="package-bracket bracket-1" id="bracket-1">
+                                <div class="bracket-line" style="height: 100%;"></div>
+                                <span class="bracket-label">Package 1</span>
+                            </div>
+                            <div class="package-bracket bracket-2" id="bracket-2">
+                                <div class="bracket-line" style="height: 100%;"></div>
+                                <span class="bracket-label">Package 2</span>
+                            </div>
+                            <div class="package-bracket bracket-3" id="bracket-3">
+                                <div class="bracket-line" style="height: 100%;"></div>
+                                <span class="bracket-label">Package 3</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <p style="font-size: 1.15rem; margin-top: 2rem; opacity: 0.8;">Start where you need it most—or build the complete donor experience.</p>
+                <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.5;">Click to see how packages map to each stage →</p>
             </div>
         </div>
 
-        <!-- Slide 5: Package 1 -->
+        <!-- Slide 5: Client Results -->
         <div class="slide" data-slide="4">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Outcomes for <span class="impact-text">Our Clients</span></h2>
+            <div class="client-results">
+                <div class="client-card">
+                    <h3>Texas Hearing Institute</h3>
+                    <div class="stat-highlight">+45.2%</div>
+                    <div class="stat-description">Donation increase in Year 1</div>
+                    <div class="stat-highlight" style="font-size: 1.8rem;">+18.7%</div>
+                    <div class="stat-description">Additional increase in Year 2</div>
+                    <p style="font-size: 1.1rem; font-weight: 700; color: var(--brand-orange); margin-top: 1rem;">Raised over $1 million at their 2025 gala</p>
+                </div>
+                <div class="client-card">
+                    <h3>Sea Cadets</h3>
+                    <div class="stat-highlight" style="font-size: 1.5rem;">More inquiries than capacity</div>
+                    <div class="stat-description">Our work has brought them more inquiries to join than they have capacity to respond to</div>
+                    <div class="client-quote">
+                        <p>"In our first year working with this enthusiastic and capable team, they have brought us out of obscurity and interest in Sea Cadets has never been higher. Marketing is no longer a stressor for me, but a great opportunity for growth and success."</p>
+                        <span class="attribution">— Andy Lennon</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Package 1 -->
+        <div class="slide" data-slide="5">
             <div class="content-box">
                 <span class="package-badge">Package 1</span>
                 <h2 style="margin-bottom: 0.5rem;">Foundation</h2>
@@ -964,7 +1205,7 @@
                                 </div>
                             </li>
                             <li class="deliverable-item">
-                                <strong>Core Storytelling Framework</strong> — What stories matter, who they're for, how to talk about impact
+                                <strong>Marketing and Storytelling Playbook</strong> — What stories matter, who they're for, how to talk about impact
                                 <div class="deliverable-tooltip">
                                     <h4>What It Is</h4>
                                     <p>Your custom playbook for consistent, compelling messaging across all channels—so everyone on your team is telling the same story.</p>
@@ -995,7 +1236,7 @@
                                         <li>Platform recommendations (what works best on Facebook vs. Instagram)</li>
                                     </ul>
                                     <h4>Why It Matters</h4>
-                                    <p>You'll move from reactive posting to strategic storytelling. CeCe and Andra can plan ahead instead of posting last-minute. Your board sees consistent, intentional content.</p>
+                                    <p>You'll move from reactive posting to strategic storytelling. Your team can plan ahead instead of posting last-minute. Your board sees consistent, intentional content.</p>
                                     <p class="delivery-format">Delivery: Editable Google Sheet you can duplicate, customize, and reuse</p>
                                 </div>
                             </li>
@@ -1034,14 +1275,22 @@
                                     </ul>
                                     <h4>Why It Matters</h4>
                                     <p>This keeps you from falling back into old habits. You'll have an expert in your corner to help you execute the strategy, not just hand you a document and disappear.</p>
-                                    <p class="delivery-format">Year 1 Total: $12,500 without coaching | $18,500 with 12 months coaching</p>
+                                    <p class="delivery-format">Year 1 Total: $9,500 without coaching | $15,500 with 12 months coaching</p>
                                 </div>
                             </li>
                         </ul>
+                        <div class="outcomes-box">
+                            <h4>Expected Outcomes</h4>
+                            <ul>
+                                <li>Clarity around what is working well and specific items to be improved</li>
+                                <li>Recommended strategy and tactics that you can begin implementing to achieve your goals</li>
+                                <li>Actionable education that is going to elevate the effectiveness of your entire team</li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="price-box" style="align-self: start;">
                         <p style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.9; margin-bottom: 0.5rem;">Year 1 Investment</p>
-                        <p style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.25rem;">$12,500</p>
+                        <p style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.25rem;">$9,500</p>
                         <p style="font-size: 0.95rem; opacity: 0.9;">One-time</p>
                         <div style="border-top: 1px solid rgba(255,255,255,0.3); margin: 1rem 0; padding-top: 1rem;">
                             <p style="font-size: 0.85rem; opacity: 0.9;">+ Optional coaching: $500/mo</p>
@@ -1051,11 +1300,11 @@
             </div>
         </div>
 
-        <!-- Slide 6: Package 2 -->
-        <div class="slide" data-slide="5">
+        <!-- Slide 7: Package 2 -->
+        <div class="slide" data-slide="6">
             <div class="content-box">
                 <span class="package-badge">Package 2</span>
-                <h2 style="margin-bottom: 0.5rem;">Infrastructure Build</h2>
+                <h2 style="margin-bottom: 0.5rem;">Activation</h2>
                 <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.1rem; margin-bottom: 1.5rem; opacity: 0.8;">Middle of Funnel: Belief, Trust, Usability</p>
 
                 <div class="package-grid">
@@ -1165,6 +1414,13 @@
                                 </div>
                             </li>
                         </ul>
+                        <div class="outcomes-box">
+                            <h4>Expected Outcomes</h4>
+                            <ul>
+                                <li>Done-for-you assets that help to activate new donors</li>
+                                <li>Greater clarity on how to grow and sustain online engagement</li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="price-box" style="align-self: start;">
                         <p style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.9; margin-bottom: 0.5rem;">Year 1 Investment</p>
@@ -1181,11 +1437,11 @@
             </div>
         </div>
 
-        <!-- Slide 7: Package 3 -->
-        <div class="slide" data-slide="6">
+        <!-- Slide 8: Package 3 -->
+        <div class="slide" data-slide="7">
             <div class="content-box">
                 <span class="package-badge">Package 3</span>
-                <h2 style="margin-bottom: 0.5rem;">Flagship Partnership</h2>
+                <h2 style="margin-bottom: 0.5rem;">Connection</h2>
                 <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.1rem; margin-bottom: 1.5rem; opacity: 0.8;">Bottom of Funnel: Emotional Authority, Major Donors</p>
 
                 <div class="package-grid">
@@ -1280,7 +1536,14 @@
                                 </div>
                             </li>
                         </ul>
-                        <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; margin-top: 1.5rem; opacity: 0.8; font-size: 1rem;">This is not "content"—it's your anchor story.</p>
+                        <div class="outcomes-box">
+                            <h4>Expected Outcomes</h4>
+                            <ul>
+                                <li>An evergreen asset that can be used for years to come</li>
+                                <li>Team alignment around marketing and communication</li>
+                                <li>Additional videos to support your giving campaign efforts</li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="price-box" style="align-self: start;">
                         <p style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.9; margin-bottom: 0.5rem;">Year 1 Investment</p>
@@ -1297,26 +1560,67 @@
             </div>
         </div>
 
-        <!-- Slide 8: Investment Summary -->
-        <div class="slide" data-slide="7">
+        <!-- Slide 9: 90-Day Roadmap -->
+        <div class="slide" data-slide="8">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Your <span class="impact-text">90-Day Roadmap</span></h2>
+            <div class="roadmap">
+                <div class="roadmap-phase phase-1">
+                    <div class="phase-label">Weeks 1–3</div>
+                    <h3>Discovery & Audit</h3>
+                    <ul>
+                        <li>Kickoff call and goal alignment</li>
+                        <li>Communications and social audit</li>
+                        <li>Stakeholder interviews</li>
+                        <li>Content and asset inventory</li>
+                        <li>Competitive landscape review</li>
+                    </ul>
+                </div>
+                <div class="roadmap-phase phase-2">
+                    <div class="phase-label">Weeks 4–8</div>
+                    <h3>Strategy & Build</h3>
+                    <ul>
+                        <li>Marketing playbook development</li>
+                        <li>6-month content calendar</li>
+                        <li>Messaging framework creation</li>
+                        <li>DAM setup (Package 2+)</li>
+                        <li>Microsite design (Package 2+)</li>
+                    </ul>
+                </div>
+                <div class="roadmap-phase phase-3">
+                    <div class="phase-label">Weeks 9–12</div>
+                    <h3>Training & Launch</h3>
+                    <ul>
+                        <li>Staff storytelling training</li>
+                        <li>Deliverable handoff and review</li>
+                        <li>Implementation support</li>
+                        <li>First monthly coaching session</li>
+                        <li>90-day check-in and optimization</li>
+                    </ul>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 2rem; font-family: 'Libre Caslon Text', serif; font-style: italic; opacity: 0.8; font-size: 1.1rem;">You'll have a clear strategy and the tools to execute within 90 days.</p>
+        </div>
+
+        <!-- Slide 10: Investment Summary -->
+        <div class="slide" data-slide="9">
             <div style="max-width: 1200px; width: 100%;">
                 <h2 style="text-align: center; margin-bottom: 0.5rem;">Investment <span class="impact-text">Summary</span></h2>
                 <div class="pricing-comparison">
                     <div class="pricing-card">
                         <h4>Package 1: Foundation</h4>
-                        <div class="price">$12,500</div>
+                        <div class="price">$9,500</div>
                         <p class="price-detail">One-time (Year 1)</p>
                         <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 0.75rem;">+ Optional: $500/mo coaching</p>
                         <ul style="text-align: left; font-size: 0.8rem; margin-top: 1rem; opacity: 0.8; list-style: none; padding: 0;">
                             <li>✓ Communications audit</li>
-                            <li>✓ Storytelling framework</li>
+                            <li>✓ Marketing & storytelling playbook</li>
                             <li>✓ 6-month content calendar</li>
                             <li>✓ Staff training webinar</li>
                         </ul>
-                        <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 0.75rem;">With coaching: $18,500/yr</p>
+                        <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 0.75rem;">With coaching: $15,500/yr</p>
                     </div>
                     <div class="pricing-card">
-                        <h4>Package 2: Infrastructure</h4>
+                        <h4>Package 2: Activation</h4>
                         <div class="price">$28,000</div>
                         <p class="price-detail">Upfront + $1,750/mo</p>
                         <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 0.75rem;">Year 2+: $1,750/mo</p>
@@ -1331,7 +1635,7 @@
                         <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 0.75rem;">Year 1 (6 mo): $36,750<br>Year 1 (12 mo): $47,250</p>
                     </div>
                     <div class="pricing-card">
-                        <h4>Package 3: Flagship</h4>
+                        <h4>Package 3: Connection</h4>
                         <div class="price">$48,500</div>
                         <p class="price-detail">Upfront + $2,500/mo</p>
                         <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 0.75rem;">Year 2+: $2,500/mo</p>
@@ -1358,8 +1662,8 @@
             </div>
         </div>
 
-        <!-- Slide 9: Next Steps -->
-        <div class="slide" data-slide="8">
+        <!-- Slide 11: Next Steps -->
+        <div class="slide" data-slide="10">
             <div class="split-slide">
                 <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80" alt="Partnership handshake" class="slide-image">
                 <div>
@@ -1395,6 +1699,8 @@
         <div class="dot" data-slide="6"></div>
         <div class="dot" data-slide="7"></div>
         <div class="dot" data-slide="8"></div>
+        <div class="dot" data-slide="9"></div>
+        <div class="dot" data-slide="10"></div>
     </div>
 
     <script>
@@ -1405,8 +1711,12 @@
         const prevArrow = document.querySelector('.nav-prev');
         const nextArrow = document.querySelector('.nav-next');
 
+        // Funnel bracket state
+        let funnelState = 0; // 0 = no brackets, 1 = bracket 1, 2 = bracket 2, 3 = bracket 3
+
         function animateNumbers(element) {
             const target = parseInt(element.getAttribute('data-target'));
+            if (!target) return;
             const duration = 2000; // 2 seconds
             const start = 0;
             const startTime = performance.now();
@@ -1431,7 +1741,39 @@
             requestAnimationFrame(update);
         }
 
+        function updateFunnelBrackets() {
+            const bracket1 = document.getElementById('bracket-1');
+            const bracket2 = document.getElementById('bracket-2');
+            const bracket3 = document.getElementById('bracket-3');
+
+            bracket1.classList.remove('visible');
+            bracket2.classList.remove('visible');
+            bracket3.classList.remove('visible');
+
+            if (funnelState === 1) {
+                bracket1.classList.add('visible');
+            } else if (funnelState === 2) {
+                bracket2.classList.add('visible');
+            } else if (funnelState === 3) {
+                bracket3.classList.add('visible');
+            }
+        }
+
         function goToSlide(n) {
+            // If we're on the funnel slide and moving forward, handle bracket animation
+            if (currentSlide === 3 && n > currentSlide && funnelState < 3) {
+                funnelState++;
+                updateFunnelBrackets();
+                return; // Don't change slides yet
+            }
+
+            // If we're on the funnel slide and moving backward, handle bracket animation
+            if (currentSlide === 3 && n < currentSlide && funnelState > 0) {
+                funnelState--;
+                updateFunnelBrackets();
+                return; // Don't change slides yet
+            }
+
             // Remove active class from current slide
             slides[currentSlide].classList.remove('active');
             slides[currentSlide].classList.add('prev');
@@ -1440,6 +1782,12 @@
             // Update current slide
             currentSlide = (n + totalSlides) % totalSlides;
 
+            // Reset funnel state when leaving or entering funnel slide
+            if (currentSlide === 3) {
+                funnelState = 0;
+                updateFunnelBrackets();
+            }
+
             // Add active class to new slide
             slides[currentSlide].classList.add('active');
             slides[currentSlide].classList.remove('prev');
@@ -1447,7 +1795,7 @@
 
             // Trigger number animation on slide 2 (Your Impact)
             if (currentSlide === 1) {
-                const statNumbers = slides[currentSlide].querySelectorAll('.stat-number');
+                const statNumbers = slides[currentSlide].querySelectorAll('.stat-number[data-target]');
                 statNumbers.forEach(num => {
                     if (!num.classList.contains('animated')) {
                         num.classList.add('animated');
@@ -1471,12 +1819,26 @@
         }
 
         function nextSlide() {
+            // Special handling for funnel slide
+            if (currentSlide === 3 && funnelState < 3) {
+                funnelState++;
+                updateFunnelBrackets();
+                return;
+            }
+
             if (currentSlide < totalSlides - 1) {
                 goToSlide(currentSlide + 1);
             }
         }
 
         function prevSlide() {
+            // Special handling for funnel slide
+            if (currentSlide === 3 && funnelState > 0) {
+                funnelState--;
+                updateFunnelBrackets();
+                return;
+            }
+
             if (currentSlide > 0) {
                 goToSlide(currentSlide - 1);
             }
@@ -1496,6 +1858,9 @@
         // Dot navigation
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
+                // Reset funnel state when jumping via dots
+                funnelState = 0;
+                updateFunnelBrackets();
                 goToSlide(index);
             });
         });
