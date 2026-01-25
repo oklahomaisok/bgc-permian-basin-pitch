@@ -777,6 +777,16 @@
             border-radius: 1rem;
             padding: 1.25rem 1.5rem;
             margin-top: 1.5rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.5s ease;
+            pointer-events: none;
+        }
+
+        .outcomes-box.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
         }
 
         .outcomes-box h4 {
@@ -827,22 +837,40 @@
 
         .client-card h3 {
             font-size: 1.4rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.25rem;
             color: var(--brand-orange);
+        }
+
+        .client-subtitle {
+            font-size: 1rem;
+            font-style: italic;
+            opacity: 0.7;
+            margin-bottom: 1.25rem;
+            font-family: 'Libre Caslon Text', serif;
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .stat-item {
+            flex: 1;
         }
 
         .client-card .stat-highlight {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 800;
             color: var(--brand-orange);
             line-height: 1.1;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
         }
 
         .client-card .stat-description {
-            font-size: 1rem;
+            font-size: 0.85rem;
             opacity: 0.8;
-            margin-bottom: 1rem;
+            line-height: 1.3;
         }
 
         .client-quote {
@@ -1156,16 +1184,39 @@
             <div class="client-results">
                 <div class="client-card">
                     <h3>Texas Hearing Institute</h3>
-                    <div class="stat-highlight">+45.2%</div>
-                    <div class="stat-description">Donation increase in Year 1</div>
-                    <div class="stat-highlight" style="font-size: 1.8rem;">+18.7%</div>
-                    <div class="stat-description">Additional increase in Year 2</div>
-                    <p style="font-size: 1.1rem; font-weight: 700; color: var(--brand-orange); margin-top: 1rem;">Raised over $1 million at their 2025 gala</p>
+                    <p class="client-subtitle">Broke their fundraising records</p>
+                    <div class="stats-row">
+                        <div class="stat-item">
+                            <div class="stat-highlight">+45.2%</div>
+                            <div class="stat-description">Donation increase in Year 1</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-highlight">+18.7%</div>
+                            <div class="stat-description">Additional increase in Year 2</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-highlight">$1 million</div>
+                            <div class="stat-description">Raised at their 2025 gala</div>
+                        </div>
+                    </div>
+                    <div class="client-quote">
+                        <p>"The process of working with Anecdotal Media has been a great experience for Texas Hearing Institute! Thanks to their moving and impactful videos, we have raised substantially more money during the past two years."</p>
+                        <span class="attribution">— Mary Collins Raun, Director of Development and Marketing, Texas Hearing Institute</span>
+                    </div>
                 </div>
                 <div class="client-card">
                     <h3>Sea Cadets</h3>
-                    <div class="stat-highlight" style="font-size: 1.5rem;">More inquiries than capacity</div>
-                    <div class="stat-description">Our work has brought them more inquiries to join than they have capacity to respond to</div>
+                    <p class="client-subtitle">More inquiries than capacity</p>
+                    <div class="stats-row">
+                        <div class="stat-item">
+                            <div class="stat-highlight">13M</div>
+                            <div class="stat-description">Video views across social media in 2025</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-highlight">$800K</div>
+                            <div class="stat-description">Grant secured due to increased visibility</div>
+                        </div>
+                    </div>
                     <div class="client-quote">
                         <p>"In our first year working with this enthusiastic and capable team, they have brought us out of obscurity and interest in Sea Cadets has never been higher. Marketing is no longer a stressor for me, but a great opportunity for growth and success."</p>
                         <span class="attribution">— Andy Lennon</span>
@@ -1681,7 +1732,6 @@
                             <li>Choose the package that fits your goals</li>
                             <li>Start building sustainable impact</li>
                         </ul>
-                        <a href="https://www.anecdotal.media" class="cta-button">Let's Talk</a>
                     </div>
                 </div>
             </div>
@@ -1713,6 +1763,31 @@
 
         // Funnel bracket state
         let funnelState = 0; // 0 = no brackets, 1 = bracket 1, 2 = bracket 2, 3 = bracket 3
+
+        // Package outcomes state (for slides 5, 6, 7)
+        let packageOutcomesShown = { 5: false, 6: false, 7: false };
+
+        function showOutcomes(slideIndex) {
+            const slide = slides[slideIndex];
+            const outcomesBox = slide.querySelector('.outcomes-box');
+            if (outcomesBox) {
+                outcomesBox.classList.add('visible');
+                packageOutcomesShown[slideIndex] = true;
+            }
+        }
+
+        function hideOutcomes(slideIndex) {
+            const slide = slides[slideIndex];
+            const outcomesBox = slide.querySelector('.outcomes-box');
+            if (outcomesBox) {
+                outcomesBox.classList.remove('visible');
+                packageOutcomesShown[slideIndex] = false;
+            }
+        }
+
+        function isPackageSlide(index) {
+            return index === 5 || index === 6 || index === 7;
+        }
 
         function animateNumbers(element) {
             const target = parseInt(element.getAttribute('data-target'));
@@ -1788,6 +1863,11 @@
                 updateFunnelBrackets();
             }
 
+            // Reset outcomes state when entering a package slide
+            if (isPackageSlide(currentSlide)) {
+                hideOutcomes(currentSlide);
+            }
+
             // Add active class to new slide
             slides[currentSlide].classList.add('active');
             slides[currentSlide].classList.remove('prev');
@@ -1826,6 +1906,12 @@
                 return;
             }
 
+            // Special handling for package slides - show outcomes first
+            if (isPackageSlide(currentSlide) && !packageOutcomesShown[currentSlide]) {
+                showOutcomes(currentSlide);
+                return;
+            }
+
             if (currentSlide < totalSlides - 1) {
                 goToSlide(currentSlide + 1);
             }
@@ -1836,6 +1922,12 @@
             if (currentSlide === 3 && funnelState > 0) {
                 funnelState--;
                 updateFunnelBrackets();
+                return;
+            }
+
+            // Special handling for package slides - hide outcomes first
+            if (isPackageSlide(currentSlide) && packageOutcomesShown[currentSlide]) {
+                hideOutcomes(currentSlide);
                 return;
             }
 
@@ -1861,6 +1953,8 @@
                 // Reset funnel state when jumping via dots
                 funnelState = 0;
                 updateFunnelBrackets();
+                // Reset all package outcomes when jumping via dots
+                [5, 6, 7].forEach(i => hideOutcomes(i));
                 goToSlide(index);
             });
         });
@@ -1894,10 +1988,14 @@
                 top = padding;
             }
 
-            // Make sure it doesn't go off the bottom
+            // Make sure it doesn't go off the bottom - raise tooltips higher
             const tooltipHeight = tooltip.offsetHeight || 300;
-            if (top + tooltipHeight > window.innerHeight - padding) {
-                top = window.innerHeight - tooltipHeight - padding;
+            const maxTop = window.innerHeight * 0.35; // Position in top 35% of screen
+            if (top > maxTop) {
+                top = maxTop;
+            }
+            if (top < padding) {
+                top = padding;
             }
 
             tooltip.style.left = left + 'px';
