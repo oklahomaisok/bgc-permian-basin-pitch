@@ -494,7 +494,7 @@
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
             margin: 2rem 0 1.5rem;
         }
@@ -771,22 +771,43 @@
             margin: 1rem 0;
         }
 
-        /* Expected Outcomes Box */
+        /* Package content toggle */
+        .package-content {
+            transition: opacity 0.4s ease;
+        }
+
+        .package-content.hidden {
+            display: none;
+        }
+
+        /* Expected Outcomes Box - full replacement view */
         .outcomes-box {
             background: rgba(197, 78, 50, 0.08);
-            border-radius: 1rem;
-            padding: 1.25rem 1.5rem;
-            margin-top: 1.5rem;
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin-top: 0;
             opacity: 0;
             transform: translateY(10px);
             transition: all 0.5s ease;
-            pointer-events: none;
+            display: none;
         }
 
         .outcomes-box.visible {
             opacity: 1;
             transform: translateY(0);
-            pointer-events: all;
+            display: block;
+        }
+
+        .outcomes-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--brand-orange);
+        }
+
+        .outcomes-box ul li {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            padding: 0.75rem 0 0.75rem 2rem;
         }
 
         .outcomes-box h4 {
@@ -1100,12 +1121,8 @@
                             <div class="stat-number" data-target="1400">0</div>
                             <div class="stat-label">Kids in winter basketball league</div>
                         </div>
-                        <div class="stat-box" style="background: transparent; border: none; box-shadow: none;">
-                            <div class="stat-number" style="font-size: 2.5rem; color: var(--sage);">Expanding</div>
-                            <div class="stat-label">Underway to deliver services to an additional community</div>
-                        </div>
                     </div>
-                    <p style="font-size: 1.2rem; margin-top: 1.5rem; opacity: 0.8;">Serving Midland and Odessa with programs that change lives.</p>
+                    <p style="font-size: 1.2rem; margin-top: 1.5rem; opacity: 0.8;">Serving Midland and Odessa with programs that change lives; Expansion underway to an additional community.</p>
                 </div>
             </div>
         </div>
@@ -1118,7 +1135,7 @@
                     <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.25rem; margin-bottom: 1.5rem; color: var(--brand-orange);">"Even though we're serving a lot of kids, we still run into people who don't know we exist."</p>
                     <div class="challenge-card">
                         <h4>Awareness Gap</h4>
-                        <p>Many people still don't know your organization exists</p>
+                        <p>Many people around Midland/Odessa still have never heard of the Boys and Girls Club</p>
                     </div>
                     <div class="challenge-card">
                         <h4>Identity Confusion</h4>
@@ -1219,7 +1236,7 @@
                     </div>
                     <div class="client-quote">
                         <p>"In our first year working with this enthusiastic and capable team, they have brought us out of obscurity and interest in Sea Cadets has never been higher. Marketing is no longer a stressor for me, but a great opportunity for growth and success."</p>
-                        <span class="attribution">— Andy Lennon</span>
+                        <span class="attribution">— Andy Lennon, Executive Director, US Naval Sea Cadet Corps</span>
                     </div>
                 </div>
             </div>
@@ -1234,104 +1251,106 @@
 
                 <div class="package-grid">
                     <div>
-                        <h3 style="font-size: 1.3rem;">What's Included:</h3>
-                        <ul class="package-list">
-                            <li class="deliverable-item">
-                                <strong>External Communications & Social Audit</strong> — Website, social channels, messaging review
-                                <div class="deliverable-tooltip">
-                                    <h4>What It Is</h4>
-                                    <p>A comprehensive review of your current marketing presence—what's working, what's not, and where the biggest opportunities live.</p>
-                                    <h4>What's Included</h4>
-                                    <ul>
-                                        <li>Website messaging and user experience review</li>
-                                        <li>Social media channel audit (Facebook, Instagram, TikTok)</li>
-                                        <li>Content gap analysis (what stories you're missing)</li>
-                                        <li>Engagement and reach benchmarking</li>
-                                        <li>Competitor/peer organization comparison</li>
-                                        <li>Top 5 actionable recommendations prioritized by impact</li>
-                                    </ul>
-                                    <h4>Why It Matters</h4>
-                                    <p>You'll know exactly where to focus your energy instead of guessing. No more throwing content at the wall—you'll have a data-backed roadmap.</p>
-                                    <p class="delivery-format">Delivery: 10-12 page written report (PDF) delivered within 30 days</p>
-                                </div>
-                            </li>
-                            <li class="deliverable-item">
-                                <strong>Marketing and Storytelling Playbook</strong> — What stories matter, who they're for, how to talk about impact
-                                <div class="deliverable-tooltip">
-                                    <h4>What It Is</h4>
-                                    <p>Your custom playbook for consistent, compelling messaging across all channels—so everyone on your team is telling the same story.</p>
-                                    <h4>What's Included</h4>
-                                    <ul>
-                                        <li>3-5 core message pillars (the themes you always come back to)</li>
-                                        <li>Audience segmentation guide (donors, volunteers, parents, sponsors—what each group cares about)</li>
-                                        <li>Story types framework (success stories, behind-the-scenes, impact proof, events)</li>
-                                        <li>Talking points and elevator pitch (language you use when describing your work)</li>
-                                        <li>Real examples from your clubs to illustrate each story type</li>
-                                    </ul>
-                                    <h4>Why It Matters</h4>
-                                    <p>Your team will stop second-guessing what to post. When a club director asks "What should I share?", they'll have a clear answer. This creates consistency without killing creativity.</p>
-                                    <p class="delivery-format">Delivery: 12-15 page strategy document (PDF)</p>
-                                </div>
-                            </li>
-                            <li class="deliverable-item">
-                                <strong>6-Month Social Media Content Calendar</strong> — Monthly themes tied to fundraising and programs
-                                <div class="deliverable-tooltip">
-                                    <h4>What It Is</h4>
-                                    <p>A pre-built planning system that maps your content to your actual fundraising and program cycle—no more scrambling for post ideas.</p>
-                                    <h4>What's Included</h4>
-                                    <ul>
-                                        <li>Monthly themes tied to your calendar (Volunteer Appreciation, Youth Sports, Back to School, etc.)</li>
-                                        <li>Suggested post types for each week (Monday = success story, Wednesday = BTS, Friday = event reminder)</li>
-                                        <li>Content buckets with examples</li>
-                                        <li>Space to add your specific events, campaigns, and deadlines</li>
-                                        <li>Platform recommendations (what works best on Facebook vs. Instagram)</li>
-                                    </ul>
-                                    <h4>Why It Matters</h4>
-                                    <p>You'll move from reactive posting to strategic storytelling. Your team can plan ahead instead of posting last-minute. Your board sees consistent, intentional content.</p>
-                                    <p class="delivery-format">Delivery: Editable Google Sheet you can duplicate, customize, and reuse</p>
-                                </div>
-                            </li>
-                            <li class="deliverable-item">
-                                <strong>Staff Storytelling Training</strong> — 1-hour live webinar on capturing better content
-                                <div class="deliverable-tooltip">
-                                    <h4>What It Is</h4>
-                                    <p>A live, interactive workshop that teaches your team how to capture better content with just their phones—no fancy gear required.</p>
-                                    <h4>What's Included</h4>
-                                    <ul>
-                                        <li>Framing and composition basics (how to make a kid's face tell the story)</li>
-                                        <li>Lighting tips for indoor club spaces</li>
-                                        <li>Audio capture techniques (so you can actually hear the interview)</li>
-                                        <li>Storytelling structure (beginning, middle, end—even in a 30-second video)</li>
-                                        <li>Hashtag and caption strategy</li>
-                                        <li>Q&A session tailored to your team's specific challenges</li>
-                                    </ul>
-                                    <h4>Why It Matters</h4>
-                                    <p>Your club directors will feel confident shooting content instead of intimidated. You'll get more (and better) content from all 5 clubs without hiring a videographer.</p>
-                                    <p class="delivery-format">Delivery: 1-hour live webinar (recorded for future onboarding) + PDF resource guide</p>
-                                </div>
-                            </li>
-                        </ul>
-                        <h3 style="font-size: 1.1rem; margin-top: 1rem;">Optional Add-On:</h3>
-                        <ul class="package-list bullets">
-                            <li class="deliverable-item">
-                                <strong>Monthly Coaching:</strong> $500/month (cancel anytime)
-                                <div class="deliverable-tooltip">
-                                    <h4>What It Is</h4>
-                                    <p>Ongoing support to keep your momentum going—strategy, feedback, and accountability on your schedule.</p>
-                                    <h4>What's Included</h4>
-                                    <ul>
-                                        <li>1-hour monthly strategy call</li>
-                                        <li>Slack/email access for quick questions</li>
-                                        <li>Calendar refresh every 6 months</li>
-                                    </ul>
-                                    <h4>Why It Matters</h4>
-                                    <p>This keeps you from falling back into old habits. You'll have an expert in your corner to help you execute the strategy, not just hand you a document and disappear.</p>
-                                    <p class="delivery-format">Year 1 Total: $9,500 without coaching | $15,500 with 12 months coaching</p>
-                                </div>
-                            </li>
-                        </ul>
+                        <div class="package-content">
+                            <h3 style="font-size: 1.3rem;">What's Included:</h3>
+                            <ul class="package-list">
+                                <li class="deliverable-item">
+                                    <strong>External Communications & Social Audit</strong> — Website, social channels, messaging review
+                                    <div class="deliverable-tooltip">
+                                        <h4>What It Is</h4>
+                                        <p>A comprehensive review of your current marketing presence—what's working, what's not, and where the biggest opportunities live.</p>
+                                        <h4>What's Included</h4>
+                                        <ul>
+                                            <li>Website messaging and user experience review</li>
+                                            <li>Social media channel audit (Facebook, Instagram, TikTok)</li>
+                                            <li>Content gap analysis (what stories you're missing)</li>
+                                            <li>Engagement and reach benchmarking</li>
+                                            <li>Competitor/peer organization comparison</li>
+                                            <li>Top 5 actionable recommendations prioritized by impact</li>
+                                        </ul>
+                                        <h4>Why It Matters</h4>
+                                        <p>You'll know exactly where to focus your energy instead of guessing. No more throwing content at the wall—you'll have a data-backed roadmap.</p>
+                                        <p class="delivery-format">Delivery: 10-12 page written report (PDF) delivered within 30 days</p>
+                                    </div>
+                                </li>
+                                <li class="deliverable-item">
+                                    <strong>Marketing and Storytelling Playbook</strong> — What stories matter, who they're for, how to talk about impact
+                                    <div class="deliverable-tooltip">
+                                        <h4>What It Is</h4>
+                                        <p>Your custom playbook for consistent, compelling messaging across all channels—so everyone on your team is telling the same story.</p>
+                                        <h4>What's Included</h4>
+                                        <ul>
+                                            <li>3-5 core message pillars (the themes you always come back to)</li>
+                                            <li>Audience segmentation guide (donors, volunteers, parents, sponsors—what each group cares about)</li>
+                                            <li>Story types framework (success stories, behind-the-scenes, impact proof, events)</li>
+                                            <li>Talking points and elevator pitch (language you use when describing your work)</li>
+                                            <li>Real examples from your clubs to illustrate each story type</li>
+                                        </ul>
+                                        <h4>Why It Matters</h4>
+                                        <p>Your team will stop second-guessing what to post. When a club director asks "What should I share?", they'll have a clear answer. This creates consistency without killing creativity.</p>
+                                        <p class="delivery-format">Delivery: 12-15 page strategy document (PDF)</p>
+                                    </div>
+                                </li>
+                                <li class="deliverable-item">
+                                    <strong>6-Month Social Media Content Calendar</strong> — Monthly themes tied to fundraising and programs
+                                    <div class="deliverable-tooltip">
+                                        <h4>What It Is</h4>
+                                        <p>A pre-built planning system that maps your content to your actual fundraising and program cycle—no more scrambling for post ideas.</p>
+                                        <h4>What's Included</h4>
+                                        <ul>
+                                            <li>Monthly themes tied to your calendar (Volunteer Appreciation, Youth Sports, Back to School, etc.)</li>
+                                            <li>Suggested post types for each week (Monday = success story, Wednesday = BTS, Friday = event reminder)</li>
+                                            <li>Content buckets with examples</li>
+                                            <li>Space to add your specific events, campaigns, and deadlines</li>
+                                            <li>Platform recommendations (what works best on Facebook vs. Instagram)</li>
+                                        </ul>
+                                        <h4>Why It Matters</h4>
+                                        <p>You'll move from reactive posting to strategic storytelling. Your team can plan ahead instead of posting last-minute. Your board sees consistent, intentional content.</p>
+                                        <p class="delivery-format">Delivery: Editable Google Sheet you can duplicate, customize, and reuse</p>
+                                    </div>
+                                </li>
+                                <li class="deliverable-item">
+                                    <strong>Staff Storytelling Training</strong> — 1-hour live webinar on capturing better content
+                                    <div class="deliverable-tooltip">
+                                        <h4>What It Is</h4>
+                                        <p>A live, interactive workshop that teaches your team how to capture better content with just their phones—no fancy gear required.</p>
+                                        <h4>What's Included</h4>
+                                        <ul>
+                                            <li>Framing and composition basics (how to make a kid's face tell the story)</li>
+                                            <li>Lighting tips for indoor club spaces</li>
+                                            <li>Audio capture techniques (so you can actually hear the interview)</li>
+                                            <li>Storytelling structure (beginning, middle, end—even in a 30-second video)</li>
+                                            <li>Hashtag and caption strategy</li>
+                                            <li>Q&A session tailored to your team's specific challenges</li>
+                                        </ul>
+                                        <h4>Why It Matters</h4>
+                                        <p>Your club directors will feel confident shooting content instead of intimidated. You'll get more (and better) content from all 5 clubs without hiring a videographer.</p>
+                                        <p class="delivery-format">Delivery: 1-hour live webinar (recorded for future onboarding) + PDF resource guide</p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <h3 style="font-size: 1.1rem; margin-top: 1rem;">Optional Add-On:</h3>
+                            <ul class="package-list bullets">
+                                <li class="deliverable-item">
+                                    <strong>Monthly Coaching:</strong> $500/month (cancel anytime)
+                                    <div class="deliverable-tooltip">
+                                        <h4>What It Is</h4>
+                                        <p>Ongoing support to keep your momentum going—strategy, feedback, and accountability on your schedule.</p>
+                                        <h4>What's Included</h4>
+                                        <ul>
+                                            <li>1-hour monthly strategy call</li>
+                                            <li>Slack/email access for quick questions</li>
+                                            <li>Calendar refresh every 6 months</li>
+                                        </ul>
+                                        <h4>Why It Matters</h4>
+                                        <p>This keeps you from falling back into old habits. You'll have an expert in your corner to help you execute the strategy, not just hand you a document and disappear.</p>
+                                        <p class="delivery-format">Year 1 Total: $9,500 without coaching | $15,500 with 12 months coaching</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                         <div class="outcomes-box">
-                            <h4>Expected Outcomes</h4>
+                            <h3>Expected Outcomes</h3>
                             <ul>
                                 <li>Clarity around what is working well and specific items to be improved</li>
                                 <li>Recommended strategy and tactics that you can begin implementing to achieve your goals</li>
@@ -1360,113 +1379,115 @@
 
                 <div class="package-grid">
                     <div>
-                        <h3 style="color: var(--brand-orange); font-size: 1.3rem;">Everything from Package 1, Plus:</h3>
-                        <ul class="package-list">
-                            <li class="deliverable-item">
-                                <strong>Digital Asset Management</strong> — Setup + hosting included
-                                <div class="deliverable-tooltip">
-                                    <h4>What It Is</h4>
-                                    <p>A centralized, Pinterest-style visual library where all your photos, videos, and stories live—organized, searchable, and shareable.</p>
-                                    <h4>What's Included</h4>
-                                    <ul>
-                                        <li>Platform selection and setup (tailored to your workflow)</li>
-                                        <li>Custom board structure for your 5 clubs + event types</li>
-                                        <li>Upload workflows and permissions (who can add, edit, download)</li>
-                                        <li>Staff training on how to use it</li>
-                                    </ul>
-                                    <h4>Why It Matters</h4>
-                                    <p>No more digging through email attachments, Google Drive folders, or someone's phone. Your team can find and use great content in seconds.</p>
-                                    <p class="delivery-format">Delivery: Live platform + training session</p>
-                                </div>
-                            </li>
-                            <li class="deliverable-item">
-                                <strong>Impact Story Microsite</strong> — Modern, donor-ready storytelling experience
-                                <div class="deliverable-tooltip">
-                                    <h4>What It Is</h4>
-                                    <p>A dedicated, beautifully designed landing page that tells your story for donors, sponsors, and grant funders.</p>
-                                    <h4>What's Included</h4>
-                                    <ul>
-                                        <li>Custom design and development</li>
-                                        <li>3-5 impact stories (written + visual)</li>
-                                        <li>Donation integration (connected to your existing system)</li>
-                                        <li>Mobile-optimized and fast-loading</li>
-                                    </ul>
-                                    <h4>Why It Matters</h4>
-                                    <p>When someone asks "What do you do?", you send them here. It's your best foot forward—a modern, compelling case for support.</p>
-                                    <p class="delivery-format">Delivery: Live website</p>
-                                </div>
-                            </li>
-                            <li class="deliverable-item">
-                                <strong>Impact Narrative Toolkit</strong> — 3–5 core stories in short + long versions
-                                <div class="deliverable-tooltip">
-                                    <h4>What It Is</h4>
-                                    <p>A collection of your 3-5 strongest impact stories written in multiple formats—so you can drop them into grant applications, social posts, or donor emails.</p>
-                                    <h4>What's Included</h4>
-                                    <ul>
-                                        <li>3-5 core stories (youth success, volunteer impact, program outcomes)</li>
-                                        <li>Each story in 3 versions: 30-second (social), 2-minute (email), 5-minute (grant)</li>
-                                        <li>Supporting data and quotes</li>
-                                        <li>Photo/video asset links for each story</li>
-                                    </ul>
-                                    <h4>Why It Matters</h4>
-                                    <p>You'll never stare at a blank screen when writing a grant or email again. Your stories are ready to use, properly formatted, and consistently told.</p>
-                                    <p class="delivery-format">Delivery: Editable Google Doc + asset links</p>
-                                </div>
-                            </li>
-                            <li class="deliverable-item">
-                                <strong>Best Practices Guide</strong> — Templates and playbooks
-                                <div class="deliverable-tooltip">
-                                    <h4>What It Is</h4>
-                                    <p>A comprehensive guide with ready-to-use templates for common marketing tasks.</p>
-                                    <h4>What's Included</h4>
-                                    <ul>
-                                        <li>Social media post templates</li>
-                                        <li>Email newsletter templates</li>
-                                        <li>Event promotion checklists</li>
-                                        <li>Brand voice guidelines</li>
-                                    </ul>
-                                    <h4>Why It Matters</h4>
-                                    <p>Your team won't have to start from scratch every time. Templates save hours and ensure consistency.</p>
-                                    <p class="delivery-format">Delivery: PDF guide + editable templates</p>
-                                </div>
-                            </li>
-                            <li class="deliverable-item">
-                                <strong>Monthly PM Check-ins + 1 Hour Coaching</strong> — Dedicated support each month
-                                <div class="deliverable-tooltip">
-                                    <h4>What It Is</h4>
-                                    <p>Regular touchpoints with a dedicated project manager plus 1 hour of strategic coaching each month.</p>
-                                    <h4>What's Included</h4>
-                                    <ul>
-                                        <li>1-hour monthly strategy/coaching call</li>
-                                        <li>Progress tracking and accountability</li>
-                                        <li>Platform support and troubleshooting</li>
-                                        <li>Ongoing optimization recommendations</li>
-                                    </ul>
-                                    <h4>Why It Matters</h4>
-                                    <p>You'll have a dedicated partner keeping everything moving forward, not just a one-time deliverable.</p>
-                                    <p class="delivery-format">Delivery: Monthly calls + ongoing access</p>
-                                </div>
-                            </li>
-                            <li class="deliverable-item">
-                                <strong>1 Campaign Video Per Year</strong> — Done-for-you social content
-                                <div class="deliverable-tooltip">
-                                    <h4>What It Is</h4>
-                                    <p>A professionally produced campaign video for your biggest annual push—back to school, end of year giving, or your signature event.</p>
-                                    <h4>What's Included</h4>
-                                    <ul>
-                                        <li>Concept development and scripting</li>
-                                        <li>On-location shoot</li>
-                                        <li>Professional editing</li>
-                                        <li>Multiple cutdowns for social platforms</li>
-                                    </ul>
-                                    <h4>Why It Matters</h4>
-                                    <p>You get high-quality video content without the hassle of finding and managing a videographer.</p>
-                                    <p class="delivery-format">Delivery: Final video + social cutdowns, catalogued in your DAM</p>
-                                </div>
-                            </li>
-                        </ul>
+                        <div class="package-content">
+                            <h3 style="color: var(--brand-orange); font-size: 1.3rem;">Everything from Package 1, Plus:</h3>
+                            <ul class="package-list">
+                                <li class="deliverable-item">
+                                    <strong>Digital Asset Management</strong> — Setup + hosting included
+                                    <div class="deliverable-tooltip">
+                                        <h4>What It Is</h4>
+                                        <p>A centralized, Pinterest-style visual library where all your photos, videos, and stories live—organized, searchable, and shareable.</p>
+                                        <h4>What's Included</h4>
+                                        <ul>
+                                            <li>Platform selection and setup (tailored to your workflow)</li>
+                                            <li>Custom board structure for your 5 clubs + event types</li>
+                                            <li>Upload workflows and permissions (who can add, edit, download)</li>
+                                            <li>Staff training on how to use it</li>
+                                        </ul>
+                                        <h4>Why It Matters</h4>
+                                        <p>No more digging through email attachments, Google Drive folders, or someone's phone. Your team can find and use great content in seconds.</p>
+                                        <p class="delivery-format">Delivery: Live platform + training session</p>
+                                    </div>
+                                </li>
+                                <li class="deliverable-item">
+                                    <strong>Impact Story Microsite</strong> — Modern, donor-ready storytelling experience
+                                    <div class="deliverable-tooltip">
+                                        <h4>What It Is</h4>
+                                        <p>A dedicated, beautifully designed landing page that tells your story for donors, sponsors, and grant funders.</p>
+                                        <h4>What's Included</h4>
+                                        <ul>
+                                            <li>Custom design and development</li>
+                                            <li>3-5 impact stories (written + visual)</li>
+                                            <li>Donation integration (connected to your existing system)</li>
+                                            <li>Mobile-optimized and fast-loading</li>
+                                        </ul>
+                                        <h4>Why It Matters</h4>
+                                        <p>When someone asks "What do you do?", you send them here. It's your best foot forward—a modern, compelling case for support.</p>
+                                        <p class="delivery-format">Delivery: Live website</p>
+                                    </div>
+                                </li>
+                                <li class="deliverable-item">
+                                    <strong>Impact Narrative Toolkit</strong> — 3–5 core stories in short + long versions
+                                    <div class="deliverable-tooltip">
+                                        <h4>What It Is</h4>
+                                        <p>A collection of your 3-5 strongest impact stories written in multiple formats—so you can drop them into grant applications, social posts, or donor emails.</p>
+                                        <h4>What's Included</h4>
+                                        <ul>
+                                            <li>3-5 core stories (youth success, volunteer impact, program outcomes)</li>
+                                            <li>Each story in 3 versions: 30-second (social), 2-minute (email), 5-minute (grant)</li>
+                                            <li>Supporting data and quotes</li>
+                                            <li>Photo/video asset links for each story</li>
+                                        </ul>
+                                        <h4>Why It Matters</h4>
+                                        <p>You'll never stare at a blank screen when writing a grant or email again. Your stories are ready to use, properly formatted, and consistently told.</p>
+                                        <p class="delivery-format">Delivery: Editable Google Doc + asset links</p>
+                                    </div>
+                                </li>
+                                <li class="deliverable-item">
+                                    <strong>Best Practices Guide</strong> — Templates and playbooks
+                                    <div class="deliverable-tooltip">
+                                        <h4>What It Is</h4>
+                                        <p>A comprehensive guide with ready-to-use templates for common marketing tasks.</p>
+                                        <h4>What's Included</h4>
+                                        <ul>
+                                            <li>Social media post templates</li>
+                                            <li>Email newsletter templates</li>
+                                            <li>Event promotion checklists</li>
+                                            <li>Brand voice guidelines</li>
+                                        </ul>
+                                        <h4>Why It Matters</h4>
+                                        <p>Your team won't have to start from scratch every time. Templates save hours and ensure consistency.</p>
+                                        <p class="delivery-format">Delivery: PDF guide + editable templates</p>
+                                    </div>
+                                </li>
+                                <li class="deliverable-item">
+                                    <strong>Monthly PM Check-ins + 1 Hour Coaching</strong> — Dedicated support each month
+                                    <div class="deliverable-tooltip">
+                                        <h4>What It Is</h4>
+                                        <p>Regular touchpoints with a dedicated project manager plus 1 hour of strategic coaching each month.</p>
+                                        <h4>What's Included</h4>
+                                        <ul>
+                                            <li>1-hour monthly strategy/coaching call</li>
+                                            <li>Progress tracking and accountability</li>
+                                            <li>Platform support and troubleshooting</li>
+                                            <li>Ongoing optimization recommendations</li>
+                                        </ul>
+                                        <h4>Why It Matters</h4>
+                                        <p>You'll have a dedicated partner keeping everything moving forward, not just a one-time deliverable.</p>
+                                        <p class="delivery-format">Delivery: Monthly calls + ongoing access</p>
+                                    </div>
+                                </li>
+                                <li class="deliverable-item">
+                                    <strong>1 Campaign Video Per Year</strong> — Done-for-you social content
+                                    <div class="deliverable-tooltip">
+                                        <h4>What It Is</h4>
+                                        <p>A professionally produced campaign video for your biggest annual push—back to school, end of year giving, or your signature event.</p>
+                                        <h4>What's Included</h4>
+                                        <ul>
+                                            <li>Concept development and scripting</li>
+                                            <li>On-location shoot</li>
+                                            <li>Professional editing</li>
+                                            <li>Multiple cutdowns for social platforms</li>
+                                        </ul>
+                                        <h4>Why It Matters</h4>
+                                        <p>You get high-quality video content without the hassle of finding and managing a videographer.</p>
+                                        <p class="delivery-format">Delivery: Final video + social cutdowns, catalogued in your DAM</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                         <div class="outcomes-box">
-                            <h4>Expected Outcomes</h4>
+                            <h3>Expected Outcomes</h3>
                             <ul>
                                 <li>Done-for-you assets that help to activate new donors</li>
                                 <li>Greater clarity on how to grow and sustain online engagement</li>
@@ -1497,98 +1518,100 @@
 
                 <div class="package-grid">
                     <div>
-                        <h3 style="color: var(--brand-orange); font-size: 1.3rem;">Everything from Package 2, Plus:</h3>
-                        <ul class="package-list">
-                            <li class="deliverable-item">
-                                <strong>Flagship Cinematic Film</strong> — Professionally produced 3–5 minute film
-                                <div class="deliverable-tooltip">
-                                    <h4>What It Is</h4>
-                                    <p>A professionally produced, cinematic 3-5 minute film that captures the heart of your work—your anchor story for major moments.</p>
-                                    <h4>What's Included</h4>
-                                    <ul>
-                                        <li>Pre-production planning and scriptwriting</li>
-                                        <li>2-day on-location shoot in Midland/Odessa</li>
-                                        <li>Interviews, B-roll, and program footage across your clubs</li>
-                                        <li>Professional editing, color grading, sound design</li>
-                                        <li>Final film + 30-sec, 60-sec, and 90-sec cutdowns</li>
-                                        <li>All raw footage and B-roll clips</li>
-                                    </ul>
-                                    <h4>Why It Matters</h4>
-                                    <p>This is what you show at your gala. What you send to major donors. What you use in grant applications when words aren't enough.</p>
-                                    <p class="delivery-format">Delivery: Final film (3-5 min) + cutdowns + raw assets, all cataloged in your DAM</p>
-                                </div>
-                            </li>
-                            <li class="deliverable-item">
-                                <strong>LMS Platform</strong> — Staff training video library
-                                <div class="deliverable-tooltip">
-                                    <h4>What It Is</h4>
-                                    <p>A learning management system with on-demand training videos your team can access anytime.</p>
-                                    <h4>What's Included</h4>
-                                    <ul>
-                                        <li>Video library covering storytelling, content capture, and social media</li>
-                                        <li>Self-paced modules for new staff onboarding</li>
-                                        <li>Platform hosting and maintenance</li>
-                                        <li>Progress tracking for team members</li>
-                                    </ul>
-                                    <h4>Why It Matters</h4>
-                                    <p>New hires get up to speed fast. Your whole team has 24/7 access to training resources without scheduling live sessions.</p>
-                                    <p class="delivery-format">Delivery: Live LMS platform with ongoing access</p>
-                                </div>
-                            </li>
-                            <li class="deliverable-item">
-                                <strong>All Video Assets in DAM</strong> — Organized and catalogued
-                                <div class="deliverable-tooltip">
-                                    <h4>What It Is</h4>
-                                    <p>Every video asset from your flagship film—fully organized and ready to use.</p>
-                                    <h4>What's Included</h4>
-                                    <ul>
-                                        <li>Final film and all cutdowns</li>
-                                        <li>Raw interview footage</li>
-                                        <li>B-roll clips organized by theme</li>
-                                        <li>Still frames from video</li>
-                                    </ul>
-                                    <h4>Why It Matters</h4>
-                                    <p>You can repurpose footage for years. Need a clip for a social post? It's already organized and ready.</p>
-                                    <p class="delivery-format">Delivery: All assets catalogued in your DAM</p>
-                                </div>
-                            </li>
-                            <li class="deliverable-item">
-                                <strong>2 Hours Monthly Coaching</strong> — Double the strategic support
-                                <div class="deliverable-tooltip">
-                                    <h4>What It Is</h4>
-                                    <p>Two hours of dedicated coaching each month (vs. one hour in Package 2)—more time for strategy, troubleshooting, and planning.</p>
-                                    <h4>What's Included</h4>
-                                    <ul>
-                                        <li>2-hour monthly strategy/coaching session</li>
-                                        <li>Deep-dive campaign planning</li>
-                                        <li>Content review and feedback</li>
-                                        <li>Team training and skill-building</li>
-                                    </ul>
-                                    <h4>Why It Matters</h4>
-                                    <p>More coaching time means more personalized guidance. You can tackle bigger challenges and get more hands-on support.</p>
-                                    <p class="delivery-format">Delivery: 2 hours monthly coaching + ongoing access</p>
-                                </div>
-                            </li>
-                            <li class="deliverable-item">
-                                <strong>2 Campaign Videos Per Year</strong> — Double the done-for-you content
-                                <div class="deliverable-tooltip">
-                                    <h4>What It Is</h4>
-                                    <p>Two professionally produced campaign videos per year (vs. one in Package 2)—for your biggest annual moments.</p>
-                                    <h4>What's Included</h4>
-                                    <ul>
-                                        <li>2 campaign videos annually</li>
-                                        <li>Concept development and scripting for each</li>
-                                        <li>On-location shoots</li>
-                                        <li>Professional editing and social cutdowns</li>
-                                    </ul>
-                                    <h4>Why It Matters</h4>
-                                    <p>Cover both your spring fundraiser AND end-of-year giving with high-quality video content.</p>
-                                    <p class="delivery-format">Delivery: 2 final videos + social cutdowns per year, all in your DAM</p>
-                                </div>
-                            </li>
-                        </ul>
+                        <div class="package-content">
+                            <h3 style="color: var(--brand-orange); font-size: 1.3rem;">Everything from Package 2, Plus:</h3>
+                            <ul class="package-list">
+                                <li class="deliverable-item">
+                                    <strong>Flagship Cinematic Film</strong> — Professionally produced 3–5 minute film
+                                    <div class="deliverable-tooltip">
+                                        <h4>What It Is</h4>
+                                        <p>A professionally produced, cinematic 3-5 minute film that captures the heart of your work—your anchor story for major moments.</p>
+                                        <h4>What's Included</h4>
+                                        <ul>
+                                            <li>Pre-production planning and scriptwriting</li>
+                                            <li>2-day on-location shoot in Midland/Odessa</li>
+                                            <li>Interviews, B-roll, and program footage across your clubs</li>
+                                            <li>Professional editing, color grading, sound design</li>
+                                            <li>Final film + 30-sec, 60-sec, and 90-sec cutdowns</li>
+                                            <li>All raw footage and B-roll clips</li>
+                                        </ul>
+                                        <h4>Why It Matters</h4>
+                                        <p>This is what you show at your gala. What you send to major donors. What you use in grant applications when words aren't enough.</p>
+                                        <p class="delivery-format">Delivery: Final film (3-5 min) + cutdowns + raw assets, all cataloged in your DAM</p>
+                                    </div>
+                                </li>
+                                <li class="deliverable-item">
+                                    <strong>LMS Platform</strong> — Staff training video library
+                                    <div class="deliverable-tooltip">
+                                        <h4>What It Is</h4>
+                                        <p>A learning management system with on-demand training videos your team can access anytime.</p>
+                                        <h4>What's Included</h4>
+                                        <ul>
+                                            <li>Video library covering storytelling, content capture, and social media</li>
+                                            <li>Self-paced modules for new staff onboarding</li>
+                                            <li>Platform hosting and maintenance</li>
+                                            <li>Progress tracking for team members</li>
+                                        </ul>
+                                        <h4>Why It Matters</h4>
+                                        <p>New hires get up to speed fast. Your whole team has 24/7 access to training resources without scheduling live sessions.</p>
+                                        <p class="delivery-format">Delivery: Live LMS platform with ongoing access</p>
+                                    </div>
+                                </li>
+                                <li class="deliverable-item">
+                                    <strong>All Video Assets in DAM</strong> — Organized and catalogued
+                                    <div class="deliverable-tooltip">
+                                        <h4>What It Is</h4>
+                                        <p>Every video asset from your flagship film—fully organized and ready to use.</p>
+                                        <h4>What's Included</h4>
+                                        <ul>
+                                            <li>Final film and all cutdowns</li>
+                                            <li>Raw interview footage</li>
+                                            <li>B-roll clips organized by theme</li>
+                                            <li>Still frames from video</li>
+                                        </ul>
+                                        <h4>Why It Matters</h4>
+                                        <p>You can repurpose footage for years. Need a clip for a social post? It's already organized and ready.</p>
+                                        <p class="delivery-format">Delivery: All assets catalogued in your DAM</p>
+                                    </div>
+                                </li>
+                                <li class="deliverable-item">
+                                    <strong>2 Hours Monthly Coaching</strong> — Double the strategic support
+                                    <div class="deliverable-tooltip">
+                                        <h4>What It Is</h4>
+                                        <p>Two hours of dedicated coaching each month (vs. one hour in Package 2)—more time for strategy, troubleshooting, and planning.</p>
+                                        <h4>What's Included</h4>
+                                        <ul>
+                                            <li>2-hour monthly strategy/coaching session</li>
+                                            <li>Deep-dive campaign planning</li>
+                                            <li>Content review and feedback</li>
+                                            <li>Team training and skill-building</li>
+                                        </ul>
+                                        <h4>Why It Matters</h4>
+                                        <p>More coaching time means more personalized guidance. You can tackle bigger challenges and get more hands-on support.</p>
+                                        <p class="delivery-format">Delivery: 2 hours monthly coaching + ongoing access</p>
+                                    </div>
+                                </li>
+                                <li class="deliverable-item">
+                                    <strong>2 Campaign Videos Per Year</strong> — Double the done-for-you content
+                                    <div class="deliverable-tooltip">
+                                        <h4>What It Is</h4>
+                                        <p>Two professionally produced campaign videos per year (vs. one in Package 2)—for your biggest annual moments.</p>
+                                        <h4>What's Included</h4>
+                                        <ul>
+                                            <li>2 campaign videos annually</li>
+                                            <li>Concept development and scripting for each</li>
+                                            <li>On-location shoots</li>
+                                            <li>Professional editing and social cutdowns</li>
+                                        </ul>
+                                        <h4>Why It Matters</h4>
+                                        <p>Cover both your spring fundraiser AND end-of-year giving with high-quality video content.</p>
+                                        <p class="delivery-format">Delivery: 2 final videos + social cutdowns per year, all in your DAM</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                         <div class="outcomes-box">
-                            <h4>Expected Outcomes</h4>
+                            <h3>Expected Outcomes</h3>
                             <ul>
                                 <li>An evergreen asset that can be used for years to come</li>
                                 <li>Team alignment around marketing and communication</li>
@@ -1769,8 +1792,10 @@
 
         function showOutcomes(slideIndex) {
             const slide = slides[slideIndex];
+            const packageContent = slide.querySelector('.package-content');
             const outcomesBox = slide.querySelector('.outcomes-box');
-            if (outcomesBox) {
+            if (packageContent && outcomesBox) {
+                packageContent.classList.add('hidden');
                 outcomesBox.classList.add('visible');
                 packageOutcomesShown[slideIndex] = true;
             }
@@ -1778,8 +1803,10 @@
 
         function hideOutcomes(slideIndex) {
             const slide = slides[slideIndex];
+            const packageContent = slide.querySelector('.package-content');
             const outcomesBox = slide.querySelector('.outcomes-box');
-            if (outcomesBox) {
+            if (packageContent && outcomesBox) {
+                packageContent.classList.remove('hidden');
                 outcomesBox.classList.remove('visible');
                 packageOutcomesShown[slideIndex] = false;
             }
@@ -1988,12 +2015,16 @@
                 top = padding;
             }
 
-            // Make sure it doesn't go off the bottom - raise tooltips higher
+            // Position tooltip lower on the page (around 50-60% down)
             const tooltipHeight = tooltip.offsetHeight || 300;
-            const maxTop = window.innerHeight * 0.35; // Position in top 35% of screen
-            if (top > maxTop) {
-                top = maxTop;
+            // Start at 50% of viewport height
+            top = window.innerHeight * 0.5;
+
+            // Make sure it doesn't go off the bottom
+            if (top + tooltipHeight > window.innerHeight - padding) {
+                top = window.innerHeight - tooltipHeight - padding;
             }
+            // Make sure it doesn't go off the top
             if (top < padding) {
                 top = padding;
             }
