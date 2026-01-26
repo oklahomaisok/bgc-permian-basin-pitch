@@ -2004,35 +2004,18 @@
             const strong = item.querySelector('strong');
             const rect = strong ? strong.getBoundingClientRect() : item.getBoundingClientRect();
             const tooltipWidth = 400;
-            const padding = 15;
+            const padding = 20;
 
             // Position to the right of the text
             let left = rect.right + padding;
-            let top = rect.top;
 
             // If tooltip would go off right edge, position to the left instead
             if (left + tooltipWidth > window.innerWidth - padding) {
                 left = rect.left - tooltipWidth - padding;
             }
 
-            // Make sure it doesn't go off the top
-            if (top < padding) {
-                top = padding;
-            }
-
-            // Position tooltip near top of page (aligned with header area)
-            const tooltipHeight = tooltip.offsetHeight || 300;
-            // Start at around 80px from top (below the logo)
-            top = 80;
-
-            // Make sure it doesn't go off the bottom
-            if (top + tooltipHeight > window.innerHeight - padding) {
-                top = window.innerHeight - tooltipHeight - padding;
-            }
-            // Make sure it doesn't go off the top
-            if (top < padding) {
-                top = padding;
-            }
+            // Always position at the top of the viewport
+            let top = padding;
 
             tooltip.style.left = left + 'px';
             tooltip.style.top = top + 'px';
