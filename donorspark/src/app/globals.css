@@ -1,0 +1,276 @@
+/* Import Google Fonts - must be before tailwind */
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Oswald:wght@500;700&family=Roboto+Slab:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  /* Default theme colors */
+  --color-primary: #1D2350;
+  --color-secondary: #FFC303;
+  --color-background: #F6F3DF;
+  --color-text: #020202;
+  --color-accent: #C54E32;
+
+  /* Default fonts */
+  --font-display: 'Funnel Display', sans-serif;
+  --font-body: 'Libre Caslon Text', serif;
+  --font-sub: 'Libre Caslon Text', serif;
+
+  /* Effects */
+  --film-grain-opacity: 0.12;
+  --ambient-glow-color: #EACBB5;
+}
+
+@theme inline {
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-text);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+body {
+  font-family: var(--font-display);
+  background: var(--color-background);
+  color: var(--color-text);
+  overflow: hidden;
+}
+
+/* Selection style */
+::selection {
+  background: var(--color-accent);
+  color: white;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-serif {
+  font-family: var(--font-body);
+}
+
+/* Impact text (highlighted text in serif italic) */
+.impact-text {
+  font-family: var(--font-body);
+  font-style: italic;
+  color: var(--color-accent);
+  font-weight: 400;
+}
+
+/* Animations - Original Sea Cadets */
+@keyframes animationIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scrollUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+/* Animation control classes */
+.animate-on-scroll {
+  animation-play-state: paused !important;
+}
+
+.animate-on-scroll.animate {
+  animation-play-state: running !important;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Scrolling list animation */
+.scrolling-list {
+  animation: scrollUp 15s linear infinite;
+}
+
+/* Scroll container with gradient masks */
+.scroll-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.scroll-container::before,
+.scroll-container::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 30px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.scroll-container::before {
+  top: 0;
+  background: linear-gradient(to bottom, rgba(29, 35, 80, 1), transparent);
+}
+
+.scroll-container::after {
+  bottom: 0;
+  background: linear-gradient(to top, rgba(29, 35, 80, 1), transparent);
+}
+
+/* Hide scrollbar utility */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Line clamp utilities */
+.line-clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Theme root - receives CSS variables */
+.theme-root {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Slide container - responsive card sizing */
+.slide-container {
+  width: 90vw;
+  height: 72vh;
+  min-width: 0;
+}
+
+@media (min-width: 768px) {
+  .slide-container {
+    width: 500px;
+    height: auto;
+    aspect-ratio: 3/4;
+  }
+}
+
+/* Background grid pattern */
+.bg-grid-pattern {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 195, 3, 0.1) 1px, transparent 0);
+  background-size: 32px 32px;
+}
+
+/* Share modal transitions */
+.share-modal {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.share-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.share-modal-content {
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.share-modal.active .share-modal-content {
+  transform: scale(1) translateY(0);
+}
+
+/* Slide transitions */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 120px 60px;
+}
+
+/* Content box styling */
+.content-box {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 2rem;
+  padding: 2.5rem;
+  max-width: 1300px;
+  width: 100%;
+  border: 1px solid rgba(2, 2, 2, 0.05);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 1024px) {
+  .slide {
+    padding: 100px 40px;
+  }
+
+  .split-slide {
+    grid-template-columns: 1fr !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .pricing-comparison {
+    grid-template-columns: 1fr !important;
+  }
+
+  .client-results {
+    grid-template-columns: 1fr !important;
+  }
+
+  .roadmap {
+    flex-direction: column !important;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem !important;
+  }
+
+  h2 {
+    font-size: 2rem !important;
+  }
+
+  .slide {
+    padding: 80px 20px;
+  }
+}
