@@ -347,6 +347,10 @@
             top: 0.3rem;
         }
 
+        .package-list.arrows li:before {
+            content: "→";
+        }
+
         /* Deliverable Hover Tooltips */
         .deliverable-item {
             cursor: pointer;
@@ -550,120 +554,6 @@
             line-height: 1.5;
         }
 
-        .funnel-visual {
-            width: 100%;
-            max-width: 500px;
-            margin: 2rem auto;
-            position: relative;
-        }
-
-        .funnel-wrapper {
-            display: flex;
-            align-items: stretch;
-            gap: 2rem;
-        }
-
-        .funnel-stages {
-            flex: 1;
-        }
-
-        .funnel-stage {
-            position: relative;
-            padding: 1.75rem;
-            margin-bottom: 1.25rem;
-            text-align: center;
-            color: white;
-            font-weight: 700;
-            font-size: 1.3rem;
-            border-radius: 1rem;
-            clip-path: polygon(10% 0%, 90% 0%, 80% 100%, 20% 100%);
-            transition: all 0.3s ease;
-        }
-
-        .funnel-stage.top {
-            background: linear-gradient(135deg, #077caa 0%, #0a97d4 100%);
-            clip-path: polygon(5% 0%, 95% 0%, 85% 100%, 15% 100%);
-        }
-
-        .funnel-stage.middle {
-            background: linear-gradient(135deg, #5a9567 0%, #6cb87a 100%);
-            width: 80%;
-            margin-left: 10%;
-        }
-
-        .funnel-stage.bottom {
-            background: linear-gradient(135deg, #C54E32 0%, #D96548 100%);
-            width: 60%;
-            margin-left: 20%;
-        }
-
-        .funnel-label {
-            font-size: 0.85rem;
-            opacity: 0.95;
-            margin-top: 0.5rem;
-            font-weight: 500;
-            line-height: 1.3;
-            padding: 0 0.5rem;
-        }
-
-        /* Package Brackets */
-        .package-brackets {
-            position: absolute;
-            right: -180px;
-            top: 0;
-            bottom: 0;
-            width: 160px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
-
-        .package-bracket {
-            position: absolute;
-            right: 0;
-            display: flex;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .package-bracket.visible {
-            opacity: 1;
-        }
-
-        .bracket-line {
-            width: 30px;
-            border: 2px solid var(--brand-orange);
-            border-left: none;
-            border-radius: 0 10px 10px 0;
-        }
-
-        .bracket-label {
-            background: var(--brand-orange);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            font-weight: 700;
-            font-size: 0.9rem;
-            white-space: nowrap;
-            margin-left: 10px;
-        }
-
-        .bracket-1 {
-            top: 0;
-            height: 85px;
-        }
-
-        .bracket-2 {
-            top: 0;
-            height: 195px;
-        }
-
-        .bracket-3 {
-            top: 0;
-            height: 305px;
-        }
-
         .pricing-comparison {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -742,17 +632,17 @@
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 12px;
+            gap: 8px;
             z-index: 1000;
             background: rgba(255, 255, 255, 0.9);
-            padding: 0.85rem 1.75rem;
+            padding: 0.75rem 1.25rem;
             border-radius: 2rem;
             border: 1px solid rgba(2, 2, 2, 0.05);
         }
 
         .dot {
-            width: 14px;
-            height: 14px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: var(--brand-black);
             opacity: 0.2;
@@ -776,74 +666,6 @@
             grid-template-columns: 1fr 1fr;
             gap: 1.5rem;
             margin: 1rem 0;
-        }
-
-        /* Package content toggle */
-        .package-content {
-            transition: opacity 0.4s ease;
-        }
-
-        .package-content.hidden {
-            display: none;
-        }
-
-        /* Expected Outcomes Box - full replacement view */
-        .outcomes-box {
-            background: rgba(197, 78, 50, 0.08);
-            border-radius: 1.5rem;
-            padding: 2.5rem;
-            margin-top: 0;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.5s ease;
-            display: none;
-        }
-
-        .outcomes-box.visible {
-            opacity: 1;
-            transform: translateY(0);
-            display: block;
-        }
-
-        .outcomes-box h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--brand-orange);
-        }
-
-        .outcomes-box ul li {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            padding: 0.75rem 0 0.75rem 2rem;
-        }
-
-        .outcomes-box h4 {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--brand-orange);
-            margin-bottom: 0.75rem;
-        }
-
-        .outcomes-box ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .outcomes-box ul li {
-            font-size: 0.9rem;
-            line-height: 1.5;
-            padding: 0.35rem 0 0.35rem 1.5rem;
-            position: relative;
-        }
-
-        .outcomes-box ul li:before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: var(--brand-orange);
-            font-weight: bold;
         }
 
         /* Client Results */
@@ -899,30 +721,6 @@
             font-size: 0.85rem;
             opacity: 0.8;
             line-height: 1.3;
-        }
-
-        .client-quote {
-            background: rgba(197, 78, 50, 0.05);
-            border-left: 4px solid var(--brand-orange);
-            padding: 1.5rem;
-            border-radius: 0 1rem 1rem 0;
-            margin-top: 1.5rem;
-        }
-
-        .client-quote p {
-            font-family: 'Libre Caslon Text', serif;
-            font-style: italic;
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 0.75rem;
-        }
-
-        .client-quote .attribution {
-            font-family: 'Funnel Display', sans-serif;
-            font-style: normal;
-            font-size: 0.85rem;
-            font-weight: 600;
-            opacity: 0.7;
         }
 
         /* Roadmap */
@@ -1010,6 +808,110 @@
             color: var(--brand-orange);
         }
 
+        /* Transformation Cards */
+        .transformation-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .transformation-card .from {
+            font-size: 0.9rem;
+            opacity: 0.6;
+            text-decoration: line-through;
+            margin-bottom: 0.5rem;
+        }
+
+        .transformation-card .to {
+            font-size: 1.05rem;
+            color: var(--brand-orange);
+            font-weight: 600;
+        }
+
+        /* Add-on Cards */
+        .addon-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            max-width: 1000px;
+        }
+
+        .addon-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.75rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(2, 2, 2, 0.05);
+        }
+
+        .addon-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--brand-orange);
+        }
+
+        .addon-card .addon-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .addon-card p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        /* Guarantee Box */
+        .guarantee-box {
+            background: linear-gradient(135deg, var(--sage) 0%, #6cb87a 100%);
+            color: white;
+            border-radius: 2rem;
+            padding: 3rem;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .guarantee-box h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .guarantee-box p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+
+        /* Referral Visual */
+        .referral-stack {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .referral-item {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .referral-item .discount {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--brand-orange);
+        }
+
+        .referral-item .label {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
         @media (max-width: 1400px) {
             .slide {
                 padding: 100px 40px 140px;
@@ -1025,11 +927,6 @@
 
             .slide-image {
                 height: 450px;
-            }
-
-            .package-brackets {
-                right: -160px;
-                width: 140px;
             }
         }
 
@@ -1063,12 +960,17 @@
                 width: 140px;
             }
 
-            .package-brackets {
-                display: none;
-            }
-
             .stats-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .addon-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .referral-stack {
+                flex-direction: column;
+                align-items: center;
             }
         }
 
@@ -1084,6 +986,16 @@
             .stats-grid {
                 grid-template-columns: 1fr;
             }
+
+            .nav-dots {
+                gap: 6px;
+                padding: 0.6rem 1rem;
+            }
+
+            .dot {
+                width: 8px;
+                height: 8px;
+            }
         }
     </style>
 </head>
@@ -1096,688 +1008,637 @@
 
     <!-- Navigation Arrows -->
     <div class="nav-arrows">
-        <div class="nav-arrow nav-prev" onclick="prevSlide()">‹</div>
-        <div class="nav-arrow nav-next" onclick="nextSlide()">›</div>
+        <div class="nav-arrow nav-prev" onclick="prevSlide()">&#8249;</div>
+        <div class="nav-arrow nav-next" onclick="nextSlide()">&#8250;</div>
     </div>
 
     <div class="slides-container">
-        <!-- Slide 1: Title -->
+        <!-- Slide 1: Opening Hook -->
         <div class="slide active" data-slide="0">
             <div class="aura-background"></div>
             <div class="ambient-glow"></div>
             <div style="position: relative; z-index: 1; text-align: center; max-width: 1000px;">
                 <img src="bgca-permian-basin-logo.png" alt="Boys & Girls Club of the Permian Basin" style="max-width: 280px; margin-bottom: 2rem;">
-                <h1>A Partnership for <span class="impact-text">Impact</span></h1>
-                <p class="subtitle">Marketing Strategy Proposal</p>
+                <h1><span class="stat-number" data-target="2100" style="font-size: inherit; margin: 0;">2,100</span> Kids. 5 Clubs. <span class="impact-text">One Question.</span></h1>
+                <p class="subtitle">Does your story match your impact?</p>
                 <p style="margin-top: 3rem; opacity: 0.5; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.15em; font-weight: 600;">Presented by Anecdotal</p>
             </div>
         </div>
 
-        <!-- Slide 2: Your Impact -->
+        <!-- Slide 2: The Problem -->
         <div class="slide" data-slide="1">
             <div class="split-slide">
                 <img src="image1.jpeg" alt="Children at Boys and Girls Club" class="slide-image">
                 <div>
-                    <h2>Your <span class="impact-text">Impact</span></h2>
-                    <div class="stats-grid">
-                        <div class="stat-box" style="background: transparent; border: none; box-shadow: none;">
-                            <div class="stat-number" data-target="2100">0</div>
-                            <div class="stat-label">Kids served across five clubs</div>
-                        </div>
-                        <div class="stat-box" style="background: transparent; border: none; box-shadow: none;">
-                            <div class="stat-number" data-target="1400">0</div>
-                            <div class="stat-label">Kids in winter basketball league</div>
-                        </div>
-                    </div>
-                    <p style="font-size: 1.2rem; margin-top: 1.5rem; opacity: 0.8;">Serving Midland and Odessa with programs that change lives; Expansion underway to an additional community.</p>
+                    <h2>Great Work. <span class="impact-text">Quiet Impact.</span></h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">You're changing lives every day in Midland and Odessa. But when a donor visits your website&mdash;or a foundation reviews your grant&mdash;do they <em>feel</em> that impact?</p>
+                    <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">Or do they just see information?</p>
+                    <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.15rem; color: var(--brand-orange); margin-top: 2rem;">Most nonprofits struggle to turn their work into stories that move people to give. It's not an effort problem. It's a strategy problem.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 3: Current Challenges -->
+        <!-- Slide 3: The Cost -->
         <div class="slide" data-slide="2">
+            <div style="max-width: 900px; text-align: center;">
+                <h2>What Silence <span class="impact-text">Costs</span></h2>
+                <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 2rem;">Every month without a clear, compelling story is:</p>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; text-align: left;">
+                    <div class="challenge-card">
+                        <h4>Grant applications that don't stand out</h4>
+                        <p>Your impact gets lost in a sea of generic proposals</p>
+                    </div>
+                    <div class="challenge-card">
+                        <h4>Donor appeals that feel generic</h4>
+                        <p>Without emotional connection, asks fall flat</p>
+                    </div>
+                    <div class="challenge-card">
+                        <h4>Major gift prospects who never connect</h4>
+                        <p>They give elsewhere because they don't feel your mission</p>
+                    </div>
+                    <div class="challenge-card">
+                        <h4>A team that struggles to explain why it matters</h4>
+                        <p>Hard work without the words to match</p>
+                    </div>
+                </div>
+                <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.25rem; color: var(--brand-orange); margin-top: 2.5rem;">You can't cut your way to sustainability. You have to grow. And growth starts with story.</p>
+            </div>
+        </div>
+
+        <!-- Slide 4: The Shift -->
+        <div class="slide" data-slide="3">
             <div class="split-slide">
                 <div>
-                    <h2>What We <span class="impact-text">Heard</span></h2>
-                    <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.25rem; margin-bottom: 1.5rem; color: var(--brand-orange);">"Even though we're serving a lot of kids, we still run into people who don't know we exist."</p>
-                    <div class="challenge-card">
-                        <h4>Awareness Gap</h4>
-                        <p>Many people around Midland/Odessa still have never heard of the Boys and Girls Club</p>
-                    </div>
-                    <div class="challenge-card">
-                        <h4>Identity Confusion</h4>
-                        <p>Getting mixed up with other organizations despite your unique mission and scale</p>
-                    </div>
-                    <div class="challenge-card">
-                        <h4>Funding Diversification</h4>
-                        <p>Need to expand beyond current sources through individual donors and corporate sponsorships</p>
-                    </div>
-                    <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; opacity: 0.7; font-size: 1.1rem; margin-top: 1.5rem;">These challenges are common—and solvable.</p>
+                    <h2>From Invisible to <span class="impact-text">Unforgettable</span></h2>
+                    <p style="font-size: 1.15rem; margin-bottom: 1.5rem;">What if every touchpoint&mdash;your website, your social media, your donor meetings, your grant applications&mdash;told the same powerful story?</p>
+                    <p style="font-size: 1.15rem; margin-bottom: 1.5rem;">What if your staff could confidently capture and share impact moments?</p>
+                    <p style="font-size: 1.15rem; margin-bottom: 1.5rem;">What if you had assets so compelling that donors shared them without being asked?</p>
+                    <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.1rem; opacity: 0.8; margin-top: 2rem;">That's what we build.</p>
                 </div>
-                <img src="bcga-photo-1.jpg" alt="Boys and Girls Club" class="slide-image">
+                <div class="deliverable-item" style="padding: 0; margin: 0; cursor: pointer;">
+                    <a href="https://oklahomaisok.github.io/sea-cadets-impact-deck/" target="_blank" style="display: block; text-decoration: none; color: inherit; border: 1px solid rgba(0,0,0,0.1); border-radius: 1.5rem; overflow: hidden; transition: box-shadow 0.2s ease, transform 0.2s ease;">
+                        <img src="sea-cadets-preview.png" alt="Sea Cadets Impact Deck Preview" style="width: 100%; display: block; border-radius: 1.5rem 1.5rem 0 0;">
+                        <div style="padding: 1rem 1.25rem; background: white; font-size: 0.85rem; color: #4a5568;">
+                            <strong style="color: var(--brand-orange);">Example: Sea Cadets Impact Deck</strong><br>
+                            Click to see what's possible
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
 
-        <!-- Slide 4: The Funnel Connection -->
-        <div class="slide" data-slide="3" id="funnel-slide">
-            <div style="max-width: 900px; text-align: center;">
-                <h2>The <span class="impact-text">Donor Journey</span></h2>
-                <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 0.5rem;">Each package addresses a different stage of the marketing funnel</p>
-
-                <div class="funnel-visual">
-                    <div class="funnel-wrapper">
-                        <div class="funnel-stages">
-                            <div class="funnel-stage top" data-funnel="awareness">
-                                <div>AWARENESS</div>
-                                <div class="funnel-label">Building recognition in your community</div>
-                            </div>
-                            <div class="funnel-stage middle" data-funnel="trust">
-                                <div>BELIEF & TRUST</div>
-                                <div class="funnel-label">Engaging in deeper storytelling</div>
-                            </div>
-                            <div class="funnel-stage bottom" data-funnel="commitment">
-                                <div>COMMITMENT</div>
-                                <div class="funnel-label">Connecting with emotional resonance</div>
-                            </div>
-                        </div>
-                        <div class="package-brackets">
-                            <div class="package-bracket bracket-1" id="bracket-1">
-                                <div class="bracket-line" style="height: 100%;"></div>
-                                <span class="bracket-label">Package 1</span>
-                            </div>
-                            <div class="package-bracket bracket-2" id="bracket-2">
-                                <div class="bracket-line" style="height: 100%;"></div>
-                                <span class="bracket-label">Package 2</span>
-                            </div>
-                            <div class="package-bracket bracket-3" id="bracket-3">
-                                <div class="bracket-line" style="height: 100%;"></div>
-                                <span class="bracket-label">Package 3</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <p style="font-size: 1.15rem; margin-top: 2rem; opacity: 0.8;">Start where you need it most—or build the complete donor experience.</p>
-                <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.5;">Click to see how packages map to each stage →</p>
-            </div>
-        </div>
-
-        <!-- Slide 5: Client Results -->
+        <!-- Slide 5: Why Anecdotal -->
         <div class="slide" data-slide="4">
-            <h2 style="text-align: center; margin-bottom: 2rem;">Outcomes for <span class="impact-text">Our Clients</span></h2>
+            <h2 style="text-align: center; margin-bottom: 2rem;">We Make Nonprofits <span class="impact-text">Impossible to Ignore</span></h2>
             <div class="client-results">
                 <div class="client-card">
                     <h3>Texas Hearing Institute</h3>
                     <p class="client-subtitle">Broke their fundraising records</p>
                     <div class="stats-row">
                         <div class="stat-item">
-                            <div class="stat-highlight">+45.2%</div>
+                            <div class="stat-highlight">+45%</div>
                             <div class="stat-description">Donation increase in Year 1</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-highlight">+18.7%</div>
-                            <div class="stat-description">Additional increase in Year 2</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-highlight">$1 million</div>
+                            <div class="stat-highlight">$1M</div>
                             <div class="stat-description">Raised at their 2025 gala</div>
                         </div>
                     </div>
-                    <div class="client-quote">
-                        <p>"The process of working with Anecdotal Media has been a great experience for Texas Hearing Institute! Thanks to their moving and impactful videos, we have raised substantially more money during the past two years."</p>
-                        <span class="attribution">— Mary Collins Raun, Director of Development and Marketing, Texas Hearing Institute</span>
-                    </div>
                 </div>
                 <div class="client-card">
-                    <h3>Sea Cadets</h3>
-                    <p class="client-subtitle">More inquiries than capacity</p>
+                    <h3>U.S. Naval Sea Cadets</h3>
+                    <p class="client-subtitle">From obscurity to national visibility</p>
                     <div class="stats-row">
                         <div class="stat-item">
-                            <div class="stat-highlight">13M</div>
-                            <div class="stat-description">Video views across social media in 2025</div>
+                            <div class="stat-highlight">11M+</div>
+                            <div class="stat-description">Annual video views</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-highlight">$800K</div>
-                            <div class="stat-description">Grant secured due to increased visibility</div>
+                            <div class="stat-description">Grant secured from visibility</div>
                         </div>
-                    </div>
-                    <div class="client-quote">
-                        <p>"In our first year working with this enthusiastic and capable team, they have brought us out of obscurity and interest in Sea Cadets has never been higher. Marketing is no longer a stressor for me, but a great opportunity for growth and success."</p>
-                        <span class="attribution">— Andy Lennon, Executive Director, US Naval Sea Cadet Corps</span>
                     </div>
                 </div>
             </div>
+            <p style="text-align: center; margin-top: 2rem; font-size: 1.2rem; max-width: 800px;">
+                <span style="font-weight: 700;">Emmy-winning production team.</span>
+                <span style="opacity: 0.8;">We don't do generic marketing. We build storytelling systems that raise more money.</span>
+            </p>
         </div>
 
-        <!-- Slide 6: Package 1 -->
+        <!-- Slide 6: How It Works -->
         <div class="slide" data-slide="5">
-            <div class="content-box">
-                <span class="package-badge">Package 1</span>
-                <h2 style="margin-bottom: 0.5rem;">Foundation</h2>
-                <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.1rem; margin-bottom: 1.5rem; opacity: 0.8;">Top of Funnel: Clarity, Consistency, Confidence</p>
-
-                <div class="package-grid">
-                    <div>
-                        <div class="package-content">
-                            <h3 style="font-size: 1.3rem;">What's Included:</h3>
-                            <ul class="package-list">
-                                <li class="deliverable-item">
-                                    <strong>External Communications & Social Audit</strong> — Website, social channels, messaging review
-                                    <div class="deliverable-tooltip">
-                                        <h4>What It Is</h4>
-                                        <p>A comprehensive review of your current marketing presence—what's working, what's not, and where the biggest opportunities live.</p>
-                                        <h4>What's Included</h4>
-                                        <ul>
-                                            <li>Website messaging and user experience review</li>
-                                            <li>Social media channel audit (Facebook, Instagram, TikTok)</li>
-                                            <li>Content gap analysis (what stories you're missing)</li>
-                                            <li>Engagement and reach benchmarking</li>
-                                            <li>Competitor/peer organization comparison</li>
-                                            <li>Top 5 actionable recommendations prioritized by impact</li>
-                                        </ul>
-                                        <h4>Why It Matters</h4>
-                                        <p>You'll know exactly where to focus your energy instead of guessing. No more throwing content at the wall—you'll have a data-backed roadmap.</p>
-                                        <p class="delivery-format">Delivery: 10-12 page written report (PDF) delivered within 30 days</p>
-                                    </div>
-                                </li>
-                                <li class="deliverable-item">
-                                    <strong>Marketing and Storytelling Playbook</strong> — What stories matter, who they're for, how to talk about impact
-                                    <div class="deliverable-tooltip">
-                                        <h4>What It Is</h4>
-                                        <p>Your custom playbook for consistent, compelling messaging across all channels—so everyone on your team is telling the same story.</p>
-                                        <h4>What's Included</h4>
-                                        <ul>
-                                            <li>3-5 core message pillars (the themes you always come back to)</li>
-                                            <li>Audience segmentation guide (donors, volunteers, parents, sponsors—what each group cares about)</li>
-                                            <li>Story types framework (success stories, behind-the-scenes, impact proof, events)</li>
-                                            <li>Talking points and elevator pitch (language you use when describing your work)</li>
-                                            <li>Real examples from your clubs to illustrate each story type</li>
-                                        </ul>
-                                        <h4>Why It Matters</h4>
-                                        <p>Your team will stop second-guessing what to post. When a club director asks "What should I share?", they'll have a clear answer. This creates consistency without killing creativity.</p>
-                                        <p class="delivery-format">Delivery: 12-15 page strategy document (PDF)</p>
-                                    </div>
-                                </li>
-                                <li class="deliverable-item">
-                                    <strong>6-Month Social Media Content Calendar</strong> — Monthly themes tied to fundraising and programs
-                                    <div class="deliverable-tooltip">
-                                        <h4>What It Is</h4>
-                                        <p>A pre-built planning system that maps your content to your actual fundraising and program cycle—no more scrambling for post ideas.</p>
-                                        <h4>What's Included</h4>
-                                        <ul>
-                                            <li>Monthly themes tied to your calendar (Volunteer Appreciation, Youth Sports, Back to School, etc.)</li>
-                                            <li>Suggested post types for each week (Monday = success story, Wednesday = BTS, Friday = event reminder)</li>
-                                            <li>Content buckets with examples</li>
-                                            <li>Space to add your specific events, campaigns, and deadlines</li>
-                                            <li>Platform recommendations (what works best on Facebook vs. Instagram)</li>
-                                        </ul>
-                                        <h4>Why It Matters</h4>
-                                        <p>You'll move from reactive posting to strategic storytelling. Your team can plan ahead instead of posting last-minute. Your board sees consistent, intentional content.</p>
-                                        <p class="delivery-format">Delivery: Editable Google Sheet you can duplicate, customize, and reuse</p>
-                                    </div>
-                                </li>
-                                <li class="deliverable-item">
-                                    <strong>Staff Storytelling Training</strong> — 1-hour live webinar on capturing better content
-                                    <div class="deliverable-tooltip">
-                                        <h4>What It Is</h4>
-                                        <p>A live, interactive workshop that teaches your team how to capture better content with just their phones—no fancy gear required.</p>
-                                        <h4>What's Included</h4>
-                                        <ul>
-                                            <li>Framing and composition basics (how to make a kid's face tell the story)</li>
-                                            <li>Lighting tips for indoor club spaces</li>
-                                            <li>Audio capture techniques (so you can actually hear the interview)</li>
-                                            <li>Storytelling structure (beginning, middle, end—even in a 30-second video)</li>
-                                            <li>Hashtag and caption strategy</li>
-                                            <li>Q&A session tailored to your team's specific challenges</li>
-                                        </ul>
-                                        <h4>Why It Matters</h4>
-                                        <p>Your club directors will feel confident shooting content instead of intimidated. You'll get more (and better) content from all 5 clubs without hiring a videographer.</p>
-                                        <p class="delivery-format">Delivery: 1-hour live webinar (recorded for future onboarding) + PDF resource guide</p>
-                                    </div>
-                                </li>
-                            </ul>
-                            <h3 style="font-size: 1.1rem; margin-top: 1rem;">Optional Add-On:</h3>
-                            <ul class="package-list bullets">
-                                <li class="deliverable-item">
-                                    <strong>Monthly Coaching:</strong> $500/month (cancel anytime)
-                                    <div class="deliverable-tooltip">
-                                        <h4>What It Is</h4>
-                                        <p>Ongoing support to keep your momentum going—strategy, feedback, and accountability on your schedule.</p>
-                                        <h4>What's Included</h4>
-                                        <ul>
-                                            <li>1-hour monthly strategy call</li>
-                                            <li>Slack/email access for quick questions</li>
-                                            <li>Calendar refresh every 6 months</li>
-                                        </ul>
-                                        <h4>Why It Matters</h4>
-                                        <p>This keeps you from falling back into old habits. You'll have an expert in your corner to help you execute the strategy, not just hand you a document and disappear.</p>
-                                        <p class="delivery-format">Year 1 Total: $9,500 without coaching | $15,500 with 12 months coaching</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="outcomes-box">
-                            <h3>Expected Outcomes</h3>
-                            <ul>
-                                <li>Clarity around what is working well and specific items to be improved</li>
-                                <li>Recommended strategy and tactics that you can begin implementing to achieve your goals</li>
-                                <li>Actionable education that is going to elevate the effectiveness of your entire team</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="price-box" style="align-self: start;">
-                        <p style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.9; margin-bottom: 0.5rem;">Year 1 Investment</p>
-                        <p style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.25rem;">$9,500</p>
-                        <p style="font-size: 0.95rem; opacity: 0.9;">One-time</p>
-                        <div style="border-top: 1px solid rgba(255,255,255,0.3); margin: 1rem 0; padding-top: 1rem;">
-                            <p style="font-size: 0.85rem; opacity: 0.9;">+ Optional coaching: $500/mo</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 7: Package 2 -->
-        <div class="slide" data-slide="6">
-            <div class="content-box">
-                <span class="package-badge">Package 2</span>
-                <h2 style="margin-bottom: 0.5rem;">Activation</h2>
-                <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.1rem; margin-bottom: 1.5rem; opacity: 0.8;">Middle of Funnel: Belief, Trust, Usability</p>
-
-                <div class="package-grid">
-                    <div>
-                        <div class="package-content">
-                            <h3 style="color: var(--brand-orange); font-size: 1.3rem;">Everything from Package 1, Plus:</h3>
-                            <ul class="package-list">
-                                <li class="deliverable-item">
-                                    <strong>Digital Asset Management</strong> — Setup + hosting included
-                                    <div class="deliverable-tooltip">
-                                        <h4>What It Is</h4>
-                                        <p>A centralized, Pinterest-style visual library where all your photos, videos, and stories live—organized, searchable, and shareable.</p>
-                                        <h4>What's Included</h4>
-                                        <ul>
-                                            <li>Platform selection and setup (tailored to your workflow)</li>
-                                            <li>Custom board structure for your 5 clubs + event types</li>
-                                            <li>Upload workflows and permissions (who can add, edit, download)</li>
-                                            <li>Staff training on how to use it</li>
-                                        </ul>
-                                        <h4>Why It Matters</h4>
-                                        <p>No more digging through email attachments, Google Drive folders, or someone's phone. Your team can find and use great content in seconds.</p>
-                                        <p class="delivery-format">Delivery: Live platform + training session</p>
-                                    </div>
-                                </li>
-                                <li class="deliverable-item">
-                                    <strong>Impact Story Microsite</strong> — Modern, donor-ready storytelling experience
-                                    <div class="deliverable-tooltip">
-                                        <h4>What It Is</h4>
-                                        <p>A dedicated, beautifully designed landing page that tells your story for donors, sponsors, and grant funders.</p>
-                                        <h4>Example: Sea Cadets Impact Deck</h4>
-                                        <a href="https://oklahomaisok.github.io/sea-cadets-impact-deck/" target="_blank" style="display: block; text-decoration: none; color: inherit; border: 1px solid rgba(0,0,0,0.1); border-radius: 0.75rem; overflow: hidden; margin-bottom: 1rem; transition: box-shadow 0.2s ease;">
-                                            <img src="sea-cadets-preview.png" alt="Sea Cadets Impact Deck Preview" style="width: 100%; display: block;">
-                                            <div style="padding: 0.75rem 1rem; background: #f7fafc; font-size: 0.75rem; color: #4a5568;">
-                                                oklahomaisok.github.io → Click to view example
-                                            </div>
-                                        </a>
-                                        <h4>What's Included</h4>
-                                        <ul>
-                                            <li>Custom design and development</li>
-                                            <li>3-5 impact stories (written + visual)</li>
-                                            <li>Donation integration (connected to your existing system)</li>
-                                            <li>Mobile-optimized and fast-loading</li>
-                                        </ul>
-                                        <h4>Why It Matters</h4>
-                                        <p>When someone asks "What do you do?", you send them here. It's your best foot forward—a modern, compelling case for support.</p>
-                                        <p class="delivery-format">Delivery: Live website</p>
-                                    </div>
-                                </li>
-                                <li class="deliverable-item">
-                                    <strong>Impact Narrative Toolkit</strong> — 3–5 core stories in short + long versions
-                                    <div class="deliverable-tooltip">
-                                        <h4>What It Is</h4>
-                                        <p>A collection of your 3-5 strongest impact stories written in multiple formats—so you can drop them into grant applications, social posts, or donor emails.</p>
-                                        <h4>What's Included</h4>
-                                        <ul>
-                                            <li>3-5 core stories (youth success, volunteer impact, program outcomes)</li>
-                                            <li>Each story in 3 versions: 30-second (social), 2-minute (email), 5-minute (grant)</li>
-                                            <li>Supporting data and quotes</li>
-                                            <li>Photo/video asset links for each story</li>
-                                        </ul>
-                                        <h4>Why It Matters</h4>
-                                        <p>You'll never stare at a blank screen when writing a grant or email again. Your stories are ready to use, properly formatted, and consistently told.</p>
-                                        <p class="delivery-format">Delivery: Editable Google Doc + asset links</p>
-                                    </div>
-                                </li>
-                                <li class="deliverable-item">
-                                    <strong>Best Practices Guide</strong> — Templates and playbooks
-                                    <div class="deliverable-tooltip">
-                                        <h4>What It Is</h4>
-                                        <p>A comprehensive guide with ready-to-use templates for common marketing tasks.</p>
-                                        <h4>What's Included</h4>
-                                        <ul>
-                                            <li>Social media post templates</li>
-                                            <li>Email newsletter templates</li>
-                                            <li>Event promotion checklists</li>
-                                            <li>Brand voice guidelines</li>
-                                        </ul>
-                                        <h4>Why It Matters</h4>
-                                        <p>Your team won't have to start from scratch every time. Templates save hours and ensure consistency.</p>
-                                        <p class="delivery-format">Delivery: PDF guide + editable templates</p>
-                                    </div>
-                                </li>
-                                <li class="deliverable-item">
-                                    <strong>Monthly PM Check-ins + 1 Hour Coaching</strong> — Dedicated support each month
-                                    <div class="deliverable-tooltip">
-                                        <h4>What It Is</h4>
-                                        <p>Regular touchpoints with a dedicated project manager plus 1 hour of strategic coaching each month.</p>
-                                        <h4>What's Included</h4>
-                                        <ul>
-                                            <li>1-hour monthly strategy/coaching call</li>
-                                            <li>Progress tracking and accountability</li>
-                                            <li>Platform support and troubleshooting</li>
-                                            <li>Ongoing optimization recommendations</li>
-                                        </ul>
-                                        <h4>Why It Matters</h4>
-                                        <p>You'll have a dedicated partner keeping everything moving forward, not just a one-time deliverable.</p>
-                                        <p class="delivery-format">Delivery: Monthly calls + ongoing access</p>
-                                    </div>
-                                </li>
-                                <li class="deliverable-item">
-                                    <strong>1 Campaign Video Per Year</strong> — Done-for-you social content
-                                    <div class="deliverable-tooltip">
-                                        <h4>What It Is</h4>
-                                        <p>A professionally edited campaign video for your biggest annual push—we take the photos and videos your team has already captured and turn them into polished content with titles and voiceover.</p>
-                                        <h4>Example: Sea Cadets Day of Giving</h4>
-                                        <div style="padding:56.25% 0 0 0;position:relative;margin-bottom:1rem;"><iframe src="https://player.vimeo.com/video/1109135997?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Sea Cadets Day of Giving 2025"></iframe></div>
-                                        <h4>What's Included</h4>
-                                        <ul>
-                                            <li>Concept development and scripting</li>
-                                            <li>Repurposing your existing photos and videos</li>
-                                            <li>Professional editing with titles and graphics</li>
-                                            <li>Voiceover production</li>
-                                            <li>Multiple cutdowns for social platforms</li>
-                                        </ul>
-                                        <h4>Why It Matters</h4>
-                                        <p>You get high-quality video content from assets you already have—no additional shooting required.</p>
-                                        <p class="delivery-format">Delivery: Final video + social cutdowns, catalogued in your DAM</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="outcomes-box">
-                            <h3>Expected Outcomes</h3>
-                            <ul>
-                                <li>Done-for-you assets that help to activate new donors</li>
-                                <li>Greater clarity on how to grow and sustain online engagement</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="price-box" style="align-self: start;">
-                        <p style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.9; margin-bottom: 0.5rem;">Year 1 Investment</p>
-                        <p style="font-size: 2.2rem; font-weight: 700; margin-bottom: 0.25rem;">$28,000</p>
-                        <p style="font-size: 0.95rem; opacity: 0.9;">Upfront</p>
-                        <p style="font-size: 1.5rem; font-weight: 700; margin-top: 0.75rem;">+ $1,750/mo</p>
-                        <p style="font-size: 0.85rem; opacity: 0.9;">Starting Month 2</p>
-                        <div style="border-top: 1px solid rgba(255,255,255,0.3); margin: 1rem 0; padding-top: 1rem;">
-                            <p style="font-size: 0.8rem; opacity: 0.9;">Year 1 (6 mo): $36,750<br>Year 1 (12 mo): $47,250</p>
-                            <p style="font-size: 0.8rem; opacity: 0.9; margin-top: 0.5rem;">Year 2+: $1,750/mo ($21,000/yr)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 8: Package 3 -->
-        <div class="slide" data-slide="7">
-            <div class="content-box">
-                <span class="package-badge">Package 3</span>
-                <h2 style="margin-bottom: 0.5rem;">Connection</h2>
-                <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.1rem; margin-bottom: 1.5rem; opacity: 0.8;">Bottom of Funnel: Emotional Authority, Major Donors</p>
-
-                <div class="package-grid">
-                    <div>
-                        <div class="package-content">
-                            <h3 style="color: var(--brand-orange); font-size: 1.3rem;">Everything from Package 2, Plus:</h3>
-                            <ul class="package-list">
-                                <li class="deliverable-item">
-                                    <strong>Flagship Cinematic Film</strong> — Professionally produced 3–5 minute film
-                                    <div class="deliverable-tooltip">
-                                        <h4>What It Is</h4>
-                                        <p>A professionally produced, cinematic 3-5 minute film that captures the heart of your work—your anchor story for major moments.</p>
-                                        <h4>Example: Texas Hearing Institute</h4>
-                                        <div style="padding:56.25% 0 0 0;position:relative;margin-bottom:1rem;"><iframe src="https://player.vimeo.com/video/1121616454?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Texas Hearing Institute 2025 Gala Video"></iframe></div>
-                                        <h4>What's Included</h4>
-                                        <ul>
-                                            <li>Pre-production planning and scriptwriting</li>
-                                            <li>2-day on-location shoot in Midland/Odessa</li>
-                                            <li>Interviews, B-roll, and program footage across your clubs</li>
-                                            <li>Professional editing, color grading, sound design</li>
-                                            <li>Final film + 30-sec, 60-sec, and 90-sec cutdowns</li>
-                                            <li>All raw footage and B-roll clips</li>
-                                        </ul>
-                                        <h4>Why It Matters</h4>
-                                        <p>This is what you show at your gala. What you send to major donors. What you use in grant applications when words aren't enough.</p>
-                                        <p class="delivery-format">Delivery: Final film (3-5 min) + cutdowns + raw assets, all cataloged in your DAM</p>
-                                    </div>
-                                </li>
-                                <li class="deliverable-item">
-                                    <strong>LMS Platform</strong> — Staff training video library
-                                    <div class="deliverable-tooltip">
-                                        <h4>What It Is</h4>
-                                        <p>A learning management system with on-demand training videos your team can access anytime.</p>
-                                        <h4>What's Included</h4>
-                                        <ul>
-                                            <li>Video library covering storytelling, content capture, and social media</li>
-                                            <li>Self-paced modules for new staff onboarding</li>
-                                            <li>Platform hosting and maintenance</li>
-                                            <li>Progress tracking for team members</li>
-                                        </ul>
-                                        <h4>Why It Matters</h4>
-                                        <p>New hires get up to speed fast. Your whole team has 24/7 access to training resources without scheduling live sessions.</p>
-                                        <p class="delivery-format">Delivery: Live LMS platform with ongoing access</p>
-                                    </div>
-                                </li>
-                                <li class="deliverable-item">
-                                    <strong>All Video Assets in DAM</strong> — Organized and catalogued
-                                    <div class="deliverable-tooltip">
-                                        <h4>What It Is</h4>
-                                        <p>Every video asset from your flagship film—fully organized and ready to use.</p>
-                                        <h4>What's Included</h4>
-                                        <ul>
-                                            <li>Final film and all cutdowns</li>
-                                            <li>Raw interview footage</li>
-                                            <li>B-roll clips organized by theme</li>
-                                            <li>Still frames from video</li>
-                                        </ul>
-                                        <h4>Why It Matters</h4>
-                                        <p>You can repurpose footage for years. Need a clip for a social post? It's already organized and ready.</p>
-                                        <p class="delivery-format">Delivery: All assets catalogued in your DAM</p>
-                                    </div>
-                                </li>
-                                <li class="deliverable-item">
-                                    <strong>2 Hours Monthly Coaching</strong> — Double the strategic support
-                                    <div class="deliverable-tooltip">
-                                        <h4>What It Is</h4>
-                                        <p>Two hours of dedicated coaching each month (vs. one hour in Package 2)—more time for strategy, troubleshooting, and planning.</p>
-                                        <h4>What's Included</h4>
-                                        <ul>
-                                            <li>2-hour monthly strategy/coaching session</li>
-                                            <li>Deep-dive campaign planning</li>
-                                            <li>Content review and feedback</li>
-                                            <li>Team training and skill-building</li>
-                                        </ul>
-                                        <h4>Why It Matters</h4>
-                                        <p>More coaching time means more personalized guidance. You can tackle bigger challenges and get more hands-on support.</p>
-                                        <p class="delivery-format">Delivery: 2 hours monthly coaching + ongoing access</p>
-                                    </div>
-                                </li>
-                                <li class="deliverable-item">
-                                    <strong>2 Campaign Videos Per Year</strong> — Double the done-for-you content
-                                    <div class="deliverable-tooltip">
-                                        <h4>What It Is</h4>
-                                        <p>Two professionally edited campaign videos per year (vs. one in Package 2)—we repurpose photos and videos your team has captured into polished content with titles and voiceover.</p>
-                                        <h4>Example: Sea Cadets Day of Giving</h4>
-                                        <div style="padding:56.25% 0 0 0;position:relative;margin-bottom:1rem;"><iframe src="https://player.vimeo.com/video/1109135997?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Sea Cadets Day of Giving 2025"></iframe></div>
-                                        <h4>What's Included</h4>
-                                        <ul>
-                                            <li>2 campaign videos annually</li>
-                                            <li>Concept development and scripting for each</li>
-                                            <li>Repurposing your existing photos and videos</li>
-                                            <li>Professional editing with titles, graphics, and voiceover</li>
-                                            <li>Multiple cutdowns for social platforms</li>
-                                        </ul>
-                                        <h4>Why It Matters</h4>
-                                        <p>Cover both your spring fundraiser AND end-of-year giving with high-quality video content—no additional shooting required.</p>
-                                        <p class="delivery-format">Delivery: 2 final videos + social cutdowns per year, all in your DAM</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="outcomes-box">
-                            <h3>Expected Outcomes</h3>
-                            <ul>
-                                <li>An evergreen asset that can be used for years to come</li>
-                                <li>Team alignment around marketing and communication</li>
-                                <li>Additional videos to support your giving campaign efforts</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="price-box" style="align-self: start;">
-                        <p style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.9; margin-bottom: 0.5rem;">Year 1 Investment</p>
-                        <p style="font-size: 2.2rem; font-weight: 700; margin-bottom: 0.25rem;">$48,500</p>
-                        <p style="font-size: 0.95rem; opacity: 0.9;">Upfront</p>
-                        <p style="font-size: 1.5rem; font-weight: 700; margin-top: 0.75rem;">+ $2,500/mo</p>
-                        <p style="font-size: 0.85rem; opacity: 0.9;">Starting Month 2</p>
-                        <div style="border-top: 1px solid rgba(255,255,255,0.3); margin: 1rem 0; padding-top: 1rem;">
-                            <p style="font-size: 0.8rem; opacity: 0.9;">Year 1 (6 mo): $61,000<br>Year 1 (12 mo): $76,000</p>
-                            <p style="font-size: 0.8rem; opacity: 0.9; margin-top: 0.5rem;">Year 2+: $2,500/mo ($30,000/yr)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 9: 90-Day Roadmap -->
-        <div class="slide" data-slide="8">
-            <h2 style="text-align: center; margin-bottom: 2rem;">Your <span class="impact-text">90-Day Roadmap</span></h2>
+            <h2 style="text-align: center; margin-bottom: 2rem;">Your <span class="impact-text">90-Day Transformation</span></h2>
             <div class="roadmap">
                 <div class="roadmap-phase phase-1">
-                    <div class="phase-label">Weeks 1–3</div>
-                    <h3>Discovery & Audit</h3>
+                    <div class="phase-label">Weeks 1-3</div>
+                    <h3>Discover</h3>
                     <ul>
-                        <li>Kickoff call and goal alignment</li>
-                        <li>Communications and social audit</li>
-                        <li>Stakeholder interviews</li>
-                        <li>Content and asset inventory</li>
-                        <li>Competitive landscape review</li>
+                        <li>Audit everything</li>
+                        <li>Interview stakeholders</li>
+                        <li>Find the gaps</li>
                     </ul>
                 </div>
                 <div class="roadmap-phase phase-2">
-                    <div class="phase-label">Weeks 4–8</div>
-                    <h3>Strategy & Build</h3>
+                    <div class="phase-label">Weeks 4-8</div>
+                    <h3>Build</h3>
                     <ul>
-                        <li>Marketing playbook development</li>
-                        <li>6-month content calendar</li>
-                        <li>Messaging framework creation</li>
-                        <li>DAM setup (Package 2+)</li>
-                        <li>Microsite design (Package 2+)</li>
+                        <li>Create your playbook</li>
+                        <li>Messaging framework</li>
+                        <li>Impact Deck</li>
                     </ul>
                 </div>
                 <div class="roadmap-phase phase-3">
-                    <div class="phase-label">Weeks 9–12</div>
-                    <h3>Training & Launch</h3>
+                    <div class="phase-label">Weeks 9-12</div>
+                    <h3>Launch</h3>
                     <ul>
-                        <li>Staff storytelling training</li>
-                        <li>Deliverable handoff and review</li>
-                        <li>Implementation support</li>
-                        <li>First monthly coaching session</li>
-                        <li>90-day check-in and optimization</li>
+                        <li>Train your team</li>
+                        <li>Hand off assets</li>
+                        <li>Ready to deploy</li>
                     </ul>
                 </div>
             </div>
-            <p style="text-align: center; margin-top: 2rem; font-family: 'Libre Caslon Text', serif; font-style: italic; opacity: 0.8; font-size: 1.1rem;">You'll have a clear strategy and the tools to execute within 90 days.</p>
+            <p style="text-align: center; margin-top: 2rem; font-family: 'Libre Caslon Text', serif; font-style: italic; opacity: 0.8; font-size: 1.1rem;">From "we don't know how to talk about our impact" to a complete messaging system and stunning digital asset.</p>
         </div>
 
-        <!-- Slide 10: Investment Summary -->
+        <!-- Slide 7: Package 1 Overview -->
+        <div class="slide" data-slide="6">
+            <div class="content-box">
+                <span class="package-badge">Package 1</span>
+                <h2 style="margin-bottom: 0.5rem;">Story Foundation</h2>
+                <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.1rem; margin-bottom: 1.5rem; opacity: 0.8;">Get your message right before you spend another dollar on marketing.</p>
+
+                <div class="package-grid">
+                    <div>
+                        <h3 style="font-size: 1.1rem; margin-bottom: 1rem;">What Changes:</h3>
+                        <div class="transformation-card">
+                            <div class="from">"We don't know what to say"</div>
+                            <div class="to">Every team member tells the same compelling story</div>
+                        </div>
+                        <div class="transformation-card">
+                            <div class="from">Random social posts</div>
+                            <div class="to">6 months of strategic content mapped</div>
+                        </div>
+                        <div class="transformation-card">
+                            <div class="from">Boring donor materials</div>
+                            <div class="to">A stunning Impact Deck that sells your mission 24/7</div>
+                        </div>
+                        <p style="font-size: 0.95rem; opacity: 0.7; margin-top: 1.5rem;"><strong>Ideal for:</strong> Organizations that need clarity before tactics. Start here.</p>
+                    </div>
+                    <div class="price-box" style="align-self: start;">
+                        <p style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.9; margin-bottom: 0.5rem;">Investment</p>
+                        <p style="font-size: 3rem; font-weight: 700; margin-bottom: 0.25rem;">$5,500</p>
+                        <p style="font-size: 1.1rem; opacity: 0.9;">One-time</p>
+                        <div style="border-top: 1px solid rgba(255,255,255,0.3); margin: 1.5rem 0; padding-top: 1rem;">
+                            <p style="font-size: 0.85rem; opacity: 0.9; line-height: 1.5;">If this helps write one better grant that gets funded, it pays for itself 10x.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Package 1 Detail - Impact Deck -->
+        <div class="slide" data-slide="7">
+            <div class="content-box">
+                <span class="package-badge">Included in Package 1</span>
+                <h2 style="margin-bottom: 0.5rem;">Your Story, <span class="impact-text">Ready to Share</span></h2>
+
+                <div class="package-grid">
+                    <div>
+                        <p style="font-size: 1.15rem; margin-bottom: 1.5rem;">This isn't a PowerPoint. It's a digital storytelling experience&mdash;mobile-first, swipeable, shareable.</p>
+                        <ul class="package-list">
+                            <li>The asset your board members text to wealthy friends</li>
+                            <li>The link in your email signature</li>
+                            <li>The thing that makes donors say "I get it now"</li>
+                        </ul>
+                        <h3 style="font-size: 1.1rem; margin-top: 1.5rem;">What's Included:</h3>
+                        <ul class="package-list" style="opacity: 0.9;">
+                            <li class="deliverable-item">
+                                <strong>Discovery & Stakeholder Interviews</strong>
+                                <div class="deliverable-tooltip">
+                                    <h4>What It Is</h4>
+                                    <p>We start by understanding your organization deeply&mdash;talking to leadership, staff, and key stakeholders to uncover your most powerful stories.</p>
+                                    <h4>What's Included</h4>
+                                    <ul>
+                                        <li>Kickoff strategy session</li>
+                                        <li>3-5 stakeholder interviews</li>
+                                        <li>Story discovery and selection</li>
+                                        <li>Key message extraction</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="deliverable-item">
+                                <strong>Communications & Messaging Audit</strong>
+                                <div class="deliverable-tooltip">
+                                    <h4>What It Is</h4>
+                                    <p>A comprehensive review of your current marketing presence&mdash;what's working, what's not, and where the opportunities live.</p>
+                                    <h4>What's Included</h4>
+                                    <ul>
+                                        <li>Website messaging review</li>
+                                        <li>Social media channel audit</li>
+                                        <li>Content gap analysis</li>
+                                        <li>Competitor/peer comparison</li>
+                                        <li>Top 5 actionable recommendations</li>
+                                    </ul>
+                                    <p class="delivery-format">Value: $2,500</p>
+                                </div>
+                            </li>
+                            <li class="deliverable-item">
+                                <strong>Storytelling Playbook</strong>
+                                <div class="deliverable-tooltip">
+                                    <h4>What It Is</h4>
+                                    <p>Your custom playbook for consistent, compelling messaging&mdash;what stories to tell, who they're for, how to talk about impact.</p>
+                                    <h4>What's Included</h4>
+                                    <ul>
+                                        <li>3-5 core message pillars</li>
+                                        <li>Audience segmentation guide</li>
+                                        <li>Story types framework</li>
+                                        <li>Talking points and elevator pitch</li>
+                                        <li>Real examples from your clubs</li>
+                                    </ul>
+                                    <p class="delivery-format">Value: $3,500</p>
+                                </div>
+                            </li>
+                            <li class="deliverable-item">
+                                <strong>Staff Story Capture Training</strong>
+                                <div class="deliverable-tooltip">
+                                    <h4>What It Is</h4>
+                                    <p>A 60-90 minute live session teaching your team how to capture better content with just their phones.</p>
+                                    <h4>What's Included</h4>
+                                    <ul>
+                                        <li>Framing and composition basics</li>
+                                        <li>Lighting tips for indoor spaces</li>
+                                        <li>Audio capture techniques</li>
+                                        <li>Storytelling structure</li>
+                                        <li>Q&A tailored to your team</li>
+                                    </ul>
+                                    <p class="delivery-format">Value: $2,000</p>
+                                </div>
+                            </li>
+                            <li class="deliverable-item">
+                                <strong>Organizational Impact Deck</strong>
+                                <div class="deliverable-tooltip">
+                                    <h4>What It Is</h4>
+                                    <p>A swipeable digital storytelling asset that tells your story better than your website&mdash;designed to move donors to action.</p>
+                                    <h4>Example</h4>
+                                    <a href="https://oklahomaisok.github.io/sea-cadets-impact-deck/" target="_blank" style="display: block; text-decoration: none; color: inherit; border: 1px solid rgba(0,0,0,0.1); border-radius: 0.75rem; overflow: hidden; margin-bottom: 1rem;">
+                                        <img src="sea-cadets-preview.png" alt="Sea Cadets Impact Deck" style="width: 100%; display: block;">
+                                        <div style="padding: 0.5rem; background: #f7fafc; font-size: 0.75rem; color: #4a5568;">
+                                            Click to view Sea Cadets example
+                                        </div>
+                                    </a>
+                                    <p class="delivery-format">Value: $4,000</p>
+                                </div>
+                            </li>
+                        </ul>
+                        <p style="font-size: 0.9rem; opacity: 0.6; margin-top: 1rem;">Total value: $12,000+</p>
+                    </div>
+                    <div>
+                        <a href="https://oklahomaisok.github.io/sea-cadets-impact-deck/" target="_blank" style="display: block; text-decoration: none; color: inherit; border: 1px solid rgba(0,0,0,0.1); border-radius: 1.5rem; overflow: hidden; transition: box-shadow 0.2s ease;">
+                            <img src="sea-cadets-preview.png" alt="Impact Deck Example" style="width: 100%; display: block;">
+                            <div style="padding: 1rem; background: white; text-align: center;">
+                                <span style="font-size: 0.9rem; color: var(--brand-orange); font-weight: 600;">View Example Impact Deck</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Package 2 Overview -->
+        <div class="slide" data-slide="8">
+            <div class="content-box">
+                <span class="package-badge">Package 2</span>
+                <h2 style="margin-bottom: 0.5rem;">Story Activation</h2>
+                <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.1rem; margin-bottom: 1.5rem; opacity: 0.8;">A marketing system that runs while you sleep.</p>
+
+                <div class="package-grid">
+                    <div>
+                        <h3 style="color: var(--brand-orange); font-size: 1.1rem;">Everything in Package 1, PLUS:</h3>
+                        <ul class="package-list">
+                            <li class="deliverable-item">
+                                <strong>3 Individual Impact Story Decks</strong> &mdash; the emotional proof points
+                                <div class="deliverable-tooltip">
+                                    <h4>What It Is</h4>
+                                    <p>Same format as the org deck, but focused on one person's transformation story with a donor appeal.</p>
+                                    <h4>Why It Matters</h4>
+                                    <p>Your organizational story explains WHAT you do. Individual stories show WHO you change. These are the stories that make donors cry&mdash;and then give.</p>
+                                    <p class="delivery-format">Value: $12,000 (3 decks)</p>
+                                </div>
+                            </li>
+                            <li class="deliverable-item">
+                                <strong>6-Month Social Media Content Calendar</strong>
+                                <div class="deliverable-tooltip">
+                                    <h4>What It Is</h4>
+                                    <p>Pre-built planning system with themes tied to your fundraising calendar.</p>
+                                    <p class="delivery-format">Value: $3,000</p>
+                                </div>
+                            </li>
+                            <li class="deliverable-item">
+                                <strong>Social Media Templates + Best Practices Guide</strong>
+                                <div class="deliverable-tooltip">
+                                    <h4>What It Is</h4>
+                                    <p>Ready-to-use templates for common marketing tasks so your team never starts from scratch.</p>
+                                    <p class="delivery-format">Value: $2,500</p>
+                                </div>
+                            </li>
+                            <li class="deliverable-item">
+                                <strong>Asset Organization System</strong>
+                                <div class="deliverable-tooltip">
+                                    <h4>What It Is</h4>
+                                    <p>Google Drive structure so you never lose a photo again.</p>
+                                    <p class="delivery-format">Value: $1,500</p>
+                                </div>
+                            </li>
+                            <li class="deliverable-item">
+                                <strong>1 Campaign Video per year</strong>
+                                <div class="deliverable-tooltip">
+                                    <h4>What It Is</h4>
+                                    <p>Professionally produced from existing photos/footage&mdash;we turn what you have into polished content.</p>
+                                    <h4>Example: Sea Cadets Day of Giving</h4>
+                                    <div style="padding:56.25% 0 0 0;position:relative;margin-bottom:1rem;"><iframe src="https://player.vimeo.com/video/1109135997?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Campaign Video Example"></iframe></div>
+                                    <p class="delivery-format">Value: $5,000</p>
+                                </div>
+                            </li>
+                            <li><strong>Monthly Coaching (1 hour)</strong> &mdash; ongoing strategic support</li>
+                        </ul>
+                        <p style="font-size: 0.95rem; opacity: 0.7; margin-top: 1.5rem;"><strong>Ideal for:</strong> Organizations ready to professionalize. Your marketing coordinator gets superpowers.</p>
+                        <p style="font-size: 0.85rem; opacity: 0.6; margin-top: 0.5rem;">Total value: $28,800+</p>
+                    </div>
+                    <div class="price-box" style="align-self: start;">
+                        <p style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.9; margin-bottom: 0.5rem;">Year 1 Investment</p>
+                        <p style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.25rem;">$10,000</p>
+                        <p style="font-size: 1.1rem; opacity: 0.9;">per year</p>
+                        <p style="font-size: 1.3rem; font-weight: 600; margin-top: 0.5rem;">$850/mo</p>
+                        <div style="border-top: 1px solid rgba(255,255,255,0.3); margin: 1.5rem 0; padding-top: 1rem;">
+                            <p style="font-size: 0.85rem; opacity: 0.9;">Year 2+: $7,500/yr ($625/mo)</p>
+                            <p style="font-size: 0.8rem; opacity: 0.8; margin-top: 0.75rem; line-height: 1.4;">If one impact story deck helps close a $10K major gift, it pays for itself.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Package 2 Detail - Impact Story Decks -->
         <div class="slide" data-slide="9">
+            <div class="split-slide">
+                <div>
+                    <span class="package-badge">Package 2 Highlight</span>
+                    <h2>Stories That <span class="impact-text">Open Wallets</span></h2>
+                    <p style="font-size: 1.15rem; margin-bottom: 1.5rem;">Your organizational story explains WHAT you do. Individual impact stories show WHO you change.</p>
+                    <p style="font-size: 1.15rem; margin-bottom: 1.5rem;">We'll create 3 dedicated story decks&mdash;each following one person's transformation through your programs.</p>
+                    <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.2rem; color: var(--brand-orange); margin-top: 2rem;">These are the stories that make donors cry. And then give.</p>
+                </div>
+                <img src="bcga-photo-1.jpg" alt="Impact Story" class="slide-image">
+            </div>
+        </div>
+
+        <!-- Slide 11: Package 3 Overview -->
+        <div class="slide" data-slide="10">
+            <div class="content-box">
+                <span class="package-badge">Package 3</span>
+                <h2 style="margin-bottom: 0.5rem;">Story Amplification</h2>
+                <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.1rem; margin-bottom: 1.5rem; opacity: 0.8;">The film that closes your next six-figure gift.</p>
+
+                <div class="package-grid">
+                    <div>
+                        <h3 style="color: var(--brand-orange); font-size: 1.1rem;">Everything in Package 2, PLUS:</h3>
+                        <ul class="package-list">
+                            <li class="deliverable-item">
+                                <strong>Flagship Cinematic Film (3-5 min)</strong> &mdash; Emmy-quality storytelling
+                                <div class="deliverable-tooltip">
+                                    <h4>What It Is</h4>
+                                    <p>The film they show at galas, send to major donor prospects, and play in boardrooms where big decisions happen.</p>
+                                    <h4>Example: Texas Hearing Institute</h4>
+                                    <div style="padding:56.25% 0 0 0;position:relative;margin-bottom:1rem;"><iframe src="https://player.vimeo.com/video/1121616454?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Flagship Film Example"></iframe></div>
+                                    <p class="delivery-format">Value: $20,000</p>
+                                </div>
+                            </li>
+                            <li class="deliverable-item">
+                                <strong>LMS Training Library</strong> &mdash; video training for staff
+                                <div class="deliverable-tooltip">
+                                    <h4>What It Is</h4>
+                                    <p>On-demand training videos your team can access anytime&mdash;scale your skills without scheduling live sessions.</p>
+                                    <p class="delivery-format">Value: $5,000</p>
+                                </div>
+                            </li>
+                            <li><strong>2 Campaign Videos per year</strong> (upgrade from 1)</li>
+                            <li><strong>Monthly Coaching upgrade to 2 hours</strong></li>
+                        </ul>
+                        <p style="font-size: 0.95rem; opacity: 0.7; margin-top: 1.5rem;"><strong>Ideal for:</strong> Organizations cultivating major donors. When you're asking for $10K-$100K+ gifts, your content needs to match.</p>
+                        <p style="font-size: 0.85rem; opacity: 0.6; margin-top: 0.5rem;">Total value: $63,600+</p>
+                    </div>
+                    <div class="price-box" style="align-self: start;">
+                        <p style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.9; margin-bottom: 0.5rem;">Year 1 Investment</p>
+                        <p style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.25rem;">$32,000</p>
+                        <p style="font-size: 1.1rem; opacity: 0.9;">per year</p>
+                        <div style="border-top: 1px solid rgba(255,255,255,0.3); margin: 1.5rem 0; padding-top: 1rem;">
+                            <p style="font-size: 0.85rem; opacity: 0.9;">Year 2+: $12,000/yr ($1,000/mo)</p>
+                            <p style="font-size: 0.8rem; opacity: 0.8; margin-top: 0.75rem; line-height: 1.4;">If this film helps close one $50K gift, it pays for itself. The film will be used for 3-5 years.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: The Flagship Film -->
+        <div class="slide" data-slide="11">
+            <div class="split-slide">
+                <div>
+                    <span class="package-badge">Package 3 Highlight</span>
+                    <h2>The Most Important <span class="impact-text">5 Minutes</span></h2>
+                    <p style="font-size: 1.15rem; margin-bottom: 1.5rem;">This isn't a "nonprofit video." It's a film.</p>
+                    <ul class="package-list" style="margin-bottom: 1.5rem;">
+                        <li>The piece that plays at your gala before you make the ask</li>
+                        <li>The link you send to your top 50 prospects</li>
+                        <li>The content that sits in a major donor's living room and does the emotional work so you don't have to</li>
+                    </ul>
+                    <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.2rem; color: var(--brand-orange);">Our films don't just inform. They move.</p>
+                </div>
+                <div style="background: white; border-radius: 1.5rem; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);">
+                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1121616454?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Flagship Film Example"></iframe></div>
+                    <div style="padding: 1rem; text-align: center; font-size: 0.9rem; opacity: 0.7;">
+                        Example: Texas Hearing Institute Gala Film
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 13: Investment Summary -->
+        <div class="slide" data-slide="12">
             <div style="max-width: 1200px; width: 100%;">
                 <h2 style="text-align: center; margin-bottom: 0.5rem;">Investment <span class="impact-text">Summary</span></h2>
                 <div class="pricing-comparison">
                     <div class="pricing-card">
-                        <h4>Package 1: Foundation</h4>
-                        <div class="price">$9,500</div>
-                        <p class="price-detail">One-time (Year 1)</p>
-                        <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 0.75rem;">+ Optional: $500/mo coaching</p>
+                        <h4>Story Foundation</h4>
+                        <div class="price">$5,500</div>
+                        <p class="price-detail">One-time</p>
                         <ul style="text-align: left; font-size: 0.8rem; margin-top: 1rem; opacity: 0.8; list-style: none; padding: 0;">
-                            <li>✓ Communications audit</li>
-                            <li>✓ Marketing & storytelling playbook</li>
-                            <li>✓ 6-month content calendar</li>
-                            <li>✓ Staff training webinar</li>
+                            <li style="padding: 0.3rem 0;">&#10003; Communications audit</li>
+                            <li style="padding: 0.3rem 0;">&#10003; Storytelling playbook</li>
+                            <li style="padding: 0.3rem 0;">&#10003; Staff training</li>
+                            <li style="padding: 0.3rem 0;">&#10003; Impact Deck</li>
                         </ul>
-                        <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 0.75rem;">With coaching: $15,500/yr</p>
+                        <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 0.75rem;">Best for: Getting started</p>
                     </div>
                     <div class="pricing-card">
-                        <h4>Package 2: Activation</h4>
-                        <div class="price">$28,000</div>
-                        <p class="price-detail">Upfront + $1,750/mo</p>
-                        <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 0.75rem;">Year 2+: $1,750/mo</p>
+                        <h4>Story Activation</h4>
+                        <div class="price">$10,000</div>
+                        <p class="price-detail">per year ($850/mo)</p>
                         <ul style="text-align: left; font-size: 0.8rem; margin-top: 1rem; opacity: 0.8; list-style: none; padding: 0;">
-                            <li>✓ Everything in Package 1</li>
-                            <li>✓ DAM setup + hosting</li>
-                            <li>✓ Impact microsite</li>
-                            <li>✓ Narrative toolkit</li>
-                            <li>✓ 1 hr/mo coaching</li>
-                            <li>✓ 1 campaign video/year</li>
+                            <li style="padding: 0.3rem 0;">&#10003; Everything in Foundation</li>
+                            <li style="padding: 0.3rem 0;">&#10003; 3 Individual Impact Decks</li>
+                            <li style="padding: 0.3rem 0;">&#10003; 1 campaign video/year</li>
+                            <li style="padding: 0.3rem 0;">&#10003; 1 hr/mo coaching</li>
                         </ul>
-                        <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 0.75rem;">Year 1 (6 mo): $36,750<br>Year 1 (12 mo): $47,250</p>
+                        <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 0.75rem;">Year 2+: $7,500/yr</p>
                     </div>
                     <div class="pricing-card">
-                        <h4>Package 3: Connection</h4>
-                        <div class="price">$48,500</div>
-                        <p class="price-detail">Upfront + $2,500/mo</p>
-                        <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 0.75rem;">Year 2+: $2,500/mo</p>
+                        <h4>Story Amplification</h4>
+                        <div class="price">$32,000</div>
+                        <p class="price-detail">per year</p>
                         <ul style="text-align: left; font-size: 0.8rem; margin-top: 1rem; opacity: 0.8; list-style: none; padding: 0;">
-                            <li>✓ Everything in Package 2</li>
-                            <li>✓ Flagship cinematic film</li>
-                            <li>✓ LMS training platform</li>
-                            <li>✓ 2 hrs/mo coaching</li>
-                            <li>✓ 2 campaign videos/year</li>
+                            <li style="padding: 0.3rem 0;">&#10003; Everything in Activation</li>
+                            <li style="padding: 0.3rem 0;">&#10003; Flagship cinematic film</li>
+                            <li style="padding: 0.3rem 0;">&#10003; LMS training library</li>
+                            <li style="padding: 0.3rem 0;">&#10003; 2 hrs/mo coaching</li>
                         </ul>
-                        <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 0.75rem;">Year 1 (6 mo): $61,000<br>Year 1 (12 mo): $76,000</p>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 2rem; margin-top: 2rem; justify-content: center; flex-wrap: wrap;">
-                    <div style="background: rgba(197, 78, 50, 0.08); padding: 1.25rem 1.5rem; border-radius: 1rem; text-align: center;">
-                        <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7; margin-bottom: 0.5rem;">Add-On (Year 2+)</p>
-                        <p style="font-weight: 700; font-size: 1.1rem;">Additional Flagship Film: $20,000</p>
-                    </div>
-                    <div style="background: rgba(197, 78, 50, 0.08); padding: 1.25rem 1.5rem; border-radius: 1rem; text-align: center;">
-                        <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7; margin-bottom: 0.5rem;">Referral Program</p>
-                        <p style="font-weight: 700; font-size: 1.1rem;">10% off monthly retainer per active referral</p>
+                        <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 0.75rem;">Year 2+: $12,000/yr</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 11: Next Steps -->
-        <div class="slide" data-slide="10">
+        <!-- Slide 14: Year 2 and Beyond -->
+        <div class="slide" data-slide="13">
+            <div style="max-width: 900px; text-align: center;">
+                <h2>Your Investment Goes Down. <span class="impact-text">Your Impact Stays Up.</span></h2>
+                <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 2.5rem;">Year 1 is about building the infrastructure. Year 2+ is about fueling it.</p>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+                    <div style="background: white; border-radius: 1.5rem; padding: 2rem; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);">
+                        <h3 style="color: var(--brand-orange); font-size: 1.2rem; margin-bottom: 1rem;">Package 2 Year 2</h3>
+                        <p style="font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;">$7,500/yr</p>
+                        <p style="opacity: 0.7;">$625/mo</p>
+                    </div>
+                    <div style="background: white; border-radius: 1.5rem; padding: 2rem; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);">
+                        <h3 style="color: var(--brand-orange); font-size: 1.2rem; margin-bottom: 1rem;">Package 3 Year 2</h3>
+                        <p style="font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;">$12,000/yr</p>
+                        <p style="opacity: 0.7;">$1,000/mo</p>
+                    </div>
+                </div>
+                <div style="background: rgba(197, 78, 50, 0.08); padding: 1.5rem 2rem; border-radius: 1rem; margin-top: 2rem; display: inline-block;">
+                    <p style="font-size: 1rem; margin: 0;"><strong>Optional:</strong> New Flagship Film (Year 2+): $20,000</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 15: The Guarantee -->
+        <div class="slide" data-slide="14">
+            <div class="guarantee-box">
+                <h2>You Can't <span style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-weight: 400;">Lose</span></h2>
+                <p style="margin-bottom: 1.5rem;">If you don't have a complete, board-ready messaging strategy within 90 days of starting Package 1, we continue working at no additional charge until you do.</p>
+                <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.3rem; margin-top: 1.5rem;">We're not successful until you are.</p>
+            </div>
+        </div>
+
+        <!-- Slide 16: Referral Program -->
+        <div class="slide" data-slide="15">
+            <div style="max-width: 900px; text-align: center;">
+                <h2>Better <span class="impact-text">Together</span></h2>
+                <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 2rem;">Know other Boys & Girls Clubs that need help telling their story?</p>
+                <div class="referral-stack">
+                    <div class="referral-item">
+                        <div class="discount">10% off</div>
+                        <div class="label">1 referral</div>
+                    </div>
+                    <div class="referral-item">
+                        <div class="discount">20% off</div>
+                        <div class="label">2 referrals</div>
+                    </div>
+                    <div class="referral-item">
+                        <div class="discount">30% off</div>
+                        <div class="label">3 referrals</div>
+                    </div>
+                </div>
+                <p style="font-size: 1.1rem; margin-top: 2rem;">10% off your monthly retainer for each chapter you refer that becomes a client.</p>
+                <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.15rem; color: var(--brand-orange); margin-top: 1rem;">Three referrals = 30% off. Permanently.</p>
+            </div>
+        </div>
+
+        <!-- Slide 17: Add-Ons -->
+        <div class="slide" data-slide="16">
+            <div style="max-width: 1000px; text-align: center;">
+                <h2>When You're Ready for <span class="impact-text">More</span></h2>
+                <div class="addon-grid" style="margin-top: 2rem;">
+                    <div class="addon-card">
+                        <h4>Google Ads Grant Management</h4>
+                        <div class="addon-price">$1,250/mo</div>
+                        <p>Google gives nonprofits $10K/mo in free ads. Most never touch it. We'll set it up and run it for you.</p>
+                    </div>
+                    <div class="addon-card">
+                        <h4>Professional Digital Asset Management</h4>
+                        <div class="addon-price">$1,500 setup + $600/mo</div>
+                        <p>For organizations drowning in content&mdash;professional-grade organization with Air.</p>
+                    </div>
+                    <div class="addon-card">
+                        <h4>Additional Campaign Video</h4>
+                        <div class="addon-price">$1,500</div>
+                        <p>Need more than your package includes? Add another campaign video anytime.</p>
+                    </div>
+                    <div class="addon-card">
+                        <h4>Additional Flagship Film</h4>
+                        <div class="addon-price">$20,000</div>
+                        <p>Year 2+ option&mdash;refresh your flagship film with a new story.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 18: Next Steps -->
+        <div class="slide" data-slide="17">
             <div class="split-slide">
-                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80" alt="Partnership handshake" class="slide-image">
+                <img src="bgca-image-2.jpg" alt="BGC Kids" class="slide-image">
                 <div>
                     <div class="ambient-glow" style="opacity: 0.4;"></div>
-                    <h2 style="position: relative; z-index: 1;">Let's Build Something <span class="impact-text">Meaningful</span></h2>
+                    <h2 style="position: relative; z-index: 1;">Let's Build Something <span class="impact-text">That Lasts</span></h2>
                     <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 1.5rem; position: relative; z-index: 1;">
                         Your work is already changing lives. Let's make sure the right people know about it.
                     </p>
 
                     <div style="background: white; padding: 2rem; border-radius: 1.5rem; position: relative; z-index: 1;">
-                        <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Next Steps:</h3>
+                        <h3 style="margin-bottom: 1rem; font-size: 1.3rem;">Next Steps:</h3>
                         <ul class="package-list">
-                            <li>Review these packages with your team</li>
-                            <li>Schedule a call to discuss and refine</li>
-                            <li>Choose the package that fits your goals</li>
+                            <li>Schedule a call to discuss your goals</li>
+                            <li>Choose the package that fits</li>
                             <li>Start building sustainable impact</li>
                         </ul>
+                        <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.1);">
+                            <p style="font-size: 0.95rem; margin-bottom: 0.5rem;"><strong>Ryan McNeill</strong></p>
+                            <p style="font-size: 0.9rem; opacity: 0.7;">ryan@anecdotalmedia.com</p>
+                        </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 19: BGC Network Pilot Note -->
+        <div class="slide" data-slide="18">
+            <div style="max-width: 900px; text-align: center;">
+                <h2>A Partnership, <span class="impact-text">Not Just a Project</span></h2>
+                <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 2rem;">We believe in the Boys & Girls Club mission.</p>
+                <div style="background: white; border-radius: 2rem; padding: 2.5rem; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); text-align: left;">
+                    <p style="font-size: 1.15rem; margin-bottom: 1.5rem;">We're offering founding partner rates to select BGC chapters who will let us use their results to help other clubs tell better stories.</p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+                        <div style="padding: 1.5rem; background: rgba(197, 78, 50, 0.05); border-radius: 1rem;">
+                            <h4 style="color: var(--brand-orange); font-size: 1rem; margin-bottom: 0.5rem;">You Get</h4>
+                            <p style="font-size: 1rem; margin: 0;">Preferred pricing</p>
+                        </div>
+                        <div style="padding: 1.5rem; background: rgba(197, 78, 50, 0.05); border-radius: 1rem;">
+                            <h4 style="color: var(--brand-orange); font-size: 1rem; margin-bottom: 0.5rem;">We Get</h4>
+                            <p style="font-size: 1rem; margin: 0;">Permission to share your success</p>
+                        </div>
+                    </div>
+                    <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.15rem; color: var(--brand-orange); text-align: center; margin-top: 1.5rem;">Together, we raise the bar for youth organizations everywhere.</p>
                 </div>
             </div>
         </div>
@@ -1796,6 +1657,14 @@
         <div class="dot" data-slide="8"></div>
         <div class="dot" data-slide="9"></div>
         <div class="dot" data-slide="10"></div>
+        <div class="dot" data-slide="11"></div>
+        <div class="dot" data-slide="12"></div>
+        <div class="dot" data-slide="13"></div>
+        <div class="dot" data-slide="14"></div>
+        <div class="dot" data-slide="15"></div>
+        <div class="dot" data-slide="16"></div>
+        <div class="dot" data-slide="17"></div>
+        <div class="dot" data-slide="18"></div>
     </div>
 
     <script>
@@ -1806,50 +1675,16 @@
         const prevArrow = document.querySelector('.nav-prev');
         const nextArrow = document.querySelector('.nav-next');
 
-        // Funnel bracket state
-        let funnelState = 0; // 0 = no brackets, 1 = bracket 1, 2 = bracket 2, 3 = bracket 3
-
-        // Package outcomes state (for slides 5, 6, 7)
-        let packageOutcomesShown = { 5: false, 6: false, 7: false };
-
-        function showOutcomes(slideIndex) {
-            const slide = slides[slideIndex];
-            const packageContent = slide.querySelector('.package-content');
-            const outcomesBox = slide.querySelector('.outcomes-box');
-            if (packageContent && outcomesBox) {
-                packageContent.classList.add('hidden');
-                outcomesBox.classList.add('visible');
-                packageOutcomesShown[slideIndex] = true;
-            }
-        }
-
-        function hideOutcomes(slideIndex) {
-            const slide = slides[slideIndex];
-            const packageContent = slide.querySelector('.package-content');
-            const outcomesBox = slide.querySelector('.outcomes-box');
-            if (packageContent && outcomesBox) {
-                packageContent.classList.remove('hidden');
-                outcomesBox.classList.remove('visible');
-                packageOutcomesShown[slideIndex] = false;
-            }
-        }
-
-        function isPackageSlide(index) {
-            return index === 5 || index === 6 || index === 7;
-        }
-
         function animateNumbers(element) {
             const target = parseInt(element.getAttribute('data-target'));
             if (!target) return;
-            const duration = 2000; // 2 seconds
+            const duration = 2000;
             const start = 0;
             const startTime = performance.now();
 
             function update(currentTime) {
                 const elapsed = currentTime - startTime;
                 const progress = Math.min(elapsed / duration, 1);
-
-                // Easing function for smooth animation
                 const easeOutQuart = 1 - Math.pow(1 - progress, 4);
                 const current = Math.floor(start + (target - start) * easeOutQuart);
 
@@ -1865,39 +1700,7 @@
             requestAnimationFrame(update);
         }
 
-        function updateFunnelBrackets() {
-            const bracket1 = document.getElementById('bracket-1');
-            const bracket2 = document.getElementById('bracket-2');
-            const bracket3 = document.getElementById('bracket-3');
-
-            bracket1.classList.remove('visible');
-            bracket2.classList.remove('visible');
-            bracket3.classList.remove('visible');
-
-            if (funnelState === 1) {
-                bracket1.classList.add('visible');
-            } else if (funnelState === 2) {
-                bracket2.classList.add('visible');
-            } else if (funnelState === 3) {
-                bracket3.classList.add('visible');
-            }
-        }
-
         function goToSlide(n) {
-            // If we're on the funnel slide and moving forward, handle bracket animation
-            if (currentSlide === 3 && n > currentSlide && funnelState < 3) {
-                funnelState++;
-                updateFunnelBrackets();
-                return; // Don't change slides yet
-            }
-
-            // If we're on the funnel slide and moving backward, handle bracket animation
-            if (currentSlide === 3 && n < currentSlide && funnelState > 0) {
-                funnelState--;
-                updateFunnelBrackets();
-                return; // Don't change slides yet
-            }
-
             // Remove active class from current slide
             slides[currentSlide].classList.remove('active');
             slides[currentSlide].classList.add('prev');
@@ -1906,24 +1709,13 @@
             // Update current slide
             currentSlide = (n + totalSlides) % totalSlides;
 
-            // Reset funnel state when leaving or entering funnel slide
-            if (currentSlide === 3) {
-                funnelState = 0;
-                updateFunnelBrackets();
-            }
-
-            // Reset outcomes state when entering a package slide
-            if (isPackageSlide(currentSlide)) {
-                hideOutcomes(currentSlide);
-            }
-
             // Add active class to new slide
             slides[currentSlide].classList.add('active');
             slides[currentSlide].classList.remove('prev');
             dots[currentSlide].classList.add('active');
 
-            // Trigger number animation on slide 2 (Your Impact)
-            if (currentSlide === 1) {
+            // Trigger number animation on title slide
+            if (currentSlide === 0) {
                 const statNumbers = slides[currentSlide].querySelectorAll('.stat-number[data-target]');
                 statNumbers.forEach(num => {
                     if (!num.classList.contains('animated')) {
@@ -1948,44 +1740,18 @@
         }
 
         function nextSlide() {
-            // Special handling for funnel slide
-            if (currentSlide === 3 && funnelState < 3) {
-                funnelState++;
-                updateFunnelBrackets();
-                return;
-            }
-
-            // Special handling for package slides - show outcomes first
-            if (isPackageSlide(currentSlide) && !packageOutcomesShown[currentSlide]) {
-                showOutcomes(currentSlide);
-                return;
-            }
-
             if (currentSlide < totalSlides - 1) {
                 goToSlide(currentSlide + 1);
             }
         }
 
         function prevSlide() {
-            // Special handling for funnel slide
-            if (currentSlide === 3 && funnelState > 0) {
-                funnelState--;
-                updateFunnelBrackets();
-                return;
-            }
-
-            // Special handling for package slides - hide outcomes first
-            if (isPackageSlide(currentSlide) && packageOutcomesShown[currentSlide]) {
-                hideOutcomes(currentSlide);
-                return;
-            }
-
             if (currentSlide > 0) {
                 goToSlide(currentSlide - 1);
             }
         }
 
-        // Keyboard navigation - arrow keys only
+        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight') {
                 e.preventDefault();
@@ -1999,17 +1765,19 @@
         // Dot navigation
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
-                // Reset funnel state when jumping via dots
-                funnelState = 0;
-                updateFunnelBrackets();
-                // Reset all package outcomes when jumping via dots
-                [5, 6, 7].forEach(i => hideOutcomes(i));
                 goToSlide(index);
             });
         });
 
         // Initialize arrow states
         prevArrow.classList.add('disabled');
+
+        // Trigger initial number animation
+        const initialStatNumbers = slides[0].querySelectorAll('.stat-number[data-target]');
+        initialStatNumbers.forEach(num => {
+            num.classList.add('animated');
+            animateNumbers(num);
+        });
 
         // Deliverable tooltip interactions
         const deliverableItems = document.querySelectorAll('.deliverable-item');
@@ -2023,15 +1791,12 @@
             const tooltipWidth = 400;
             const padding = 20;
 
-            // Position to the right of the text
             let left = rect.right + padding;
 
-            // If tooltip would go off right edge, position to the left instead
             if (left + tooltipWidth > window.innerWidth - padding) {
                 left = rect.left - tooltipWidth - padding;
             }
 
-            // Always position at the top of the viewport
             let top = padding;
 
             tooltip.style.left = left + 'px';
@@ -2046,24 +1811,20 @@
             });
 
             item.addEventListener('click', function(e) {
-                // Only on mobile/tablet
                 if (window.innerWidth <= 1024) {
                     e.stopPropagation();
 
-                    // Close any other open tooltips
                     deliverableItems.forEach(other => {
                         if (other !== item) {
                             other.classList.remove('active');
                         }
                     });
 
-                    // Toggle this tooltip
                     item.classList.toggle('active');
                 }
             });
         });
 
-        // Close tooltip when clicking outside (mobile)
         document.addEventListener('click', function(e) {
             if (window.innerWidth <= 1024) {
                 if (!e.target.closest('.deliverable-item')) {
@@ -2074,7 +1835,6 @@
             }
         });
 
-        // Close tooltip when pressing ESC
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 deliverableItems.forEach(item => {
@@ -2082,6 +1842,32 @@
                 });
             }
         });
+
+        // Touch swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+
+        document.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+        }
     </script>
 </body>
 </html>
