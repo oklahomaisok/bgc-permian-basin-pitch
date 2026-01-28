@@ -25,6 +25,8 @@
             --brand-black: #020202;
             --sage: #5a9567;
             --teal: #077caa;
+            --max-content-width: 1000px;
+            --max-wide-width: 1100px;
         }
 
         body {
@@ -32,6 +34,99 @@
             background: var(--cream);
             color: var(--brand-black);
             overflow: hidden;
+        }
+
+        /* ============================================
+           ELEGANT ENTRANCE ANIMATIONS
+           ============================================ */
+
+        /* Base animation classes */
+        .animate-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .animate-in.fade-only {
+            transform: none;
+        }
+
+        .animate-in.from-left {
+            transform: translateX(-30px);
+        }
+
+        .animate-in.from-right {
+            transform: translateX(30px);
+        }
+
+        .animate-in.scale-in {
+            transform: scale(0.95);
+        }
+
+        .slide.active .animate-in {
+            opacity: 1;
+            transform: translateY(0) translateX(0) scale(1);
+        }
+
+        /* Staggered delays for child elements */
+        .slide.active .animate-in.delay-1 { transition-delay: 0.1s; }
+        .slide.active .animate-in.delay-2 { transition-delay: 0.2s; }
+        .slide.active .animate-in.delay-3 { transition-delay: 0.3s; }
+        .slide.active .animate-in.delay-4 { transition-delay: 0.4s; }
+        .slide.active .animate-in.delay-5 { transition-delay: 0.5s; }
+        .slide.active .animate-in.delay-6 { transition-delay: 0.6s; }
+        .slide.active .animate-in.delay-7 { transition-delay: 0.7s; }
+        .slide.active .animate-in.delay-8 { transition-delay: 0.8s; }
+
+        /* Character-by-character text reveal for headlines */
+        .text-reveal {
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .text-reveal-inner {
+            display: inline-block;
+            transform: translateY(100%);
+            transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .slide.active .text-reveal-inner {
+            transform: translateY(0);
+        }
+
+        /* Line drawing animation for decorative elements */
+        .line-draw {
+            width: 0;
+            height: 2px;
+            background: var(--brand-orange);
+            transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
+        }
+
+        .slide.active .line-draw {
+            width: 60px;
+        }
+
+        /* Subtle float animation for images */
+        @keyframes subtleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .float-animation {
+            animation: subtleFloat 6s ease-in-out infinite;
+        }
+
+        /* Card entrance with slight rotation */
+        .card-entrance {
+            opacity: 0;
+            transform: translateY(30px) rotate(-1deg);
+            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .slide.active .card-entrance {
+            opacity: 1;
+            transform: translateY(0) rotate(0);
         }
 
         /* Film Grain Overlay */
@@ -204,10 +299,10 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 100px 60px 140px;
+            padding: 100px 80px 130px;
             opacity: 0;
             transform: translateX(100%);
-            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
             box-sizing: border-box;
         }
 
@@ -222,22 +317,22 @@
             opacity: 0;
         }
 
-        /* Split Slide Layout */
+        /* Split Slide Layout - Tighter max-width */
         .split-slide {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            max-width: 1300px;
+            gap: 4rem;
+            max-width: var(--max-wide-width);
             width: 100%;
             align-items: center;
         }
 
         .slide-image {
             width: 100%;
-            height: 500px;
-            border-radius: 2rem;
+            height: 420px;
+            border-radius: 1.5rem;
             object-fit: cover;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -290,14 +385,15 @@
         }
 
         .content-box {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.97);
             backdrop-filter: blur(20px);
-            border-radius: 2rem;
-            padding: 2.5rem;
-            max-width: 1300px;
+            border-radius: 1.75rem;
+            padding: 2.5rem 3rem;
+            max-width: var(--max-wide-width);
             width: 100%;
-            border: 1px solid rgba(2, 2, 2, 0.05);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(2, 2, 2, 0.04);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06),
+                        0 1px 3px rgba(0, 0, 0, 0.04);
         }
 
         .package-badge {
@@ -535,11 +631,17 @@
 
         .challenge-card {
             background: white;
-            border-left: 4px solid var(--brand-orange);
-            padding: 1.25rem;
-            margin-bottom: 1rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-left: 3px solid var(--brand-orange);
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 0.875rem;
+            border-radius: 0 1rem 1rem 0;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .challenge-card:hover {
+            transform: translateX(4px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
         }
 
         .challenge-card h4 {
@@ -557,18 +659,18 @@
         .pricing-comparison {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            gap: 1.5rem;
             margin-top: 2rem;
-            max-width: 1200px;
+            max-width: var(--max-content-width);
         }
 
         .pricing-card {
             background: white;
-            border-radius: 2rem;
-            padding: 2.5rem;
+            border-radius: 1.5rem;
+            padding: 2rem;
             text-align: center;
-            border: 2px solid rgba(2, 2, 2, 0.05);
-            transition: all 0.3s ease;
+            border: 1px solid rgba(2, 2, 2, 0.05);
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
             position: relative;
             overflow: hidden;
         }
@@ -579,14 +681,14 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 6px;
+            height: 4px;
             background: var(--brand-orange);
         }
 
         .pricing-card:hover {
             border-color: var(--brand-orange);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(197, 78, 50, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(197, 78, 50, 0.15);
         }
 
         .pricing-card h4 {
@@ -673,16 +775,16 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
-            max-width: 1200px;
+            max-width: var(--max-content-width);
             width: 100%;
         }
 
         .client-card {
             background: white;
-            border-radius: 2rem;
-            padding: 2.5rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(2, 2, 2, 0.05);
+            border-radius: 1.5rem;
+            padding: 2rem 2.25rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(2, 2, 2, 0.04);
         }
 
         .client-card h3 {
@@ -727,17 +829,17 @@
         .roadmap {
             display: flex;
             gap: 1.5rem;
-            max-width: 1200px;
+            max-width: var(--max-content-width);
             width: 100%;
         }
 
         .roadmap-phase {
             flex: 1;
             background: white;
-            border-radius: 1.5rem;
-            padding: 2rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(2, 2, 2, 0.05);
+            border-radius: 1.25rem;
+            padding: 1.75rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(2, 2, 2, 0.04);
             position: relative;
         }
 
@@ -811,21 +913,28 @@
         /* Transformation Cards */
         .transformation-card {
             background: white;
-            border-radius: 1rem;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 0.875rem;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 0.875rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .transformation-card:hover {
+            transform: translateX(4px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
         }
 
         .transformation-card .from {
-            font-size: 0.9rem;
-            opacity: 0.6;
+            font-size: 0.85rem;
+            opacity: 0.55;
             text-decoration: line-through;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
 
         .transformation-card .to {
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             color: var(--brand-orange);
             font-weight: 600;
         }
@@ -834,16 +943,22 @@
         .addon-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            max-width: 1000px;
+            gap: 1.25rem;
+            max-width: 900px;
         }
 
         .addon-card {
             background: white;
-            border-radius: 1.5rem;
-            padding: 1.75rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(2, 2, 2, 0.05);
+            border-radius: 1.25rem;
+            padding: 1.5rem 1.75rem;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(2, 2, 2, 0.04);
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .addon-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
         }
 
         .addon-card h4 {
@@ -890,47 +1005,69 @@
             display: flex;
             gap: 1rem;
             justify-content: center;
-            margin: 2rem 0;
+            margin: 1.75rem 0;
         }
 
         .referral-item {
             background: white;
             border-radius: 1rem;
-            padding: 1.5rem 2rem;
+            padding: 1.25rem 1.75rem;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.07);
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .referral-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
         }
 
         .referral-item .discount {
-            font-size: 2rem;
+            font-size: 1.85rem;
             font-weight: 800;
             color: var(--brand-orange);
         }
 
         .referral-item .label {
-            font-size: 0.85rem;
-            opacity: 0.7;
+            font-size: 0.8rem;
+            opacity: 0.65;
+            margin-top: 0.25rem;
         }
 
         @media (max-width: 1400px) {
+            :root {
+                --max-content-width: 900px;
+                --max-wide-width: 1000px;
+            }
+
             .slide {
-                padding: 100px 40px 140px;
+                padding: 100px 50px 130px;
             }
 
             h1 {
-                font-size: 3.5rem;
+                font-size: 3.25rem;
             }
 
             h2 {
-                font-size: 2.5rem;
+                font-size: 2.35rem;
             }
 
             .slide-image {
-                height: 450px;
+                height: 380px;
             }
         }
 
         @media (max-width: 1024px) {
+            :root {
+                --max-content-width: 100%;
+                --max-wide-width: 100%;
+            }
+
+            .slide {
+                padding: 90px 30px 120px;
+            }
+
             .split-slide {
                 grid-template-columns: 1fr;
                 gap: 2rem;
@@ -942,6 +1079,7 @@
 
             .pricing-comparison {
                 grid-template-columns: 1fr;
+                gap: 1rem;
             }
 
             .client-results {
@@ -957,7 +1095,9 @@
             }
 
             .logo {
-                width: 140px;
+                width: 130px;
+                top: 1rem;
+                left: 1rem;
             }
 
             .stats-grid {
@@ -972,15 +1112,32 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            .content-box {
+                padding: 1.75rem 1.5rem;
+            }
+
+            /* Reduce animation delays on mobile for snappier feel */
+            .slide.active .animate-in.delay-4,
+            .slide.active .animate-in.delay-5,
+            .slide.active .animate-in.delay-6,
+            .slide.active .animate-in.delay-7,
+            .slide.active .animate-in.delay-8 {
+                transition-delay: 0.3s;
+            }
         }
 
         @media (max-width: 768px) {
+            .slide {
+                padding: 80px 24px 110px;
+            }
+
             h1 {
-                font-size: 2.5rem;
+                font-size: 2.25rem;
             }
 
             h2 {
-                font-size: 2rem;
+                font-size: 1.85rem;
             }
 
             .stats-grid {
@@ -988,13 +1145,17 @@
             }
 
             .nav-dots {
-                gap: 6px;
-                padding: 0.6rem 1rem;
+                gap: 5px;
+                padding: 0.5rem 0.875rem;
             }
 
             .dot {
-                width: 8px;
-                height: 8px;
+                width: 7px;
+                height: 7px;
+            }
+
+            .slide-image {
+                height: 280px;
             }
         }
     </style>
@@ -1017,77 +1178,78 @@
         <div class="slide active" data-slide="0">
             <div class="aura-background"></div>
             <div class="ambient-glow"></div>
-            <div style="position: relative; z-index: 1; text-align: center; max-width: 1000px;">
-                <img src="bgca-permian-basin-logo.png" alt="Boys & Girls Club of the Permian Basin" style="max-width: 280px; margin-bottom: 2rem;">
-                <h1>5 Clubs. 2,100+ Kids.</h1>
-                <h1 style="margin-top: 0.5rem;"><span class="impact-text">One Question.</span></h1>
-                <p class="subtitle">Does your story match your impact?</p>
-                <p style="margin-top: 3rem; opacity: 0.5; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.15em; font-weight: 600;">Presented by Anecdotal</p>
+            <div style="position: relative; z-index: 1; text-align: center; max-width: 800px;">
+                <img src="bgca-permian-basin-logo.png" alt="Boys & Girls Club of the Permian Basin" class="animate-in delay-1" style="max-width: 260px; margin-bottom: 2.5rem;">
+                <h1 class="animate-in delay-2">5 Clubs. 2,100+ Kids.</h1>
+                <h1 class="animate-in delay-3" style="margin-top: 0.5rem;"><span class="impact-text">One Question.</span></h1>
+                <p class="subtitle animate-in delay-4">Does your story match your impact?</p>
+                <p class="animate-in delay-5" style="margin-top: 3rem; opacity: 0.5; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.15em; font-weight: 600;">Presented by Anecdotal</p>
             </div>
         </div>
 
         <!-- Slide 2: What We Heard - Quote -->
         <div class="slide" data-slide="1">
-            <div style="max-width: 900px; text-align: center;">
-                <h2>What We <span class="impact-text">Heard</span></h2>
-                <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 2rem; line-height: 1.4; color: var(--brand-orange); margin-top: 2rem;">"Even though we're serving a lot of kids, we still run into people who don't know we exist."</p>
+            <div style="max-width: 750px; text-align: center;">
+                <h2 class="animate-in delay-1">What We <span class="impact-text">Heard</span></h2>
+                <div class="line-draw delay-2" style="margin: 1.5rem auto 2rem;"></div>
+                <p class="animate-in delay-3" style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.85rem; line-height: 1.5; color: var(--brand-orange);">"Even though we're serving a lot of kids, we still run into people who don't know we exist."</p>
             </div>
         </div>
 
         <!-- Slide 3: What We Heard - Challenges -->
         <div class="slide" data-slide="2">
-            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; max-width: 1200px; width: 100%; align-items: start; padding-top: 2rem;">
+            <div style="display: grid; grid-template-columns: 1.8fr 1fr; gap: 3rem; max-width: var(--max-content-width); width: 100%; align-items: start;">
                 <div>
-                    <div class="challenge-card">
+                    <div class="challenge-card animate-in delay-1">
                         <h4>Awareness Gap</h4>
                         <p>Many people around Midland/Odessa still have never heard of the Boys and Girls Club</p>
                     </div>
-                    <div class="challenge-card">
+                    <div class="challenge-card animate-in delay-2">
                         <h4>Identity Confusion</h4>
                         <p>Getting mixed up with other organizations despite your unique mission and scale</p>
                     </div>
-                    <div class="challenge-card">
+                    <div class="challenge-card animate-in delay-3">
                         <h4>Funding Diversification</h4>
                         <p>Need to expand beyond current sources through individual donors and corporate sponsorships</p>
                     </div>
-                    <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; opacity: 0.7; font-size: 1.1rem; margin-top: 1.5rem; text-align: center;">These challenges are common—and solvable.</p>
+                    <p class="animate-in delay-4" style="font-family: 'Libre Caslon Text', serif; font-style: italic; opacity: 0.7; font-size: 1.05rem; margin-top: 1.75rem; text-align: center;">These challenges are common—and solvable.</p>
                 </div>
-                <img src="bcga-photo-1.jpg" alt="Boys and Girls Club" style="width: 100%; height: 350px; border-radius: 1.5rem; object-fit: cover; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);">
+                <img src="bcga-photo-1.jpg" alt="Boys and Girls Club" class="animate-in from-right delay-2" style="width: 100%; height: 320px; border-radius: 1.25rem; object-fit: cover; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);">
             </div>
         </div>
 
         <!-- Slide 4: The Problem -->
         <div class="slide" data-slide="3">
             <div class="split-slide">
-                <img src="image1.jpeg" alt="Children at Boys and Girls Club" class="slide-image">
+                <img src="image1.jpeg" alt="Children at Boys and Girls Club" class="slide-image animate-in from-left delay-1">
                 <div>
-                    <h2>Great Work. <span class="impact-text">Quiet Impact.</span></h2>
-                    <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">You're changing lives every day in Midland and Odessa. But when a donor visits your website&mdash;or a foundation reviews your grant&mdash;do they <em>feel</em> that impact?</p>
-                    <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">Or do they just see information?</p>
-                    <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.15rem; color: var(--brand-orange); margin-top: 2rem;">Most nonprofits struggle to turn their work into stories that move people to give. It's not an effort problem. It's a messaging problem.</p>
+                    <h2 class="animate-in delay-2">Great Work. <span class="impact-text">Quiet Impact.</span></h2>
+                    <p class="animate-in delay-3" style="font-size: 1.15rem; margin-bottom: 1.25rem;">You're changing lives every day in Midland and Odessa. But when a donor visits your website&mdash;or a foundation reviews your grant&mdash;do they <em>feel</em> that impact?</p>
+                    <p class="animate-in delay-4" style="font-size: 1.15rem; margin-bottom: 1.25rem;">Or do they just see information?</p>
+                    <p class="animate-in delay-5" style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.1rem; color: var(--brand-orange); margin-top: 1.75rem;">Most nonprofits struggle to turn their work into stories that move people to give. It's not an effort problem. It's a messaging problem.</p>
                 </div>
             </div>
         </div>
 
         <!-- Slide 5: The Cost -->
         <div class="slide" data-slide="4">
-            <div style="max-width: 900px; text-align: center;">
-                <h2>What Silence <span class="impact-text">Costs</span></h2>
-                <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 2rem;">Every month without a clear, compelling story is:</p>
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; text-align: left;">
-                    <div class="challenge-card">
+            <div style="max-width: 800px; text-align: center;">
+                <h2 class="animate-in delay-1">What Silence <span class="impact-text">Costs</span></h2>
+                <p class="animate-in delay-2" style="font-size: 1.15rem; opacity: 0.8; margin-bottom: 2rem;">Every month without a clear, compelling story is:</p>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; text-align: left;">
+                    <div class="challenge-card animate-in delay-3">
                         <h4>Grant applications that don't stand out</h4>
                         <p>Your impact gets lost in a sea of generic proposals</p>
                     </div>
-                    <div class="challenge-card">
+                    <div class="challenge-card animate-in delay-4">
                         <h4>Donor appeals that feel generic</h4>
                         <p>Without emotional connection, asks fall flat</p>
                     </div>
-                    <div class="challenge-card">
+                    <div class="challenge-card animate-in delay-5">
                         <h4>Major gift prospects who never connect</h4>
                         <p>They give elsewhere because they don't feel your mission</p>
                     </div>
-                    <div class="challenge-card">
+                    <div class="challenge-card animate-in delay-6">
                         <h4>A team that struggles to explain why it matters</h4>
                         <p>Hard work without the words to match</p>
                     </div>
@@ -1097,17 +1259,17 @@
 
         <!-- Slide 6: The Shift -->
         <div class="slide" data-slide="5">
-            <div class="split-slide" style="max-width: 1100px;">
+            <div class="split-slide" style="max-width: var(--max-content-width);">
                 <div>
-                    <h2>From Invisible to <span class="impact-text">Unforgettable</span></h2>
-                    <p style="font-size: 1.15rem; margin-bottom: 1.5rem;">What if every touchpoint&mdash;your website, your social media, your donor meetings, your grant applications&mdash;told the same powerful story?</p>
-                    <p style="font-size: 1.15rem; margin-bottom: 1.5rem;">What if your staff could confidently capture and share impact moments?</p>
-                    <p style="font-size: 1.15rem; margin-bottom: 1.5rem;">What if you had assets so compelling that donors shared them without being asked?</p>
-                    <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.1rem; opacity: 0.8; margin-top: 2rem;">That's what we build.</p>
+                    <h2 class="animate-in delay-1">From Invisible to <span class="impact-text">Unforgettable</span></h2>
+                    <p class="animate-in delay-2" style="font-size: 1.1rem; margin-bottom: 1.25rem;">What if every touchpoint&mdash;your website, your social media, your donor meetings, your grant applications&mdash;told the same powerful story?</p>
+                    <p class="animate-in delay-3" style="font-size: 1.1rem; margin-bottom: 1.25rem;">What if your staff could confidently capture and share impact moments?</p>
+                    <p class="animate-in delay-4" style="font-size: 1.1rem; margin-bottom: 1.25rem;">What if you had assets so compelling that donors shared them without being asked?</p>
+                    <p class="animate-in delay-5" style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.05rem; opacity: 0.8; margin-top: 1.75rem;">That's what we build.</p>
                 </div>
-                <div class="deliverable-item" style="padding: 0; margin: 0; cursor: pointer;">
-                    <a href="https://oklahomaisok.github.io/sea-cadets-impact-deck/" target="_blank" style="display: block; text-decoration: none; color: inherit; border: 1px solid rgba(0,0,0,0.1); border-radius: 1.5rem; overflow: hidden; transition: box-shadow 0.2s ease, transform 0.2s ease;">
-                        <img src="sea-cadets-preview.png" alt="Sea Cadets Impact Deck Preview" style="width: 100%; display: block; border-radius: 1.5rem 1.5rem 0 0;">
+                <div class="animate-in from-right delay-2" style="padding: 0; margin: 0;">
+                    <a href="https://oklahomaisok.github.io/sea-cadets-impact-deck/" target="_blank" style="display: block; text-decoration: none; color: inherit; border: 1px solid rgba(0,0,0,0.08); border-radius: 1.25rem; overflow: hidden; transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1); box-shadow: 0 8px 32px rgba(0,0,0,0.08);">
+                        <img src="sea-cadets-preview.png" alt="Sea Cadets Impact Deck Preview" style="width: 100%; display: block;">
                         <div style="padding: 1rem 1.25rem; background: white; font-size: 0.85rem; color: #4a5568;">
                             <strong style="color: var(--brand-orange);">Example: Sea Cadets Impact Deck</strong><br>
                             Click to see what's possible
@@ -1119,9 +1281,9 @@
 
         <!-- Slide 7: Why Anecdotal -->
         <div class="slide" data-slide="6">
-            <h2 style="text-align: center; margin-bottom: 2rem;">We Make Nonprofits <span class="impact-text">Impossible to Ignore</span></h2>
+            <h2 class="animate-in delay-1" style="text-align: center; margin-bottom: 2rem;">We Make Nonprofits <span class="impact-text">Impossible to Ignore</span></h2>
             <div class="client-results">
-                <div class="client-card">
+                <div class="client-card animate-in delay-2">
                     <h3>Texas Hearing Institute</h3>
                     <p class="client-subtitle">Broke their fundraising records</p>
                     <div class="stats-row">
@@ -1135,7 +1297,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="client-card">
+                <div class="client-card animate-in delay-3">
                     <h3>U.S. Naval Sea Cadets</h3>
                     <p class="client-subtitle">From obscurity to national visibility</p>
                     <div class="stats-row">
@@ -1150,16 +1312,16 @@
                     </div>
                 </div>
             </div>
-            <p style="text-align: center; margin-top: 2rem; font-size: 1.1rem; max-width: 900px; line-height: 1.6;">
+            <p class="animate-in delay-4" style="text-align: center; margin-top: 2rem; font-size: 1.05rem; max-width: 800px; line-height: 1.6;">
                 Our team has produced Emmy-winning television and campaigns for the world's biggest brands. Now we bring that firepower to nonprofits—turning great work into greater impact and income.
             </p>
         </div>
 
         <!-- Slide 8: How It Works -->
         <div class="slide" data-slide="7">
-            <h2 style="text-align: center; margin-bottom: 2rem;">Your <span class="impact-text">6-Week Transformation</span></h2>
+            <h2 class="animate-in delay-1" style="text-align: center; margin-bottom: 2rem;">Your <span class="impact-text">6-Week Transformation</span></h2>
             <div class="roadmap">
-                <div class="roadmap-phase phase-1">
+                <div class="roadmap-phase phase-1 animate-in delay-2">
                     <div class="phase-label">Week 1-2</div>
                     <h3>Discover</h3>
                     <ul>
@@ -1169,7 +1331,7 @@
                         <li>Find the gaps</li>
                     </ul>
                 </div>
-                <div class="roadmap-phase phase-2">
+                <div class="roadmap-phase phase-2 animate-in delay-3">
                     <div class="phase-label">Week 3-5</div>
                     <h3>Build</h3>
                     <ul>
@@ -1178,7 +1340,7 @@
                         <li>Impact Deck</li>
                     </ul>
                 </div>
-                <div class="roadmap-phase phase-3">
+                <div class="roadmap-phase phase-3 animate-in delay-4">
                     <div class="phase-label">Week 6</div>
                     <h3>Launch</h3>
                     <ul>
@@ -1188,19 +1350,19 @@
                     </ul>
                 </div>
             </div>
-            <p style="text-align: center; margin-top: 2rem; font-family: 'Libre Caslon Text', serif; font-style: italic; opacity: 0.8; font-size: 1.1rem;">From "we don't know how to talk about our impact" to a complete messaging system and stunning digital asset.</p>
+            <p class="animate-in delay-5" style="text-align: center; margin-top: 2rem; font-family: 'Libre Caslon Text', serif; font-style: italic; opacity: 0.8; font-size: 1.05rem; max-width: 700px;">From "we don't know how to talk about our impact" to a complete messaging system and stunning digital asset.</p>
         </div>
 
         <!-- Slide 9: Package 1 Overview -->
         <div class="slide" data-slide="8">
-            <div class="content-box">
+            <div class="content-box animate-in scale-in delay-1">
                 <span class="package-badge">Package 1</span>
                 <h2 style="margin-bottom: 0.5rem;">Story Foundation</h2>
-                <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.1rem; margin-bottom: 1.5rem; opacity: 0.8;">Get your message right before you spend another dollar on marketing.</p>
+                <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.05rem; margin-bottom: 1.5rem; opacity: 0.8;">Get your message right before you spend another dollar on marketing.</p>
 
                 <div class="package-grid">
                     <div>
-                        <h3 style="font-size: 1.1rem; margin-bottom: 1rem;">What Changes:</h3>
+                        <h3 style="font-size: 1rem; margin-bottom: 1rem;">What Changes:</h3>
                         <div class="transformation-card">
                             <div class="from">"We don't know what to say"</div>
                             <div class="to">Every team member tells the same compelling story</div>
@@ -1213,14 +1375,14 @@
                             <div class="from">Boring donor materials</div>
                             <div class="to">A stunning Impact Deck that sells your mission 24/7</div>
                         </div>
-                        <p style="font-size: 0.95rem; opacity: 0.7; margin-top: 1.5rem;"><strong>Ideal for:</strong> Organizations that need clarity before tactics. Start here.</p>
+                        <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 1.5rem;"><strong>Ideal for:</strong> Organizations that need clarity before tactics. Start here.</p>
                     </div>
                     <div class="price-box" style="align-self: start;">
-                        <p style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.9; margin-bottom: 0.5rem;">Investment</p>
-                        <p style="font-size: 3rem; font-weight: 700; margin-bottom: 0.25rem;">$5,500</p>
-                        <p style="font-size: 1.1rem; opacity: 0.9;">One-time</p>
-                        <div style="border-top: 1px solid rgba(255,255,255,0.3); margin: 1.5rem 0; padding-top: 1rem;">
-                            <p style="font-size: 0.85rem; opacity: 0.9; line-height: 1.5;">If this helps write one better grant that gets funded, it pays for itself 10x.</p>
+                        <p style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.9; margin-bottom: 0.5rem;">Investment</p>
+                        <p style="font-size: 2.75rem; font-weight: 700; margin-bottom: 0.25rem;">$5,500</p>
+                        <p style="font-size: 1rem; opacity: 0.9;">One-time</p>
+                        <div style="border-top: 1px solid rgba(255,255,255,0.3); margin: 1.25rem 0; padding-top: 1rem;">
+                            <p style="font-size: 0.8rem; opacity: 0.9; line-height: 1.5;">If this helps write one better grant that gets funded, it pays for itself 10x.</p>
                         </div>
                     </div>
                 </div>
@@ -1229,11 +1391,11 @@
 
         <!-- Slide 10: Package 1 Detail - Impact Deck -->
         <div class="slide" data-slide="9">
-            <div class="content-box" style="padding-top: 1.5rem;">
+            <div class="content-box animate-in scale-in delay-1" style="padding-top: 1.5rem;">
                 <span class="package-badge">Included in Package 1</span>
-                <h2 style="margin-bottom: 1rem; font-size: 2.2rem;">Your Story, <span class="impact-text">Ready to Share</span></h2>
+                <h2 style="margin-bottom: 1rem; font-size: 2rem;">Your Story, <span class="impact-text">Ready to Share</span></h2>
 
-                <div class="package-grid" style="grid-template-columns: 1fr 1fr; gap: 2rem;">
+                <div class="package-grid" style="grid-template-columns: 1fr 1fr; gap: 2.5rem;">
                     <div>
                         <ul class="package-list" style="font-size: 0.95rem;">
                             <li class="deliverable-item">
@@ -1302,10 +1464,10 @@
 
         <!-- Slide 11: Package 2 Overview -->
         <div class="slide" data-slide="10">
-            <div class="content-box">
+            <div class="content-box animate-in scale-in delay-1">
                 <span class="package-badge">Package 2</span>
                 <h2 style="margin-bottom: 0.5rem;">Story Activation</h2>
-                <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.1rem; margin-bottom: 1.5rem; opacity: 0.8;">A marketing system that runs while you sleep.</p>
+                <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.05rem; margin-bottom: 1.5rem; opacity: 0.8;">A marketing system that runs while you sleep.</p>
 
                 <div class="package-grid">
                     <div>
@@ -1378,22 +1540,22 @@
         <div class="slide" data-slide="11">
             <div class="split-slide">
                 <div>
-                    <span class="package-badge">Package 2 Highlight</span>
-                    <h2>Stories That <span class="impact-text">Open Wallets</span></h2>
-                    <p style="font-size: 1.15rem; margin-bottom: 1.5rem;">Your organizational story explains WHAT you do. Individual impact stories show WHO you change.</p>
-                    <p style="font-size: 1.15rem; margin-bottom: 1.5rem;">We'll create 3 dedicated story decks&mdash;each following one person's transformation through your programs.</p>
-                    <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.2rem; color: var(--brand-orange); margin-top: 2rem;">These are the stories that give donors a lump in their throat. And then give.</p>
+                    <span class="package-badge animate-in delay-1">Package 2 Highlight</span>
+                    <h2 class="animate-in delay-2">Stories That <span class="impact-text">Open Wallets</span></h2>
+                    <p class="animate-in delay-3" style="font-size: 1.1rem; margin-bottom: 1.25rem;">Your organizational story explains WHAT you do. Individual impact stories show WHO you change.</p>
+                    <p class="animate-in delay-4" style="font-size: 1.1rem; margin-bottom: 1.25rem;">We'll create 3 dedicated story decks&mdash;each following one person's transformation through your programs.</p>
+                    <p class="animate-in delay-5" style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.15rem; color: var(--brand-orange); margin-top: 1.75rem;">These are the stories that give donors a lump in their throat. And then give.</p>
                 </div>
-                <img src="bcga-photo-1.jpg" alt="Impact Story" class="slide-image">
+                <img src="bcga-photo-1.jpg" alt="Impact Story" class="slide-image animate-in from-right delay-2">
             </div>
         </div>
 
         <!-- Slide 13: Package 3 Overview -->
         <div class="slide" data-slide="12">
-            <div class="content-box">
+            <div class="content-box animate-in scale-in delay-1">
                 <span class="package-badge">Package 3</span>
                 <h2 style="margin-bottom: 0.5rem;">Story Amplification</h2>
-                <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.1rem; margin-bottom: 1.5rem; opacity: 0.8;">The film that closes your next six-figure gift.</p>
+                <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.05rem; margin-bottom: 1.5rem; opacity: 0.8;">The film that closes your next six-figure gift.</p>
 
                 <div class="package-grid">
                     <div>
@@ -1440,19 +1602,19 @@
         <div class="slide" data-slide="13">
             <div class="split-slide">
                 <div>
-                    <span class="package-badge">Package 3 Highlight</span>
-                    <h2>The Most Important <span class="impact-text">5 Minutes</span></h2>
-                    <p style="font-size: 1.15rem; margin-bottom: 1.5rem;">This isn't a "nonprofit video." It's a film.</p>
-                    <ul class="package-list" style="margin-bottom: 1.5rem;">
+                    <span class="package-badge animate-in delay-1">Package 3 Highlight</span>
+                    <h2 class="animate-in delay-2">The Most Important <span class="impact-text">5 Minutes</span></h2>
+                    <p class="animate-in delay-3" style="font-size: 1.1rem; margin-bottom: 1.25rem;">This isn't a "nonprofit video." It's a film.</p>
+                    <ul class="package-list animate-in delay-4" style="margin-bottom: 1.25rem;">
                         <li>The piece that plays at your gala before you make the ask</li>
                         <li>The link you send to your top 50 prospects</li>
                         <li>The content that sits in a major donor's living room and does the emotional work so you don't have to</li>
                     </ul>
-                    <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.2rem; color: var(--brand-orange);">Our films don't just inform. They move.</p>
+                    <p class="animate-in delay-5" style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.15rem; color: var(--brand-orange);">Our films don't just inform. They move.</p>
                 </div>
-                <div style="background: white; border-radius: 1.5rem; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);">
+                <div class="animate-in from-right delay-2" style="background: white; border-radius: 1.25rem; overflow: hidden; box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);">
                     <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1121616454?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Flagship Film Example"></iframe></div>
-                    <div style="padding: 1rem; text-align: center; font-size: 0.9rem; opacity: 0.7;">
+                    <div style="padding: 0.875rem; text-align: center; font-size: 0.85rem; opacity: 0.7;">
                         Example: Texas Hearing Institute Gala Film
                     </div>
                 </div>
@@ -1461,44 +1623,44 @@
 
         <!-- Slide 15: Investment Summary -->
         <div class="slide" data-slide="14">
-            <div style="max-width: 1200px; width: 100%;">
-                <h2 style="text-align: center; margin-bottom: 0.5rem;">Investment <span class="impact-text">Summary</span></h2>
+            <div style="max-width: var(--max-content-width); width: 100%;">
+                <h2 class="animate-in delay-1" style="text-align: center; margin-bottom: 0.75rem;">Investment <span class="impact-text">Summary</span></h2>
                 <div class="pricing-comparison">
-                    <div class="pricing-card">
+                    <div class="pricing-card animate-in delay-2">
                         <h4>Story Foundation</h4>
-                        <div class="price">$5,500</div>
+                        <div class="price" style="font-size: 2.5rem;">$5,500</div>
                         <p class="price-detail">One-time</p>
                         <ul style="text-align: left; font-size: 0.8rem; margin-top: 1rem; opacity: 0.8; list-style: none; padding: 0;">
-                            <li style="padding: 0.3rem 0;">&#10003; Communications audit</li>
-                            <li style="padding: 0.3rem 0;">&#10003; Storytelling playbook</li>
-                            <li style="padding: 0.3rem 0;">&#10003; Staff training</li>
-                            <li style="padding: 0.3rem 0;">&#10003; Impact Deck</li>
+                            <li style="padding: 0.25rem 0;">&#10003; Communications audit</li>
+                            <li style="padding: 0.25rem 0;">&#10003; Storytelling playbook</li>
+                            <li style="padding: 0.25rem 0;">&#10003; Staff training</li>
+                            <li style="padding: 0.25rem 0;">&#10003; Impact Deck</li>
                         </ul>
-                        <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 0.75rem;">Best for: Getting started</p>
+                        <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 0.875rem; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 0.75rem;">Best for: Getting started</p>
                     </div>
-                    <div class="pricing-card">
+                    <div class="pricing-card animate-in delay-3">
                         <h4>Story Activation</h4>
-                        <div class="price">$10,000</div>
+                        <div class="price" style="font-size: 2.5rem;">$10,000</div>
                         <p class="price-detail">per year ($850/mo)</p>
                         <ul style="text-align: left; font-size: 0.8rem; margin-top: 1rem; opacity: 0.8; list-style: none; padding: 0;">
-                            <li style="padding: 0.3rem 0;">&#10003; Everything in Foundation</li>
-                            <li style="padding: 0.3rem 0;">&#10003; 3 Individual Impact Decks</li>
-                            <li style="padding: 0.3rem 0;">&#10003; 1 campaign video/year</li>
-                            <li style="padding: 0.3rem 0;">&#10003; 1 hr/mo coaching</li>
+                            <li style="padding: 0.25rem 0;">&#10003; Everything in Foundation</li>
+                            <li style="padding: 0.25rem 0;">&#10003; 3 Individual Impact Decks</li>
+                            <li style="padding: 0.25rem 0;">&#10003; 1 campaign video/year</li>
+                            <li style="padding: 0.25rem 0;">&#10003; 1 hr/mo coaching</li>
                         </ul>
-                        <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 0.75rem;">Year 2+: $10,000/yr</p>
+                        <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 0.875rem; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 0.75rem;">Year 2+: $10,000/yr</p>
                     </div>
-                    <div class="pricing-card">
+                    <div class="pricing-card animate-in delay-4">
                         <h4>Story Amplification</h4>
-                        <div class="price">$32,000</div>
+                        <div class="price" style="font-size: 2.5rem;">$32,000</div>
                         <p class="price-detail">per year</p>
                         <ul style="text-align: left; font-size: 0.8rem; margin-top: 1rem; opacity: 0.8; list-style: none; padding: 0;">
-                            <li style="padding: 0.3rem 0;">&#10003; Everything in Activation</li>
-                            <li style="padding: 0.3rem 0;">&#10003; Flagship cinematic film</li>
-                            <li style="padding: 0.3rem 0;">&#10003; LMS training library</li>
-                            <li style="padding: 0.3rem 0;">&#10003; 2 hrs/mo coaching</li>
+                            <li style="padding: 0.25rem 0;">&#10003; Everything in Activation</li>
+                            <li style="padding: 0.25rem 0;">&#10003; Flagship cinematic film</li>
+                            <li style="padding: 0.25rem 0;">&#10003; LMS training library</li>
+                            <li style="padding: 0.25rem 0;">&#10003; 2 hrs/mo coaching</li>
                         </ul>
-                        <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 0.75rem;">Year 2+: $32,000/yr</p>
+                        <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 0.875rem; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 0.75rem;">Year 2+: $32,000/yr</p>
                     </div>
                 </div>
             </div>
@@ -1506,72 +1668,72 @@
 
         <!-- Slide 16: Year 2 and Beyond -->
         <div class="slide" data-slide="15">
-            <div style="max-width: 900px; text-align: center;">
-                <h2>Year 2 <span class="impact-text">and Beyond</span></h2>
-                <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 2.5rem;">Continue growing your impact with ongoing support.</p>
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
-                    <div style="background: white; border-radius: 1.5rem; padding: 2rem; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);">
-                        <h3 style="color: var(--brand-orange); font-size: 1.2rem; margin-bottom: 1rem;">Package 2 Renewal</h3>
-                        <p style="font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;">$10,000/yr</p>
-                        <p style="opacity: 0.7;">$850/mo</p>
+            <div style="max-width: 750px; text-align: center;">
+                <h2 class="animate-in delay-1">Year 2 <span class="impact-text">and Beyond</span></h2>
+                <p class="animate-in delay-2" style="font-size: 1.15rem; opacity: 0.8; margin-bottom: 2.25rem;">Continue growing your impact with ongoing support.</p>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+                    <div class="animate-in delay-3" style="background: white; border-radius: 1.25rem; padding: 1.75rem; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);">
+                        <h3 style="color: var(--brand-orange); font-size: 1.1rem; margin-bottom: 0.875rem;">Package 2 Renewal</h3>
+                        <p style="font-size: 1.85rem; font-weight: 700; margin-bottom: 0.4rem;">$10,000/yr</p>
+                        <p style="opacity: 0.7; font-size: 0.95rem;">$850/mo</p>
                     </div>
-                    <div style="background: white; border-radius: 1.5rem; padding: 2rem; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);">
-                        <h3 style="color: var(--brand-orange); font-size: 1.2rem; margin-bottom: 1rem;">Package 3 Renewal</h3>
-                        <p style="font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;">$32,000/yr</p>
-                        <p style="opacity: 0.7;">Ongoing partnership</p>
+                    <div class="animate-in delay-4" style="background: white; border-radius: 1.25rem; padding: 1.75rem; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);">
+                        <h3 style="color: var(--brand-orange); font-size: 1.1rem; margin-bottom: 0.875rem;">Package 3 Renewal</h3>
+                        <p style="font-size: 1.85rem; font-weight: 700; margin-bottom: 0.4rem;">$32,000/yr</p>
+                        <p style="opacity: 0.7; font-size: 0.95rem;">Ongoing partnership</p>
                     </div>
                 </div>
-                <div style="background: rgba(197, 78, 50, 0.08); padding: 1.5rem 2rem; border-radius: 1rem; margin-top: 2rem; display: inline-block;">
-                    <p style="font-size: 1rem; margin: 0;"><strong>Optional:</strong> New Flagship Film (Year 2+): $20,000</p>
+                <div class="animate-in delay-5" style="background: rgba(197, 78, 50, 0.06); padding: 1.25rem 1.75rem; border-radius: 0.875rem; margin-top: 1.75rem; display: inline-block;">
+                    <p style="font-size: 0.95rem; margin: 0;"><strong>Optional:</strong> New Flagship Film (Year 2+): $20,000</p>
                 </div>
             </div>
         </div>
 
         <!-- Slide 17: Referral Program -->
         <div class="slide" data-slide="16">
-            <div style="max-width: 900px; text-align: center;">
-                <h2>Better <span class="impact-text">Together</span></h2>
-                <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 2rem;">Know other Boys & Girls Clubs that need help telling their story?</p>
+            <div style="max-width: 700px; text-align: center;">
+                <h2 class="animate-in delay-1">Better <span class="impact-text">Together</span></h2>
+                <p class="animate-in delay-2" style="font-size: 1.1rem; opacity: 0.8; margin-bottom: 2rem;">Know other Boys & Girls Clubs that need help telling their story?</p>
                 <div class="referral-stack">
-                    <div class="referral-item">
+                    <div class="referral-item animate-in delay-3">
                         <div class="discount">10% off</div>
                         <div class="label">1 referral</div>
                     </div>
-                    <div class="referral-item">
+                    <div class="referral-item animate-in delay-4">
                         <div class="discount">20% off</div>
                         <div class="label">2 referrals</div>
                     </div>
-                    <div class="referral-item">
+                    <div class="referral-item animate-in delay-5">
                         <div class="discount">30% off</div>
                         <div class="label">3 referrals</div>
                     </div>
                 </div>
-                <p style="font-size: 1.1rem; margin-top: 2rem;">10% off your monthly retainer for each chapter you refer that becomes a client.</p>
-                <p style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.15rem; color: var(--brand-orange); margin-top: 1rem;">Three referrals = 30% off. Permanently.</p>
+                <p class="animate-in delay-6" style="font-size: 1.05rem; margin-top: 2rem;">10% off your monthly retainer for each chapter you refer that becomes a client.</p>
+                <p class="animate-in delay-7" style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 1.1rem; color: var(--brand-orange); margin-top: 0.875rem;">Three referrals = 30% off. Permanently.</p>
             </div>
         </div>
 
         <!-- Slide 18: Add-Ons -->
         <div class="slide" data-slide="17">
-            <div style="max-width: 1000px; text-align: center;">
-                <h2>When You're Ready for <span class="impact-text">More</span></h2>
-                <div class="addon-grid" style="margin-top: 2rem;">
-                    <div class="addon-card">
+            <div style="max-width: 850px; text-align: center;">
+                <h2 class="animate-in delay-1">When You're Ready for <span class="impact-text">More</span></h2>
+                <div class="addon-grid" style="margin-top: 1.75rem;">
+                    <div class="addon-card animate-in delay-2">
                         <h4>Google Ads Grant Management</h4>
                         <div class="addon-price">$1,250/mo</div>
                         <p>Google gives nonprofits $10K/mo in free ads. Most never touch it. We'll set it up and run it for you.</p>
                     </div>
-                    <div class="addon-card">
+                    <div class="addon-card animate-in delay-3">
                         <h4>Professional Digital Asset Management</h4>
                         <div class="addon-price">$1,500 setup + $600/mo</div>
                         <p>For organizations drowning in content&mdash;professional-grade organization with Air.</p>
                     </div>
-                    <div class="addon-card">
+                    <div class="addon-card animate-in delay-4">
                         <h4>Additional Campaign Video</h4>
                         <div class="addon-price">$1,500</div>
                         <p>Need more than your package includes? Add another campaign video anytime.</p>
                     </div>
-                    <div class="addon-card">
+                    <div class="addon-card animate-in delay-5">
                         <h4>Additional Flagship Film</h4>
                         <div class="addon-price">$20,000</div>
                         <p>Year 2+ option&mdash;refresh your flagship film with a new story.</p>
@@ -1583,24 +1745,24 @@
         <!-- Slide 19: Next Steps -->
         <div class="slide" data-slide="18">
             <div class="split-slide">
-                <img src="bgca-image-2.jpg" alt="BGC Kids" class="slide-image">
+                <img src="bgca-image-2.jpg" alt="BGC Kids" class="slide-image animate-in from-left delay-1">
                 <div>
-                    <div class="ambient-glow" style="opacity: 0.4;"></div>
-                    <h2 style="position: relative; z-index: 1;">Let's Build Something <span class="impact-text">That Lasts</span></h2>
-                    <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 1.5rem; position: relative; z-index: 1;">
+                    <div class="ambient-glow" style="opacity: 0.35;"></div>
+                    <h2 class="animate-in delay-2" style="position: relative; z-index: 1;">Let's Build Something <span class="impact-text">That Lasts</span></h2>
+                    <p class="animate-in delay-3" style="font-size: 1.1rem; opacity: 0.8; margin-bottom: 1.25rem; position: relative; z-index: 1;">
                         Your work is already changing lives. Let's make sure the right people know about it.
                     </p>
 
-                    <div style="background: white; padding: 2rem; border-radius: 1.5rem; position: relative; z-index: 1;">
-                        <h3 style="margin-bottom: 1rem; font-size: 1.3rem;">Next Steps:</h3>
+                    <div class="animate-in delay-4" style="background: white; padding: 1.75rem; border-radius: 1.25rem; position: relative; z-index: 1; box-shadow: 0 8px 32px rgba(0,0,0,0.06);">
+                        <h3 style="margin-bottom: 0.875rem; font-size: 1.2rem;">Next Steps:</h3>
                         <ul class="package-list">
                             <li>Schedule a call to discuss your goals</li>
                             <li>Choose the package that fits</li>
                             <li>Start building sustainable impact</li>
                         </ul>
-                        <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.1);">
-                            <p style="font-size: 0.95rem; margin-bottom: 0.5rem;"><strong>Ryan McNeill</strong></p>
-                            <p style="font-size: 0.9rem; opacity: 0.7;">ryan.m@anecdotal.media</p>
+                        <div style="margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid rgba(0,0,0,0.08);">
+                            <p style="font-size: 0.95rem; margin-bottom: 0.4rem;"><strong>Ryan McNeill</strong></p>
+                            <p style="font-size: 0.85rem; opacity: 0.7;">ryan.m@anecdotal.media</p>
                         </div>
                     </div>
                 </div>

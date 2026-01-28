@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { DeckViewer } from '@/components/deck-viewer';
+import { ResponsiveDeckViewer, DeckViewer } from '@/components/deck-viewer';
 import { getMockDeckWithOrg } from '@/lib/supabase/mock-data';
 import { organizationFromRow, deckFromRow } from '@/types/template';
 
@@ -64,6 +64,21 @@ export default async function DeckPage({ params }: DeckPageProps) {
   // Increment view count (in production)
   // await supabase.rpc('increment_deck_view_count', { deck_slug: deckSlug });
 
+  // Use the faithful original viewer for Sea Cadets thank you deck
+  // This shows the exact HTML/CSS/animations from the original prototype
+  // On desktop, it displays inside a phone frame mockup
+  if (org === 'sea-cadets' && deckSlug === 'thank-you-john') {
+    const donorName = deck.personalizationData?.donor?.firstName || 'Friend';
+    return (
+      <ResponsiveDeckViewer
+        donorName={donorName}
+        orgName={organization.name}
+        logoUrl={organization.logoUrl || '/images/sea-cadets/logo.png'}
+      />
+    );
+  }
+
+  // For other decks, use the generic DeckViewer
   return (
     <main className="h-screen overflow-hidden">
       <DeckViewer

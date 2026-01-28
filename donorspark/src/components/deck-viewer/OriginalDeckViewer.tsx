@@ -74,14 +74,15 @@ export function OriginalDeckViewer({
   const scrollNext = () => {
     const slider = sliderRef.current;
     if (!slider) return;
-    const scrollAmount = window.innerWidth < 768 ? window.innerWidth * 0.85 : 548;
+    // Use smaller scroll amount when inside phone frame
+    const scrollAmount = isInsidePhone ? 332 : (window.innerWidth < 768 ? window.innerWidth * 0.85 : 548);
     slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
   };
 
   const scrollPrev = () => {
     const slider = sliderRef.current;
     if (!slider) return;
-    const scrollAmount = window.innerWidth < 768 ? window.innerWidth * 0.85 : 548;
+    const scrollAmount = isInsidePhone ? 332 : (window.innerWidth < 768 ? window.innerWidth * 0.85 : 548);
     slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
   };
 
@@ -105,21 +106,26 @@ export function OriginalDeckViewer({
     ? 'min-h-full flex flex-col items-center selection:bg-[#FFC303]/30'
     : 'min-h-screen flex flex-col items-center selection:bg-[#FFC303]/30';
 
-  const navHeight = isInsidePhone ? 'h-14' : 'h-16';
+  const navHeight = isInsidePhone ? 'h-12' : 'h-16';
   const sliderPadding = isInsidePhone
-    ? 'pt-16 pb-4 px-2 gap-x-3'
+    ? 'pt-14 pb-4 px-2 gap-x-3'
     : 'pt-24 md:pt-28 pb-6 md:pb-10 px-4 md:px-10 gap-x-4 md:gap-x-12';
+
+  // Slide dimensions - smaller when inside phone frame
+  const slideStyle = isInsidePhone
+    ? { width: '320px', height: '480px', minWidth: '320px' }
+    : undefined; // Uses CSS .slide-container class
 
   return (
     <div className={containerClass} style={{ fontFamily: "'Roboto', sans-serif", backgroundColor: '#15193b', color: 'white' }}>
       {/* Fixed Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-6 py-4 bg-[#1D2350]/90 backdrop-blur-md border-b border-white/10 ${navHeight}`}>
-        <div className="flex items-center gap-3 w-auto md:w-1/3">
-          <img src={logoUrl} alt={`${orgName} Logo`} className="h-10 w-auto object-contain" />
+      <nav className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-3 md:px-6 py-2 md:py-4 bg-[#1D2350]/90 backdrop-blur-md border-b border-white/10 ${navHeight}`}>
+        <div className="flex items-center gap-2 w-auto md:w-1/3">
+          <img src={logoUrl} alt={`${orgName} Logo`} className={`${isInsidePhone ? 'h-7' : 'h-10'} w-auto object-contain`} />
         </div>
 
-        {/* Pagination Dots - Desktop */}
-        <div className="hidden sm:flex items-center justify-center gap-2 w-1/3">
+        {/* Pagination Dots - Desktop (hidden when inside phone) */}
+        <div className={`${isInsidePhone ? 'hidden' : 'hidden sm:flex'} items-center justify-center gap-2 w-1/3`}>
           {Array.from({ length: totalSlides }).map((_, index) => (
             <button
               key={index}
@@ -133,8 +139,8 @@ export function OriginalDeckViewer({
           ))}
         </div>
 
-        {/* Nav Buttons - Desktop */}
-        <div className="hidden md:flex items-center justify-end gap-2 w-1/3">
+        {/* Nav Buttons - Desktop (hidden when inside phone) */}
+        <div className={`${isInsidePhone ? 'hidden' : 'hidden md:flex'} items-center justify-end gap-2 w-1/3`}>
           <button onClick={scrollPrev} className="p-2 rounded-full hover:bg-white/10 text-neutral-400 hover:text-[#FFC303] transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
           </button>
@@ -143,8 +149,8 @@ export function OriginalDeckViewer({
           </button>
         </div>
 
-        {/* Swipe hint - Mobile */}
-        <div className="md:hidden flex items-center justify-end w-auto text-[#FFC303] text-xs gap-1 opacity-80">
+        {/* Swipe hint - Mobile (always show when inside phone) */}
+        <div className={`${isInsidePhone ? 'flex' : 'md:hidden flex'} items-center justify-end w-auto text-[#FFC303] text-xs gap-1 opacity-80`}>
           <span className="font-bold tracking-widest uppercase" style={{ fontFamily: "'Liberator', 'Oswald', sans-serif" }}>SWIPE</span>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 2l4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
         </div>
@@ -160,7 +166,7 @@ export function OriginalDeckViewer({
         }}
       >
         {/* SLIDE 1: THE HOOK */}
-        <section className="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center group bg-[#1D2350] border-white/10 border relative shadow-2xl justify-between rounded-xl">
+        <section className={`${isInsidePhone ? '' : 'slide-container'} flex-shrink-0 flex flex-col overflow-hidden snap-center group bg-[#1D2350] border-white/10 border relative shadow-2xl justify-between rounded-xl`} style={slideStyle}>
           <div className="absolute inset-0 z-0">
             <img src="/images/sea-cadets/cadet-closeup.jpg" className="w-full h-full object-cover opacity-80" alt="" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1D2350] via-[#1D2350]/30 to-transparent" />
@@ -185,7 +191,7 @@ export function OriginalDeckViewer({
         </section>
 
         {/* SLIDE 2: THE DESIRE */}
-        <section className="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center group bg-[#1D2350] border-white/10 border relative shadow-2xl justify-between rounded-xl">
+        <section className={`${isInsidePhone ? '' : 'slide-container'} flex-shrink-0 flex flex-col overflow-hidden snap-center group bg-[#1D2350] border-white/10 border relative shadow-2xl justify-between rounded-xl`} style={slideStyle}>
           <div className="absolute inset-0 z-0">
             <img src="/images/sea-cadets/candidate-civilian.jpg" className="w-full h-full object-cover grayscale opacity-60" alt="" />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#1D2350]" />
@@ -202,7 +208,7 @@ export function OriginalDeckViewer({
         </section>
 
         {/* SLIDE 3: THE OBSTACLE */}
-        <section className="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center group bg-[#1D2350] border-white/10 border relative shadow-2xl rounded-xl">
+        <section className={`${isInsidePhone ? '' : 'slide-container'} flex-shrink-0 flex flex-col overflow-hidden snap-center group bg-[#1D2350] border-white/10 border relative shadow-2xl rounded-xl`} style={slideStyle}>
           <div className="absolute inset-0 bg-grid-pattern opacity-10" />
 
           <div className="flex flex-col z-10 p-5 md:p-6 relative h-full">
@@ -288,7 +294,7 @@ export function OriginalDeckViewer({
         </section>
 
         {/* SLIDE 4: THE TURNING POINT */}
-        <section className="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center group bg-[#1D2350] border-white/10 border relative shadow-2xl justify-between rounded-xl">
+        <section className={`${isInsidePhone ? '' : 'slide-container'} flex-shrink-0 flex flex-col overflow-hidden snap-center group bg-[#1D2350] border-white/10 border relative shadow-2xl justify-between rounded-xl`} style={slideStyle}>
           <div className="absolute inset-0 z-0">
             <img src="/images/sea-cadets/seabag-gear.jpg" className="w-full h-full object-cover opacity-60" alt="" />
             <div className="absolute inset-0 bg-[#1D2350]/70 mix-blend-multiply" />
@@ -305,7 +311,7 @@ export function OriginalDeckViewer({
         </section>
 
         {/* SLIDE 5: IMMEDIATE IMPACT (Split Screen) */}
-        <section className="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center group bg-[#1D2350] border-white/10 border relative shadow-2xl rounded-xl">
+        <section className={`${isInsidePhone ? '' : 'slide-container'} flex-shrink-0 flex flex-col overflow-hidden snap-center group bg-[#1D2350] border-white/10 border relative shadow-2xl rounded-xl`} style={slideStyle}>
           <div className="absolute inset-0 flex">
             <div className="w-1/2 h-full relative border-r border-white/20 overflow-hidden">
               <img src="/images/sea-cadets/split-civilian.jpg" className="w-full h-full object-cover grayscale opacity-50" style={{ objectPosition: '30% center' }} alt="" />
@@ -328,7 +334,7 @@ export function OriginalDeckViewer({
         </section>
 
         {/* SLIDE 6: HUMAN DETAIL */}
-        <section className="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center group bg-[#1D2350] border-white/10 border relative shadow-2xl justify-between rounded-xl">
+        <section className={`${isInsidePhone ? '' : 'slide-container'} flex-shrink-0 flex flex-col overflow-hidden snap-center group bg-[#1D2350] border-white/10 border relative shadow-2xl justify-between rounded-xl`} style={slideStyle}>
           <div className="absolute inset-0 z-0">
             <img src="/images/sea-cadets/uniform-detail.jpg" className="w-full h-full object-cover opacity-80" alt="" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1D2350] via-transparent to-transparent" />
@@ -347,7 +353,7 @@ export function OriginalDeckViewer({
         </section>
 
         {/* SLIDE 7: SURPRISING COMPLIMENT */}
-        <section className="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center group bg-[#1D2350] border-white/10 border relative shadow-2xl rounded-xl">
+        <section className={`${isInsidePhone ? '' : 'slide-container'} flex-shrink-0 flex flex-col overflow-hidden snap-center group bg-[#1D2350] border-white/10 border relative shadow-2xl rounded-xl`} style={slideStyle}>
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-grid-pattern opacity-10" />
           </div>
@@ -370,7 +376,7 @@ export function OriginalDeckViewer({
         </section>
 
         {/* SLIDE 8: ORGANIZATIONAL IMPACT */}
-        <section className="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center group bg-[#1D2350] border-white/10 border relative shadow-2xl justify-between rounded-xl">
+        <section className={`${isInsidePhone ? '' : 'slide-container'} flex-shrink-0 flex flex-col overflow-hidden snap-center group bg-[#1D2350] border-white/10 border relative shadow-2xl justify-between rounded-xl`} style={slideStyle}>
           <div className="absolute inset-0 z-0">
             <img src="/images/sea-cadets/squadron-drill.jpg" className="w-full h-full object-cover opacity-70" alt="" />
             <div className="absolute inset-0 bg-[#1D2350]/60 mix-blend-multiply" />
@@ -387,7 +393,7 @@ export function OriginalDeckViewer({
         </section>
 
         {/* SLIDE 9: THE VISION */}
-        <section className="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center group bg-[#1D2350] border-white/10 border relative shadow-2xl justify-between rounded-xl">
+        <section className={`${isInsidePhone ? '' : 'slide-container'} flex-shrink-0 flex flex-col overflow-hidden snap-center group bg-[#1D2350] border-white/10 border relative shadow-2xl justify-between rounded-xl`} style={slideStyle}>
           <div className="absolute inset-0 z-0">
             <img src="/images/sea-cadets/cadet-horizon.jpg" className="w-full h-full object-cover opacity-80" alt="" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1D2350] to-transparent" />
@@ -405,7 +411,7 @@ export function OriginalDeckViewer({
         </section>
 
         {/* SLIDE 10: THE HERO CLOSER */}
-        <section className="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center group bg-[#1D2350] border-white/10 border relative shadow-2xl justify-between rounded-xl">
+        <section className={`${isInsidePhone ? '' : 'slide-container'} flex-shrink-0 flex flex-col overflow-hidden snap-center group bg-[#1D2350] border-white/10 border relative shadow-2xl justify-between rounded-xl`} style={slideStyle}>
           <div className="absolute inset-0 z-0">
             <img src="/images/sea-cadets/group-salute.jpg" className="w-full h-full object-cover opacity-50" alt="" />
             <div className="absolute inset-0 bg-[#1D2350]/80" />

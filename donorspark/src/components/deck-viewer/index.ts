@@ -4,4 +4,5 @@ export { ThemeProvider, useTheme } from './ThemeProvider';
 export { PhoneFrame } from './PhoneFrame';
 export { OriginalDeckViewer } from './OriginalDeckViewer';
 export { ResponsiveDeckViewer } from './ResponsiveDeckViewer';
+export { PreviewDeckViewer } from './PreviewDeckViewer';
 export * from './cards';
